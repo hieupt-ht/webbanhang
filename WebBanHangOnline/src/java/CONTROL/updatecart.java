@@ -46,16 +46,26 @@ public class updatecart extends HttpServlet {
             Daocartproduct dao = new Daocartproduct();
             String ids[] = request.getParameterValues("maSP");
             String soluongs[] = request.getParameterValues("soluong");
-            if(ids != null && soluongs != null){
-                for(int i = 0; i<= ids.length-1; i++){
+            if (ids != null && soluongs != null) {
+                for (int i = 0; i <= ids.length - 1; i++) {
                     String idsp = ids[i];
                     cartProduct cartproduct = dao.getCartproductByid(idsp, listcart);
                     cartproduct.setSoLuong(Integer.parseInt(soluongs[i]));
-                    cartproduct.setTongTien(Integer.parseInt(soluongs[i])*cartproduct.getDonGia());
+                    cartproduct.setTongTien(Integer.parseInt(soluongs[i]) * cartproduct.getDonGia());
                 }
             }
             session.setAttribute("gioHang", listcart);
-            request.getRequestDispatcher("cart.jsp").forward(request, response);
+            int sum = 0;
+            int dem = 0;
+            for (cartProduct c : listcart) {
+                sum += c.getTongTien();
+                dem++;
+            }
+            session.setAttribute("minicartsoluong", dem);
+            session.setAttribute("minicarttongtien", sum);
+            response.sendRedirect("cart.jsp");
+
+            //request.getRequestDispatcher("cart.jsp").forward(request, response);
         }
     }
 

@@ -58,7 +58,7 @@
                         </form>
                     </div>
                     <div class="shopping_cart">
-                        <a href="#"><i class="fa fa-shopping-cart"></i> ${requestScope.minicartsoluong} sản phẩm - ${requestScope.minicarttongtien}đ <i class="fa fa-angle-down"></i></a>
+                        <a href="#"><i class="fa fa-shopping-cart"></i> ${sessionScope.minicartsoluong} sản phẩm - ${sessionScope.minicarttongtien}đ <i class="fa fa-angle-down"></i></a>
                         <!--mini cart-->
                         <div class="mini_cart">
                             <c:forEach var="sp" items="${sessionScope.gioHang}">
