@@ -1,9 +1,16 @@
+<%-- 
+    Document   : about
+    Created on : Apr 20, 2025, 7:26:44 PM
+    Author     : ThankPad
+--%>
+
+<%@page contentType="text/html" pageEncoding="UTF-8"%>
 ﻿<!doctype html>
 <html class="no-js" lang="zxx">
     <head>
         <meta charset="utf-8">
         <meta http-equiv="x-ua-compatible" content="ie=edge">
-        <title>Coron-cart</title>
+        <title>Coron-about us</title>
         <meta name="description" content="">
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <!-- Favicon -->
@@ -22,12 +29,12 @@
             
             <!--pos page start-->
             <div class="pos_page">
-                <div class="container">  
-                   <!--pos page inner-->
+                <div class="container">
+                    <!--pos page inner-->
                     <div class="pos_page_inner">  
                        <!--header area -->
                         <div class="header_area">
-                            <!--header top--> 
+                           <!--header top--> 
                             <div class="header_top">
                                <div class="row align-items-center">
                                     <div class="col-lg-6 col-md-6">
@@ -44,7 +51,7 @@
                                                     <ul class="dropdown_currency">
                                                         <li><a href="#"> Dollar (USD)</a></li>
                                                         <li><a href="#"> Euro (EUR)  </a></li>
-                                                    </ul> 
+                                                    </ul>  
                                                 </li> 
                                             </ul>
                                         </div>
@@ -133,11 +140,11 @@
                             <!--header middel end-->      
                             <div class="header_bottom">
                                 <div class="row">
-                                        <div class="col-12">
-                                            <div class="main_menu_inner">
-                                                <div class="main_menu d-none d-lg-block">
-                                                    <nav>
-                                                        <ul>
+                                    <div class="col-12">
+                                        <div class="main_menu_inner">
+                                            <div class="main_menu d-none d-lg-block">
+                                                <nav>
+                                                    <ul>
                                                             <li class="active"><a href="index.html">Home</a>
                                                                 <div class="mega_menu jewelry">
                                                                     <div class="mega_items jewelry">
@@ -295,11 +302,11 @@
                                                             <li><a href="contact.html">contact us</a></li>
 
                                                         </ul>
-                                                    </nav>
-                                                </div>
-                                                <div class="mobile-menu d-lg-none">
-                                                    <nav>
-                                                        <ul>
+                                                </nav>
+                                            </div>
+                                            <div class="mobile-menu d-lg-none">
+                                                <nav>
+                                                    <ul>
                                                             <li><a href="index.html">Home</a>
                                                                 <div>
                                                                     <div>
@@ -457,11 +464,11 @@
                                                             <li><a href="contact.html">contact us</a></li>
 
                                                         </ul>
-                                                    </nav>
-                                                </div>
+                                                </nav>
                                             </div>
                                         </div>
                                     </div>
+                                </div>
                             </div>
                         </div>
                         <!--header end -->
@@ -473,7 +480,7 @@
                                         <ul>
                                             <li><a href="index.html">home</a></li>
                                             <li><i class="fa fa-angle-right"></i></li>
-                                            <li>Shopping Cart</li>
+                                            <li>about us</li>
                                         </ul>
 
                                     </div>
@@ -481,113 +488,175 @@
                             </div>
                         </div>
                         <!--breadcrumbs area end-->
+                         <!--about section area -->
+                        <div class="about_section">
+                            <div class="row align-items-center">
+                                    <div class="col-lg-6 col-md-6">
+                                        <div class="about_thumb">
+                                            <img src="assets\img\ship\about1.jpg" alt="">
+                                        </div>
+                                    </div>
+                                    <div class="col-lg-6 col-md-6">
+                                        <div class="about_content">
+                                            <h1>WE CREATE <br>WORDPRESS THEMES</h1>
+                                            <p>Duis autem vel eum iriure dolor in hendrerit in vulputate velit esse molestie consequat, vel illum dolore eu feugiat nulla facilisis at vero eros et accumsan et iusto odio dignissim qui blandit praesent luptatum zzril delenit augue duis dolore te feugait nulla facilisi. Nam liber tempor cum soluta nobis eleifend option congue nihil imperdiet doming id quod mazim placerat facer possim assum. Typi non habent claritatem insitam, est usus legentis in iis qui facit eorum claritatem. </p>
+                                            <div class="view__work">
+                                                <a href="#">view work </a>
+                                            </div>  
+                                        </div>
+                                    </div>
+                                </div>
+                        </div>
+                        <!--about section end-->
 
 
-
-                         <!--shopping cart area start -->
-                        <div class="shopping_cart_area">
-                            <form action="#"> 
-                                    <div class="row">
-                                        <div class="col-12">
-                                            <div class="table_desc">
-                                                <div class="cart_page table-responsive">
-                                                    <table>
-                                                <thead>
-                                                    <tr>
-                                                        <th class="product_remove">Delete</th>
-                                                        <th class="product_thumb">Image</th>
-                                                        <th class="product_name">Product</th>
-                                                        <th class="product-price">Price</th>
-                                                        <th class="product_quantity">Quantity</th>
-                                                        <th class="product_total">Total</th>
-                                                    </tr>
-                                                </thead>
-                                                <tbody>
-                                                    <tr>
-                                                       <td class="product_remove"><a href="#"><i class="fa fa-trash-o"></i></a></td>
-                                                        <td class="product_thumb"><a href="#"><img src="assets\img\cart\cart17.jpg" alt=""></a></td>
-                                                        <td class="product_name"><a href="#">Handbag fringilla</a></td>
-                                                        <td class="product-price">£65.00</td>
-                                                        <td class="product_quantity"><input min="0" max="100" value="1" type="number"></td>
-                                                        <td class="product_total">£130.00</td>
-
-
-                                                    </tr>
-
-                                                    <tr>
-                                                       <td class="product_remove"><a href="#"><i class="fa fa-trash-o"></i></a></td>
-                                                        <td class="product_thumb"><a href="#"><img src="assets\img\cart\cart18.jpg" alt=""></a></td>
-                                                        <td class="product_name"><a href="#">Handbags justo</a></td>
-                                                        <td class="product-price">£90.00</td>
-                                                        <td class="product_quantity"><input min="0" max="100" value="1" type="number"></td>
-                                                        <td class="product_total">£180.00</td>
-
-
-                                                    </tr>
-                                                    <tr>
-                                                       <td class="product_remove"><a href="#"><i class="fa fa-trash-o"></i></a></td>
-                                                        <td class="product_thumb"><a href="#"><img src="assets\img\cart\cart19.jpg" alt=""></a></td>
-                                                        <td class="product_name"><a href="#">Handbag elit</a></td>
-                                                        <td class="product-price">£80.00</td>
-                                                        <td class="product_quantity"><input min="0" max="100" value="1" type="number"></td>
-                                                        <td class="product_total">£160.00</td>
-
-
-                                                    </tr>
-
-                                                </tbody>
-                                            </table>   
-                                                </div>  
-                                                <div class="cart_submit">
-                                                    <button type="submit">update cart</button>
-                                                </div>      
+                        <!--counterup area -->
+                        <div class="counterup_section">
+                                <div class="row">
+                                    <div class="col-lg-3 col-md-6 col-sm-6">
+                                        <div class="single_counterup">
+                                           <div class="counter_img">
+                                                <img src="assets\img\cart\count.png" alt="">
                                             </div>
-                                         </div>
-                                     </div>
-                                     <!--coupon code area start-->
-                                    <div class="coupon_area">
-                                        <div class="row">
-                                            <div class="col-lg-6 col-md-6">
-                                                <div class="coupon_code">
-                                                    <h3>Coupon</h3>
-                                                    <div class="coupon_inner">   
-                                                        <p>Enter your coupon code if you have one.</p>                                
-                                                        <input placeholder="Coupon code" type="text">
-                                                        <button type="submit">Apply coupon</button>
-                                                    </div>    
-                                                </div>
-                                            </div>
-                                            <div class="col-lg-6 col-md-6">
-                                                <div class="coupon_code">
-                                                    <h3>Cart Totals</h3>
-                                                    <div class="coupon_inner">
-                                                       <div class="cart_subtotal">
-                                                           <p>Subtotal</p>
-                                                           <p class="cart_amount">£215.00</p>
-                                                       </div>
-                                                       <div class="cart_subtotal ">
-                                                           <p>Shipping</p>
-                                                           <p class="cart_amount"><span>Flat Rate:</span> £255.00</p>
-                                                       </div>
-                                                       <a href="#">Calculate shipping</a>
-
-                                                       <div class="cart_subtotal">
-                                                           <p>Total</p>
-                                                           <p class="cart_amount">£215.00</p>
-                                                       </div>
-                                                       <div class="checkout_btn">
-                                                           <a href="#">Proceed to Checkout</a>
-                                                       </div>
-                                                    </div>
-                                                </div>
+                                            <div class="counter_info">
+                                                <h2 class="counter_number">2170</h2>
+                                                <p>happy customers</p>
                                             </div>
                                         </div>
                                     </div>
-                                    <!--coupon code area end-->
-                                </form> 
-                         </div>
-                         <!--shopping cart area end -->
+                                     <div class="col-lg-3 col-md-6 col-sm-6">
+                                        <div class="single_counterup count-two">
+                                            <div class="counter_img">
+                                                <img src="assets\img\cart\count2.png" alt="">
+                                            </div>
+                                            <div class="counter_info">
+                                                <h2 class="counter_number">8080</h2>
+                                                <p>AWARDS won</p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                     <div class="col-lg-3 col-md-6 col-sm-6">
+                                        <div class="single_counterup">
+                                            <div class="counter_img">
+                                                <img src="assets\img\cart\count3.png" alt="">
+                                            </div>
+                                            <div class="counter_info">
+                                                <h2 class="counter_number">2150</h2>
+                                                <p>HOURS WORKED</p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                     <div class="col-lg-3 col-md-6 col-sm-6">
+                                        <div class="single_counterup count-two">
+                                            <div class="counter_img">
+                                                <img src="assets\img\cart\cart5.png" alt="">
+                                            </div>
+                                            <div class="counter_info">
+                                                <h2 class="counter_number">2170</h2>
+                                                <p>COMPLETE PROJECTS</p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                        </div>
+                        <!--counterup end-->
 
+                        <!--about progress bar -->
+                        <div class="about_progressbar">
+                            <div class="row align-items-center">
+                                <div class="col-lg-6 col-md-6">
+                                    <div class="progressbar_inner">
+                                       <h2>We have Skills to show</h2>
+                                        <div class="progress_skill">
+                                            <div class="progress">
+                                                <div class="progress-bar about_prog wow fadeInLeft" data-wow-duration="0.8s" data-wow-delay=".3s" role="progressbar" style="width: 60%" aria-valuenow="25" aria-valuemin="0" aria-valuemax="100">
+                                                    <span class="progress_persent">HTML/CSS</span>    
+                                                </div>
+                                            </div>
+                                            <span class="progress_discount">60%</span>
+                                        </div>
+                                        <div class="progress_skill">
+                                            <div class="progress">
+                                                <div class="progress-bar about_prog wow fadeInLeft" data-wow-duration="0.8s" data-wow-delay=".5s" role="progressbar" style="width: 90%" aria-valuenow="25" aria-valuemin="0" aria-valuemax="100">
+
+                                                    <span class="progress_persent">WORDPRESS THEME </span>
+                                                </div>
+
+                                            </div>
+                                             <span class="progress_discount">90%</span>
+                                        </div> 
+                                        <div class="progress_skill">
+                                            <div class="progress">
+                                                <div class="progress-bar about_prog wow fadeInLeft" data-wow-duration="0.8s" data-wow-delay=".7s" role="progressbar" style="width: 70%" aria-valuenow="25" aria-valuemin="0" aria-valuemax="100">
+
+                                                    <span class="progress_persent">Typhography </span>
+                                                </div>
+
+                                            </div>
+                                             <span class="progress_discount">70%</span>
+                                        </div> 
+                                         <div class="progress_skill">
+                                            <div class="progress">
+                                                <div class="progress-bar about_prog wow fadeInLeft" data-wow-duration="0.8s" data-wow-delay=".7s" role="progressbar" style="width: 80%" aria-valuenow="25" aria-valuemin="0" aria-valuemax="100">
+
+                                                    <span class="progress_persent">Branding  </span>
+                                                </div>
+
+                                            </div>
+                                             <span class="progress_discount">80%</span>
+                                        </div> 
+                                    </div>           
+                                </div>
+                                <div class="col-lg-6 col-md-6">
+                                    <div class="about__img">
+                                        <img src="assets\img\ship\about3.jpg" alt="">
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <!--about progress bar end -->
+                        
+                        <!--brand logo strat--> 
+                        <div class="brand_logo brand_about">
+                            <div class="block_title">
+                                <h3>Brands</h3>
+                            </div>
+                            <div class="row">
+                                <div class="brand_active owl-carousel">
+                                    <div class="col-lg-2">
+                                        <div class="single_brand">
+                                            <a href="#"><img src="assets\img\brand\brand1.jpg" alt=""></a>
+                                        </div>
+                                    </div>
+                                    <div class="col-lg-2">
+                                        <div class="single_brand">
+                                            <a href="#"><img src="assets\img\brand\brand2.jpg" alt=""></a>
+                                        </div>
+                                    </div>
+                                    <div class="col-lg-2">
+                                        <div class="single_brand">
+                                            <a href="#"><img src="assets\img\brand\brand3.jpg" alt=""></a>
+                                        </div>
+                                    </div>
+                                    <div class="col-lg-2">
+                                        <div class="single_brand">
+                                            <a href="#"><img src="assets\img\brand\brand4.jpg" alt=""></a>
+                                        </div>
+                                    </div>
+                                    <div class="col-lg-2">
+                                        <div class="single_brand">
+                                            <a href="#"><img src="assets\img\brand\brand5.jpg" alt=""></a>
+                                        </div>
+                                    </div>
+                                    <div class="col-lg-2">
+                                        <div class="single_brand">
+                                            <a href="#"><img src="assets\img\brand\brand6.jpg" alt=""></a>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>       
+                        <!--brand logo end-->  
                     </div>
                     <!--pos page inner end-->
                 </div>
@@ -695,3 +764,4 @@
         <script src="assets\js\main.js"></script>
     </body>
 </html>
+

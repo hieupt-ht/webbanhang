@@ -137,6 +137,7 @@
                                     <!--categorie menu end-->
 
                                     <!--wishlist block start-->
+                                <c:if test="${sessionScope.acc != null}">
                                     <div class="sidebar_widget wishlist mb-35">
                                         <div class="block_title">
                                             <h3><a href="#">Wishlist</a></h3>
@@ -169,9 +170,10 @@
                                         </div>
                                         <div class="block_content">
                                             <p>2  products</p>
-                                            <a href="#">» My wishlists</a>
+                                            <a href="wishlist.jsp">» My wishlists</a>
                                         </div>
                                     </div>
+                                    </c:if>
                                     <!--wishlist block end-->
 
                                     <!--sidebar banner-->
@@ -240,12 +242,14 @@
                                                            </div>
                                                         </div>
                                                         <div class="product_content">
-                                                            <span class="product_price">${sp.donGia}</span>
+                                                            <span class="product_price"> $ ${sp.donGia}</span>
                                                             <h3 class="product_title"><a href="single-product.html">${sp.tenSP}</a></h3>
                                                         </div>
                                                         <div class="product_info">
                                                             <ul>
+                                                                <c:if test="${sessionScope.acc != null}">
                                                                 <li><a href="#" title=" Add to Wishlist ">Add to Wishlist</a></li>
+                                                                </c:if>
                                                                 <li><a href="#" data-toggle="modal" data-target="#modal_box" title="Quick view">View Detail</a></li>
                                                             </ul>
                                                         </div>

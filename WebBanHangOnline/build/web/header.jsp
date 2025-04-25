@@ -1,4 +1,5 @@
 
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <div class="header_area">
                                <!--header top--> 
@@ -27,10 +28,17 @@
                                             <div class="header_links">
                                                 <ul>
                                                     <li><a href="contact.html" title="Contact">Contact</a></li>
-                                                    <li><a href="wishlist.html" title="wishlist">My wishlist</a></li>
-                                                    <li><a href="my-account.html" title="My account">My account</a></li>
-                                                    <li><a href="cart.html" title="My cart">My cart</a></li>
-                                                    <li><a href="login.jsp" title="Login">Login</a></li>
+                                                    <c:if test="${sessionScope.acc != null}">
+                                                        <li><a href="wishlist.jsp" title="wishlist">My wishlist</a></li>
+                                                        <li><a href="myaccount.jsp" title="My account">My account</a></li>
+                                                        <li><a href="cart.html" title="My cart">My cart</a></li>
+                                                    </c:if>
+                                                    <c:if test="${sessionScope.acc == null}">
+                                                        <li><a href="login.jsp" title="Login">Login</a></li>
+                                                    </c:if>
+                                                    <c:if test="${sessionScope.acc != null}">
+                                                        <li><a  href ="logout" title="Login">Logout</a></li>
+                                                    </c:if>
                                                 </ul>
                                             </div>   
                                         </div>
@@ -121,15 +129,15 @@
                                                                 <div class="mega_menu jewelry">
                                                                     <div class="mega_items jewelry">
                                                                         <ul>
-                                                                            <li><a href="shop-list.html">shop list</a></li>
-                                                                            <li><a href="shop-fullwidth.html">shop Full Width Grid</a></li>
-                                                                            <li><a href="shop-fullwidth-list.html">shop Full Width list</a></li>
-                                                                            <li><a href="shop-sidebar.html">shop Right Sidebar</a></li>
-                                                                            <li><a href="shop-sidebar-list.html">shop list Right Sidebar</a></li>
-                                                                            <li><a href="single-product.html">Product Details</a></li>
-                                                                            <li><a href="single-product-sidebar.html">Product sidebar</a></li>
-                                                                            <li><a href="single-product-video.html">Product Details video</a></li>
-                                                                            <li><a href="single-product-gallery.html">Product Details Gallery</a></li>
+                                                                            <li><a href="shop-list.jsp">shop list</a></li>
+                                                                            <li><a href="shop-fullwidth.jsp">shop Full Width Grid</a></li>
+                                                                            <li><a href="shop-fullwidth-list.jsp">shop Full Width list</a></li>
+                                                                            <li><a href="shop-sidebar.jsp">shop Right Sidebar</a></li>
+                                                                            <li><a href="shop-sidebar-list.jsp">shop list Right Sidebar</a></li>
+                                                                            <li><a href="single-product.jsp">Product Details</a></li>
+                                                                            <li><a href="single-product-sidebar.jsp">Product sidebar</a></li>
+                                                                            <li><a href="single-product-video.jsp">Product Details video</a></li>
+                                                                            <li><a href="single-product-gallery.jsp">Product Details Gallery</a></li>
                                                                         </ul>
                                                                     </div>
                                                                 </div>  
