@@ -227,7 +227,7 @@
                                         </div>
                                         <div class="row">   
                                             <div class="product_active owl-carousel">                                             
-                                            <c:forEach var="sp" items="${listSP}">
+                                            <c:forEach var="sp" items="${sessionScope.listSP}">
                                                 <div class="col-lg-3">
                                                     <div class="single_product">
                                                         <div class="product_thumb">

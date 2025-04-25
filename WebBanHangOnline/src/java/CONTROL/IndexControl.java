@@ -8,13 +8,15 @@ import DAO.DaoSanPham;
 import ENTITY.SanPham;
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.util.AbstractList;
+import java.util.ArrayList;
 import java.util.List;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-
+import javax.servlet.http.HttpSession;
 /**
  *
  * @author ThankPad
@@ -34,11 +36,13 @@ public class IndexControl extends HttpServlet {
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
+        HttpSession session = request.getSession();
         DaoSanPham daoSp = new DaoSanPham();
-        List<SanPham> listnewsp = daoSp.getListspmoi();
-        
-        request.setAttribute("listSP", listnewsp);
-        request.getRequestDispatcher("index.jsp").forward(request, response);
+        List<SanPham> listnewsp = (List<SanPham>) session.getAttribute("listSp");
+        if(listnewsp == null)
+            listnewsp = daoSp.getListspmoi();
+        session.setAttribute("listSP", listnewsp);
+        response.sendRedirect("index.jsp");
     }
 
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">
