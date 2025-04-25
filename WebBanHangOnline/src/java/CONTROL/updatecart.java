@@ -5,22 +5,24 @@
 package CONTROL;
 
 import DAO.DaoSanPham;
-import ENTITY.SanPham;
+import DAO.Daocartproduct;
+import ENTITY.cartProduct;
 import java.io.IOException;
 import java.io.PrintWriter;
-import java.util.List;
+import java.util.ArrayList;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 /**
  *
- * @author ThankPad
+ * @author LE KHAC HIEU
  */
-@WebServlet(name = "IndexControl", urlPatterns = {"/index"})
-public class IndexControl extends HttpServlet {
+@WebServlet(name = "updatecart", urlPatterns = {"/updatecart"})
+public class updatecart extends HttpServlet {
 
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
@@ -34,11 +36,27 @@ public class IndexControl extends HttpServlet {
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
-        DaoSanPham daoSp = new DaoSanPham();
-        List<SanPham> listnewsp = daoSp.getListspmoi();
-        
-        request.setAttribute("listSP", listnewsp);
-        request.getRequestDispatcher("index.jsp").forward(request, response);
+        String action = request.getParameter("action");
+        if (action.equals("update")) {
+            HttpSession session = request.getSession();
+            ArrayList<cartProduct> listcart = (ArrayList<cartProduct>) session.getAttribute("gioHang");
+            if (listcart == null) {
+                listcart = new ArrayList<cartProduct>();
+            }
+            Daocartproduct dao = new Daocartproduct();
+            String ids[] = request.getParameterValues("maSP");
+            String soluongs[] = request.getParameterValues("soluong");
+            if(ids != null && soluongs != null){
+                for(int i = 0; i<= ids.length-1; i++){
+                    String idsp = ids[i];
+                    cartProduct cartproduct = dao.getCartproductByid(idsp, listcart);
+                    cartproduct.setSoLuong(Integer.parseInt(soluongs[i]));
+                    cartproduct.setTongTien(Integer.parseInt(soluongs[i])*cartproduct.getDonGia());
+                }
+            }
+            session.setAttribute("gioHang", listcart);
+            request.getRequestDispatcher("cart.jsp").forward(request, response);
+        }
     }
 
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">

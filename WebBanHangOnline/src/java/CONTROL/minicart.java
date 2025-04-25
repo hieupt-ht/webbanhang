@@ -4,23 +4,22 @@
  */
 package CONTROL;
 
-import DAO.DaoSanPham;
-import ENTITY.SanPham;
+import ENTITY.cartProduct;
 import java.io.IOException;
 import java.io.PrintWriter;
-import java.util.List;
+import java.util.ArrayList;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-
+import javax.servlet.http.HttpSession;
 /**
  *
- * @author ThankPad
+ * @author LE KHAC HIEU
  */
-@WebServlet(name = "IndexControl", urlPatterns = {"/index"})
-public class IndexControl extends HttpServlet {
+@WebServlet(name = "minicart", urlPatterns = {"/minicart"})
+public class minicart extends HttpServlet {
 
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
@@ -34,11 +33,18 @@ public class IndexControl extends HttpServlet {
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
-        DaoSanPham daoSp = new DaoSanPham();
-        List<SanPham> listnewsp = daoSp.getListspmoi();
-        
-        request.setAttribute("listSP", listnewsp);
-        request.getRequestDispatcher("index.jsp").forward(request, response);
+        HttpSession session = request.getSession();
+        ArrayList<cartProduct> list = (ArrayList<cartProduct>) session.getAttribute("gioHang");
+        int sum = 0;
+        int dem = 0;
+        for(cartProduct c : list)
+        {
+            sum += c.getTongTien();
+            dem++;
+        }
+        request.setAttribute("minicarttongtien", sum);
+        request.setAttribute("minicartsoluong", dem);
+        request.getRequestDispatcher("header.jsp").forward(request, response);
     }
 
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">

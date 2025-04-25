@@ -2,13 +2,12 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/JSP_Servlet/Servlet.java to edit this template
  */
-package CONTROL;
 
 import DAO.DaoSanPham;
 import ENTITY.SanPham;
 import java.io.IOException;
 import java.io.PrintWriter;
-import java.util.List;
+import java.util.HashSet;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -17,10 +16,10 @@ import javax.servlet.http.HttpServletResponse;
 
 /**
  *
- * @author ThankPad
+ * @author LE KHAC HIEU
  */
-@WebServlet(name = "IndexControl", urlPatterns = {"/index"})
-public class IndexControl extends HttpServlet {
+@WebServlet(urlPatterns = {"/detail"})
+public class detail extends HttpServlet {
 
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
@@ -34,10 +33,10 @@ public class IndexControl extends HttpServlet {
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
-        DaoSanPham daoSp = new DaoSanPham();
-        List<SanPham> listnewsp = daoSp.getListspmoi();
-        
-        request.setAttribute("listSP", listnewsp);
+        String idDetail = request.getParameter("idDetail");
+        DaoSanPham daosp = new DaoSanPham();
+        SanPham sanphamdetail = daosp.getSpbyId(idDetail);
+        request.setAttribute("sanphamdetail", sanphamdetail);
         request.getRequestDispatcher("index.jsp").forward(request, response);
     }
 
