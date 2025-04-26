@@ -1,4 +1,4 @@
-
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <div class="footer_area">
                 <div class="footer_top">
@@ -18,14 +18,17 @@
                             </div>
                             <div class="col-lg-3 col-md-6 col-sm-6">
                                 <div class="footer_widget">
-                                    <h3>My Account</h3>
-                                    <ul>
-                                        <li><a href="#">Your Account</a></li>
-                                        <li><a href="#">My orders</a></li>
-                                        <li><a href="#">My credit slips</a></li>
-                                        <li><a href="#">My addresses</a></li>
-                                        <li><a href="#">Login</a></li>
-                                    </ul>
+                                    <c:if test="${sessionScope.acc != null}">
+                                        <h3>My Account</h3>
+                                        <ul>
+                                            <li><a href="#">Your Account</a></li>
+                                            <li><a href="#">My orders</a></li>
+                                            <li><a href="#">My credit slips</a></li>
+                                            <li><a href="#">My addresses</a></li>
+                                            <li><a href="#">Login</a></li>
+                                        </ul>
+                                    </c:if>
+                                    
                                 </div>
                             </div>
                             <div class="col-lg-3 col-md-6 col-sm-6">

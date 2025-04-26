@@ -1,9 +1,16 @@
+<%-- 
+    Document   : blog
+    Created on : Apr 20, 2025, 7:26:11 PM
+    Author     : ThankPad
+--%>
+
+<%@page contentType="text/html" pageEncoding="UTF-8"%>
 ﻿<!doctype html>
 <html class="no-js" lang="zxx">
     <head>
         <meta charset="utf-8">
         <meta http-equiv="x-ua-compatible" content="ie=edge">
-        <title>Coron-cart</title>
+        <title>Coron-blog</title>
         <meta name="description" content="">
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <!-- Favicon -->
@@ -22,12 +29,12 @@
             
             <!--pos page start-->
             <div class="pos_page">
-                <div class="container">  
-                   <!--pos page inner-->
+                <div class="container">
+                    <!--pos page inner-->
                     <div class="pos_page_inner">  
                        <!--header area -->
                         <div class="header_area">
-                            <!--header top--> 
+                           <!--header top--> 
                             <div class="header_top">
                                <div class="row align-items-center">
                                     <div class="col-lg-6 col-md-6">
@@ -44,7 +51,7 @@
                                                     <ul class="dropdown_currency">
                                                         <li><a href="#"> Dollar (USD)</a></li>
                                                         <li><a href="#"> Euro (EUR)  </a></li>
-                                                    </ul> 
+                                                    </ul>  
                                                 </li> 
                                             </ul>
                                         </div>
@@ -133,11 +140,11 @@
                             <!--header middel end-->      
                             <div class="header_bottom">
                                 <div class="row">
-                                        <div class="col-12">
-                                            <div class="main_menu_inner">
-                                                <div class="main_menu d-none d-lg-block">
-                                                    <nav>
-                                                        <ul>
+                                    <div class="col-12">
+                                        <div class="main_menu_inner">
+                                            <div class="main_menu d-none d-lg-block">
+                                                <nav>
+                                                    <ul>
                                                             <li class="active"><a href="index.html">Home</a>
                                                                 <div class="mega_menu jewelry">
                                                                     <div class="mega_items jewelry">
@@ -295,9 +302,9 @@
                                                             <li><a href="contact.html">contact us</a></li>
 
                                                         </ul>
-                                                    </nav>
-                                                </div>
-                                                <div class="mobile-menu d-lg-none">
+                                                </nav>
+                                            </div>
+                                            <div class="mobile-menu d-lg-none">
                                                     <nav>
                                                         <ul>
                                                             <li><a href="index.html">Home</a>
@@ -459,9 +466,9 @@
                                                         </ul>
                                                     </nav>
                                                 </div>
-                                            </div>
                                         </div>
                                     </div>
+                                </div>
                             </div>
                         </div>
                         <!--header end -->
@@ -473,7 +480,7 @@
                                         <ul>
                                             <li><a href="index.html">home</a></li>
                                             <li><i class="fa fa-angle-right"></i></li>
-                                            <li>Shopping Cart</li>
+                                            <li>blog</li>
                                         </ul>
 
                                     </div>
@@ -481,113 +488,247 @@
                             </div>
                         </div>
                         <!--breadcrumbs area end-->
-
-
-
-                         <!--shopping cart area start -->
-                        <div class="shopping_cart_area">
-                            <form action="#"> 
-                                    <div class="row">
-                                        <div class="col-12">
-                                            <div class="table_desc">
-                                                <div class="cart_page table-responsive">
-                                                    <table>
-                                                <thead>
-                                                    <tr>
-                                                        <th class="product_remove">Delete</th>
-                                                        <th class="product_thumb">Image</th>
-                                                        <th class="product_name">Product</th>
-                                                        <th class="product-price">Price</th>
-                                                        <th class="product_quantity">Quantity</th>
-                                                        <th class="product_total">Total</th>
-                                                    </tr>
-                                                </thead>
-                                                <tbody>
-                                                    <tr>
-                                                       <td class="product_remove"><a href="#"><i class="fa fa-trash-o"></i></a></td>
-                                                        <td class="product_thumb"><a href="#"><img src="assets\img\cart\cart17.jpg" alt=""></a></td>
-                                                        <td class="product_name"><a href="#">Handbag fringilla</a></td>
-                                                        <td class="product-price">£65.00</td>
-                                                        <td class="product_quantity"><input min="0" max="100" value="1" type="number"></td>
-                                                        <td class="product_total">£130.00</td>
-
-
-                                                    </tr>
-
-                                                    <tr>
-                                                       <td class="product_remove"><a href="#"><i class="fa fa-trash-o"></i></a></td>
-                                                        <td class="product_thumb"><a href="#"><img src="assets\img\cart\cart18.jpg" alt=""></a></td>
-                                                        <td class="product_name"><a href="#">Handbags justo</a></td>
-                                                        <td class="product-price">£90.00</td>
-                                                        <td class="product_quantity"><input min="0" max="100" value="1" type="number"></td>
-                                                        <td class="product_total">£180.00</td>
-
-
-                                                    </tr>
-                                                    <tr>
-                                                       <td class="product_remove"><a href="#"><i class="fa fa-trash-o"></i></a></td>
-                                                        <td class="product_thumb"><a href="#"><img src="assets\img\cart\cart19.jpg" alt=""></a></td>
-                                                        <td class="product_name"><a href="#">Handbag elit</a></td>
-                                                        <td class="product-price">£80.00</td>
-                                                        <td class="product_quantity"><input min="0" max="100" value="1" type="number"></td>
-                                                        <td class="product_total">£160.00</td>
-
-
-                                                    </tr>
-
-                                                </tbody>
-                                            </table>   
-                                                </div>  
-                                                <div class="cart_submit">
-                                                    <button type="submit">update cart</button>
-                                                </div>      
+                        
+                        <!--blog area start-->
+                        <div class="blog_area">
+                            <div class="row">   
+                                <div class="col-lg-4 col-md-6">
+                                    <div class="single_blog">
+                                        <div class="blog_thumb">
+                                            <a href="blog-details.html"><img src="assets\img\blog\blog3.jpg" alt=""></a>
+                                        </div>
+                                        <div class="blog_content">
+                                            <div class="blog_post">
+                                                <ul>
+                                                    <li>
+                                                        <a href="#">Tech</a>
+                                                    </li>
+                                                </ul>
                                             </div>
-                                         </div>
-                                     </div>
-                                     <!--coupon code area start-->
-                                    <div class="coupon_area">
-                                        <div class="row">
-                                            <div class="col-lg-6 col-md-6">
-                                                <div class="coupon_code">
-                                                    <h3>Coupon</h3>
-                                                    <div class="coupon_inner">   
-                                                        <p>Enter your coupon code if you have one.</p>                                
-                                                        <input placeholder="Coupon code" type="text">
-                                                        <button type="submit">Apply coupon</button>
-                                                    </div>    
+                                            <h3><a href="blog-details.html">When an unknown took a galley of type.</a></h3>
+                                            <p>Distinctively simplify dynamic resources whereas prospective core competencies. Objectively pursue multidisciplinary human capital for interoperable.</p>
+                                            <div class="post_footer">
+                                                <div class="post_meta">
+                                                    <ul>
+                                                        <li>Jun 20, 2018</li>
+                                                        <li>3 Comments</li>
+                                                    </ul>
                                                 </div>
-                                            </div>
-                                            <div class="col-lg-6 col-md-6">
-                                                <div class="coupon_code">
-                                                    <h3>Cart Totals</h3>
-                                                    <div class="coupon_inner">
-                                                       <div class="cart_subtotal">
-                                                           <p>Subtotal</p>
-                                                           <p class="cart_amount">£215.00</p>
-                                                       </div>
-                                                       <div class="cart_subtotal ">
-                                                           <p>Shipping</p>
-                                                           <p class="cart_amount"><span>Flat Rate:</span> £255.00</p>
-                                                       </div>
-                                                       <a href="#">Calculate shipping</a>
-
-                                                       <div class="cart_subtotal">
-                                                           <p>Total</p>
-                                                           <p class="cart_amount">£215.00</p>
-                                                       </div>
-                                                       <div class="checkout_btn">
-                                                           <a href="#">Proceed to Checkout</a>
-                                                       </div>
-                                                    </div>
-                                                </div>
+                                                <div class="Read_more">
+                                                    <a href="blog-details.html">Read more  <i class="fa fa-angle-double-right"></i></a>
+                                                </div> 
                                             </div>
                                         </div>
                                     </div>
-                                    <!--coupon code area end-->
-                                </form> 
-                         </div>
-                         <!--shopping cart area end -->
-
+                                </div>
+                                <div class="col-lg-4 col-md-6">
+                                    <div class="single_blog">
+                                        <div class="blog_thumb">
+                                            <a href="blog-details.html"><img src="assets\img\blog\blog4.jpg" alt=""></a>
+                                        </div>
+                                        <div class="blog_content">
+                                            <div class="blog_post">
+                                                <ul>
+                                                    <li>
+                                                        <a href="#">Men</a>
+                                                    </li>
+                                                </ul>
+                                            </div>
+                                            <h3><a href="blog-details.html">When an unknown took a galley of type.</a></h3>
+                                            <p>Distinctively simplify dynamic resources whereas prospective core competencies. Objectively pursue multidisciplinary human capital for interoperable.</p>
+                                            <div class="post_footer">
+                                                <div class="post_meta">
+                                                    <ul>
+                                                        <li>Jun 20, 2018</li>
+                                                        <li>3 Comments</li>
+                                                    </ul>
+                                                </div>
+                                                <div class="Read_more">
+                                                    <a href="blog-details.html">Read more  <i class="fa fa-angle-double-right"></i></a>
+                                                </div> 
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-lg-4 col-md-6">
+                                    <div class="single_blog">
+                                        <div class="blog_thumb">
+                                            <a href="blog-details.html"><img src="assets\img\blog\blog1.jpg" alt=""></a>
+                                        </div>
+                                        <div class="blog_content">
+                                            <div class="blog_post">
+                                                <ul>
+                                                    <li>
+                                                        <a href="#">Women</a>
+                                                    </li>
+                                                </ul>
+                                            </div>
+                                            <h3><a href="blog-details.html">When an unknown took a galley of type.</a></h3>
+                                            <p>Distinctively simplify dynamic resources whereas prospective core competencies. Objectively pursue multidisciplinary human capital for interoperable.</p>
+                                            <div class="post_footer">
+                                                <div class="post_meta">
+                                                    <ul>
+                                                        <li>Jun 20, 2018</li>
+                                                        <li>3 Comments</li>
+                                                    </ul>
+                                                </div>
+                                                <div class="Read_more">
+                                                    <a href="blog-details.html">Read more  <i class="fa fa-angle-double-right"></i></a>
+                                                </div> 
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-lg-4 col-md-6">
+                                    <div class="single_blog">
+                                        <div class="blog_thumb">
+                                            <a href="blog-details.html"><img src="assets\img\blog\blog2.jpg" alt=""></a>
+                                        </div>
+                                        <div class="blog_content">
+                                            <div class="blog_post">
+                                                <ul>
+                                                    <li>
+                                                        <a href="#">fashion</a>
+                                                    </li>
+                                                </ul>
+                                            </div>
+                                            <h3><a href="blog-details.html">When an unknown took a galley of type.</a></h3>
+                                            <p>Distinctively simplify dynamic resources whereas prospective core competencies. Objectively pursue multidisciplinary human capital for interoperable.</p>
+                                            <div class="post_footer">
+                                                <div class="post_meta">
+                                                    <ul>
+                                                        <li>Jun 20, 2018</li>
+                                                        <li>3 Comments</li>
+                                                    </ul>
+                                                </div>
+                                                <div class="Read_more">
+                                                    <a href="blog-details.html">Read more  <i class="fa fa-angle-double-right"></i></a>
+                                                </div> 
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-lg-4 col-md-6">
+                                    <div class="single_blog">
+                                        <div class="blog_thumb">
+                                            <a href="blog-details.html"><img src="assets\img\blog\blog5.jpg" alt=""></a>
+                                        </div>
+                                        <div class="blog_content">
+                                            <div class="blog_post">
+                                                <ul>
+                                                    <li>
+                                                        <a href="#">featured</a>
+                                                    </li>
+                                                </ul>
+                                            </div>
+                                            <h3><a href="blog-details.html">When an unknown took a galley of type.</a></h3>
+                                            <p>Distinctively simplify dynamic resources whereas prospective core competencies. Objectively pursue multidisciplinary human capital for interoperable.</p>
+                                            <div class="post_footer">
+                                                <div class="post_meta">
+                                                    <ul>
+                                                        <li>Jun 20, 2018</li>
+                                                        <li>3 Comments</li>
+                                                    </ul>
+                                                </div>
+                                                <div class="Read_more">
+                                                    <a href="blog-details.html">Read more  <i class="fa fa-angle-double-right"></i></a>
+                                                </div> 
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-lg-4 col-md-6">
+                                    <div class="single_blog">
+                                        <div class="blog_thumb">
+                                            <a href="blog-details.html"><img src="assets\img\blog\blog11.jpg" alt=""></a>
+                                        </div>
+                                        <div class="blog_content">
+                                            <div class="blog_post">
+                                                <ul>
+                                                    <li>
+                                                        <a href="#">Tech</a>
+                                                    </li>
+                                                </ul>
+                                            </div>
+                                            <h3><a href="blog-details.html">When an unknown took a galley of type.</a></h3>
+                                            <p>Distinctively simplify dynamic resources whereas prospective core competencies. Objectively pursue multidisciplinary human capital for interoperable.</p>
+                                            <div class="post_footer">
+                                                <div class="post_meta">
+                                                    <ul>
+                                                        <li>Jun 20, 2018</li>
+                                                        <li>3 Comments</li>
+                                                    </ul>
+                                                </div>
+                                                <div class="Read_more">
+                                                    <a href="blog-details.html">Read more  <i class="fa fa-angle-double-right"></i></a>
+                                                </div> 
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>    
+                        </div>
+                        <!--blog area end-->
+                        
+                        <!--pagination style start--> 
+                        <div class="blog_pagination">
+                            <div class="row">
+                                <div class="col-12">
+                                    <div class="page_number">
+                                        <span>Pages: </span>
+                                        <ul>
+                                            <li>«</li>
+                                            <li class="current_number">1</li>
+                                            <li><a href="#">2</a></li>
+                                            <li>»</li>
+                                        </ul>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <!--pagination style end--> 
+                        
+                        <!--brand logo strat--> 
+                        <div class="brand_logo brand_about">
+                            <div class="block_title">
+                                <h3>Brands</h3>
+                            </div>
+                            <div class="row">
+                                <div class="brand_active owl-carousel">
+                                    <div class="col-lg-2">
+                                        <div class="single_brand">
+                                            <a href="#"><img src="assets\img\brand\brand1.jpg" alt=""></a>
+                                        </div>
+                                    </div>
+                                    <div class="col-lg-2">
+                                        <div class="single_brand">
+                                            <a href="#"><img src="assets\img\brand\brand2.jpg" alt=""></a>
+                                        </div>
+                                    </div>
+                                    <div class="col-lg-2">
+                                        <div class="single_brand">
+                                            <a href="#"><img src="assets\img\brand\brand3.jpg" alt=""></a>
+                                        </div>
+                                    </div>
+                                    <div class="col-lg-2">
+                                        <div class="single_brand">
+                                            <a href="#"><img src="assets\img\brand\brand4.jpg" alt=""></a>
+                                        </div>
+                                    </div>
+                                    <div class="col-lg-2">
+                                        <div class="single_brand">
+                                            <a href="#"><img src="assets\img\brand\brand5.jpg" alt=""></a>
+                                        </div>
+                                    </div>
+                                    <div class="col-lg-2">
+                                        <div class="single_brand">
+                                            <a href="#"><img src="assets\img\brand\brand6.jpg" alt=""></a>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>       
+                        <!--brand logo end-->   
                     </div>
                     <!--pos page inner end-->
                 </div>

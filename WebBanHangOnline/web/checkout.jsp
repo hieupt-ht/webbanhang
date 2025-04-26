@@ -1,11 +1,20 @@
 <%-- 
     Document   : checkout
+<<<<<<< HEAD
     Created on : Apr 24, 2025, 4:10:41 PM
     Author     : LE KHAC HIEU
 --%>
 
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!doctype html>
+=======
+    Created on : Apr 20, 2025, 7:24:59 PM
+    Author     : ThankPad
+--%>
+
+<%@page contentType="text/html" pageEncoding="UTF-8"%>
+﻿<!doctype html>
+>>>>>>> 6089d38eff03aa3ce304876355cbb75e724dbd83
 <html class="no-js" lang="zxx">
     <head>
         <meta charset="utf-8">

@@ -1,9 +1,16 @@
+<%-- 
+    Document   : faq
+    Created on : Apr 20, 2025, 7:24:14 PM
+    Author     : ThankPad
+--%>
+
+<%@page contentType="text/html" pageEncoding="UTF-8"%>
 ﻿<!doctype html>
 <html class="no-js" lang="zxx">
     <head>
         <meta charset="utf-8">
         <meta http-equiv="x-ua-compatible" content="ie=edge">
-        <title>Coron-about us</title>
+        <title>Coron-Faq</title>
         <meta name="description" content="">
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <!-- Favicon -->
@@ -22,12 +29,12 @@
             
             <!--pos page start-->
             <div class="pos_page">
-                <div class="container">
+                <div class="container">  
                     <!--pos page inner-->
                     <div class="pos_page_inner">  
                        <!--header area -->
                         <div class="header_area">
-                           <!--header top--> 
+                            <!--header top--> 
                             <div class="header_top">
                                <div class="row align-items-center">
                                     <div class="col-lg-6 col-md-6">
@@ -44,7 +51,7 @@
                                                     <ul class="dropdown_currency">
                                                         <li><a href="#"> Dollar (USD)</a></li>
                                                         <li><a href="#"> Euro (EUR)  </a></li>
-                                                    </ul>  
+                                                    </ul> 
                                                 </li> 
                                             </ul>
                                         </div>
@@ -300,163 +307,163 @@
                                             <div class="mobile-menu d-lg-none">
                                                 <nav>
                                                     <ul>
-                                                            <li><a href="index.html">Home</a>
+                                                        <li><a href="index.html">Home</a>
+                                                            <div>
+                                                                <div>
+                                                                    <ul>
+                                                                        <li><a href="index.html">Home 1</a></li>
+                                                                        <li><a href="index-2.html">Home 2</a></li>
+                                                                    </ul>
+                                                                </div>
+                                                            </div> 
+                                                        </li>
+                                                        <li><a href="shop.html">shop</a>
+                                                            <div>
+                                                                <div>
+                                                                    <ul>
+                                                                        <li><a href="shop-list.html">shop list</a></li>
+                                                                        <li><a href="shop-fullwidth.html">shop Full Width Grid</a></li>
+                                                                        <li><a href="shop-fullwidth-list.html">shop Full Width list</a></li>
+                                                                        <li><a href="shop-sidebar.html">shop Right Sidebar</a></li>
+                                                                        <li><a href="shop-sidebar-list.html">shop list Right Sidebar</a></li>
+                                                                        <li><a href="single-product.html">Product Details</a></li>
+                                                                        <li><a href="single-product-sidebar.html">Product sidebar</a></li>
+                                                                        <li><a href="single-product-video.html">Product Details video</a></li>
+                                                                        <li><a href="single-product-gallery.html">Product Details Gallery</a></li>
+                                                                    </ul>
+                                                                </div>
+                                                            </div>  
+                                                        </li>
+                                                        <li><a href="#">women</a>
+                                                            <div>
                                                                 <div>
                                                                     <div>
+                                                                        <h3><a href="#">Accessories</a></h3>
                                                                         <ul>
-                                                                            <li><a href="index.html">Home 1</a></li>
-                                                                            <li><a href="index-2.html">Home 2</a></li>
+                                                                            <li><a href="#">Cocktai</a></li>
+                                                                            <li><a href="#">day</a></li>
+                                                                            <li><a href="#">Evening</a></li>
+                                                                            <li><a href="#">Sundresses</a></li>
+                                                                            <li><a href="#">Belts</a></li>
+                                                                            <li><a href="#">Sweets</a></li>
                                                                         </ul>
                                                                     </div>
-                                                                </div> 
-                                                            </li>
-                                                            <li><a href="shop.html">shop</a>
-                                                                <div>
                                                                     <div>
+                                                                        <h3><a href="#">HandBags</a></h3>
                                                                         <ul>
-                                                                            <li><a href="shop-list.html">shop list</a></li>
-                                                                            <li><a href="shop-fullwidth.html">shop Full Width Grid</a></li>
-                                                                            <li><a href="shop-fullwidth-list.html">shop Full Width list</a></li>
-                                                                            <li><a href="shop-sidebar.html">shop Right Sidebar</a></li>
-                                                                            <li><a href="shop-sidebar-list.html">shop list Right Sidebar</a></li>
-                                                                            <li><a href="single-product.html">Product Details</a></li>
-                                                                            <li><a href="single-product-sidebar.html">Product sidebar</a></li>
-                                                                            <li><a href="single-product-video.html">Product Details video</a></li>
-                                                                            <li><a href="single-product-gallery.html">Product Details Gallery</a></li>
+                                                                            <li><a href="#">Accessories</a></li>
+                                                                            <li><a href="#">Hats and Gloves</a></li>
+                                                                            <li><a href="#">Lifestyle</a></li>
+                                                                            <li><a href="#">Bras</a></li>
+                                                                            <li><a href="#">Scarves</a></li>
+                                                                            <li><a href="#">Small Leathers</a></li>
                                                                         </ul>
                                                                     </div>
-                                                                </div>  
-                                                            </li>
-                                                            <li><a href="#">women</a>
-                                                                <div>
                                                                     <div>
-                                                                        <div>
-                                                                            <h3><a href="#">Accessories</a></h3>
-                                                                            <ul>
-                                                                                <li><a href="#">Cocktai</a></li>
-                                                                                <li><a href="#">day</a></li>
-                                                                                <li><a href="#">Evening</a></li>
-                                                                                <li><a href="#">Sundresses</a></li>
-                                                                                <li><a href="#">Belts</a></li>
-                                                                                <li><a href="#">Sweets</a></li>
-                                                                            </ul>
-                                                                        </div>
-                                                                        <div>
-                                                                            <h3><a href="#">HandBags</a></h3>
-                                                                            <ul>
-                                                                                <li><a href="#">Accessories</a></li>
-                                                                                <li><a href="#">Hats and Gloves</a></li>
-                                                                                <li><a href="#">Lifestyle</a></li>
-                                                                                <li><a href="#">Bras</a></li>
-                                                                                <li><a href="#">Scarves</a></li>
-                                                                                <li><a href="#">Small Leathers</a></li>
-                                                                            </ul>
-                                                                        </div>
-                                                                        <div>
-                                                                            <h3><a href="#">Tops</a></h3>
-                                                                            <ul>
-                                                                                <li><a href="#">Evening</a></li>
-                                                                                <li><a href="#">Long Sleeved</a></li>
-                                                                                <li><a href="#">Shrot Sleeved</a></li>
-                                                                                <li><a href="#">Tanks and Camis</a></li>
-                                                                                <li><a href="#">Sleeveless</a></li>
-                                                                                <li><a href="#">Sleeveless</a></li>
-                                                                            </ul>
-                                                                        </div>
-                                                                    </div>
-                                                                    <div>
-                                                                        <div>
-                                                                            <a href="#"><img src="assets\img\banner\banner1.jpg" alt=""></a>
-                                                                        </div>
-                                                                        <div>
-                                                                            <a href="#"><img src="assets\img\banner\banner2.jpg" alt=""></a>
-                                                                        </div>
+                                                                        <h3><a href="#">Tops</a></h3>
+                                                                        <ul>
+                                                                            <li><a href="#">Evening</a></li>
+                                                                            <li><a href="#">Long Sleeved</a></li>
+                                                                            <li><a href="#">Shrot Sleeved</a></li>
+                                                                            <li><a href="#">Tanks and Camis</a></li>
+                                                                            <li><a href="#">Sleeveless</a></li>
+                                                                            <li><a href="#">Sleeveless</a></li>
+                                                                        </ul>
                                                                     </div>
                                                                 </div>
-                                                            </li>
-                                                            <li><a href="#">men</a>
                                                                 <div>
                                                                     <div>
-                                                                        <div>
-                                                                            <h3><a href="#">Rings</a></h3>
-                                                                            <ul>
-                                                                                <li><a href="#">Platinum Rings</a></li>
-                                                                                <li><a href="#">Gold Ring</a></li>
-                                                                                <li><a href="#">Silver Ring</a></li>
-                                                                                <li><a href="#">Tungsten Ring</a></li>
-                                                                                <li><a href="#">Sweets</a></li>
-                                                                            </ul>
-                                                                        </div>
-                                                                        <div>
-                                                                            <h3><a href="#">Bands</a></h3>
-                                                                            <ul>
-                                                                                <li><a href="#">Platinum Bands</a></li>
-                                                                                <li><a href="#">Gold Bands</a></li>
-                                                                                <li><a href="#">Silver Bands</a></li>
-                                                                                <li><a href="#">Silver Bands</a></li>
-                                                                                <li><a href="#">Sweets</a></li>
-                                                                            </ul>
-                                                                        </div>
-                                                                        <div>
-                                                                            <a href="#"><img src="assets\img\banner\banner3.jpg" alt=""></a>
-                                                                        </div>
+                                                                        <a href="#"><img src="assets\img\banner\banner1.jpg" alt=""></a>
                                                                     </div>
+                                                                    <div>
+                                                                        <a href="#"><img src="assets\img\banner\banner2.jpg" alt=""></a>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                        </li>
+                                                        <li><a href="#">men</a>
+                                                            <div>
+                                                                <div>
+                                                                    <div>
+                                                                        <h3><a href="#">Rings</a></h3>
+                                                                        <ul>
+                                                                            <li><a href="#">Platinum Rings</a></li>
+                                                                            <li><a href="#">Gold Ring</a></li>
+                                                                            <li><a href="#">Silver Ring</a></li>
+                                                                            <li><a href="#">Tungsten Ring</a></li>
+                                                                            <li><a href="#">Sweets</a></li>
+                                                                        </ul>
+                                                                    </div>
+                                                                    <div>
+                                                                        <h3><a href="#">Bands</a></h3>
+                                                                        <ul>
+                                                                            <li><a href="#">Platinum Bands</a></li>
+                                                                            <li><a href="#">Gold Bands</a></li>
+                                                                            <li><a href="#">Silver Bands</a></li>
+                                                                            <li><a href="#">Silver Bands</a></li>
+                                                                            <li><a href="#">Sweets</a></li>
+                                                                        </ul>
+                                                                    </div>
+                                                                    <div>
+                                                                        <a href="#"><img src="assets\img\banner\banner3.jpg" alt=""></a>
+                                                                    </div>
+                                                                </div>
 
-                                                                </div>
-                                                            </li>
-                                                            <li><a href="#">pages</a>
+                                                            </div>
+                                                        </li>
+                                                        <li><a href="#">pages</a>
+                                                            <div>
                                                                 <div>
                                                                     <div>
-                                                                        <div>
-                                                                            <h3><a href="#">Column1</a></h3>
-                                                                            <ul>
-                                                                                <li><a href="portfolio.html">Portfolio</a></li>
-                                                                                <li><a href="portfolio-details.html">single portfolio </a></li>
-                                                                                <li><a href="about.html">About Us </a></li>
-                                                                                <li><a href="about-2.html">About Us 2</a></li>
-                                                                                <li><a href="services.html">Service </a></li>
-                                                                                <li><a href="my-account.html">my account </a></li>
-                                                                            </ul>
-                                                                        </div>
-                                                                        <div>
-                                                                            <h3><a href="#">Column2</a></h3>
-                                                                            <ul>
-                                                                                <li><a href="blog.html">Blog </a></li>
-                                                                                <li><a href="blog-details.html">Blog  Details </a></li>
-                                                                                <li><a href="blog-fullwidth.html">Blog FullWidth</a></li>
-                                                                                <li><a href="blog-sidebar.html">Blog  Sidebar</a></li>
-                                                                                <li><a href="faq.html">Frequently Questions</a></li>
-                                                                                <li><a href="404.html">404</a></li>
-                                                                            </ul>
-                                                                        </div>
-                                                                        <div>
-                                                                            <h3><a href="#">Column3</a></h3>
-                                                                            <ul>
-                                                                                <li><a href="contact.html">Contact</a></li>
-                                                                                <li><a href="cart.html">cart</a></li>
-                                                                                <li><a href="checkout.html">Checkout  </a></li>
-                                                                                <li><a href="wishlist.html">Wishlist</a></li>
-                                                                                <li><a href="login.html">Login</a></li>
-                                                                            </ul>
-                                                                        </div>
-                                                                    </div>
-                                                                </div>
-                                                            </li>
-                                                            
-                                                            <li><a href="blog.html">blog</a>
-                                                                <div>
-                                                                    <div>
+                                                                        <h3><a href="#">Column1</a></h3>
                                                                         <ul>
-                                                                            <li><a href="blog-details.html">blog details</a></li>
-                                                                            <li><a href="blog-fullwidth.html">blog fullwidth</a></li>
-                                                                            <li><a href="blog-sidebar.html">blog sidebar</a></li>
+                                                                            <li><a href="portfolio.html">Portfolio</a></li>
+                                                                            <li><a href="portfolio-details.html">single portfolio </a></li>
+                                                                            <li><a href="about.html">About Us </a></li>
+                                                                            <li><a href="about-2.html">About Us 2</a></li>
+                                                                            <li><a href="services.html">Service </a></li>
+                                                                            <li><a href="my-account.html">my account </a></li>
                                                                         </ul>
                                                                     </div>
-                                                                </div>  
-                                                            </li>
-                                                            <li><a href="contact.html">contact us</a></li>
+                                                                    <div>
+                                                                        <h3><a href="#">Column2</a></h3>
+                                                                        <ul>
+                                                                            <li><a href="blog.html">Blog </a></li>
+                                                                            <li><a href="blog-details.html">Blog  Details </a></li>
+                                                                            <li><a href="blog-fullwidth.html">Blog FullWidth</a></li>
+                                                                            <li><a href="blog-sidebar.html">Blog  Sidebar</a></li>
+                                                                            <li><a href="faq.html">Frequently Questions</a></li>
+                                                                            <li><a href="404.html">404</a></li>
+                                                                        </ul>
+                                                                    </div>
+                                                                    <div>
+                                                                        <h3><a href="#">Column3</a></h3>
+                                                                        <ul>
+                                                                            <li><a href="contact.html">Contact</a></li>
+                                                                            <li><a href="cart.html">cart</a></li>
+                                                                            <li><a href="checkout.html">Checkout  </a></li>
+                                                                            <li><a href="wishlist.html">Wishlist</a></li>
+                                                                            <li><a href="login.html">Login</a></li>
+                                                                        </ul>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                        </li>
 
-                                                        </ul>
+                                                        <li><a href="blog.html">blog</a>
+                                                            <div>
+                                                                <div>
+                                                                    <ul>
+                                                                        <li><a href="blog-details.html">blog details</a></li>
+                                                                        <li><a href="blog-fullwidth.html">blog fullwidth</a></li>
+                                                                        <li><a href="blog-sidebar.html">blog sidebar</a></li>
+                                                                    </ul>
+                                                                </div>
+                                                            </div>  
+                                                        </li>
+                                                        <li><a href="contact.html">contact us</a></li>
+
+                                                    </ul>
                                                 </nav>
                                             </div>
                                         </div>
@@ -465,6 +472,7 @@
                             </div>
                         </div>
                         <!--header end -->
+                        
                          <!--breadcrumbs area start-->
                         <div class="breadcrumbs_area">
                             <div class="row">
@@ -473,7 +481,7 @@
                                         <ul>
                                             <li><a href="index.html">home</a></li>
                                             <li><i class="fa fa-angle-right"></i></li>
-                                            <li>about us</li>
+                                            <li>Frequently Questions</li>
                                         </ul>
 
                                     </div>
@@ -481,175 +489,149 @@
                             </div>
                         </div>
                         <!--breadcrumbs area end-->
-                         <!--about section area -->
-                        <div class="about_section">
-                            <div class="row align-items-center">
-                                    <div class="col-lg-6 col-md-6">
-                                        <div class="about_thumb">
-                                            <img src="assets\img\ship\about1.jpg" alt="">
-                                        </div>
-                                    </div>
-                                    <div class="col-lg-6 col-md-6">
-                                        <div class="about_content">
-                                            <h1>WE CREATE <br>WORDPRESS THEMES</h1>
-                                            <p>Duis autem vel eum iriure dolor in hendrerit in vulputate velit esse molestie consequat, vel illum dolore eu feugiat nulla facilisis at vero eros et accumsan et iusto odio dignissim qui blandit praesent luptatum zzril delenit augue duis dolore te feugait nulla facilisi. Nam liber tempor cum soluta nobis eleifend option congue nihil imperdiet doming id quod mazim placerat facer possim assum. Typi non habent claritatem insitam, est usus legentis in iis qui facit eorum claritatem. </p>
-                                            <div class="view__work">
-                                                <a href="#">view work </a>
-                                            </div>  
-                                        </div>
-                                    </div>
-                                </div>
-                        </div>
-                        <!--about section end-->
-
-
-                        <!--counterup area -->
-                        <div class="counterup_section">
-                                <div class="row">
-                                    <div class="col-lg-3 col-md-6 col-sm-6">
-                                        <div class="single_counterup">
-                                           <div class="counter_img">
-                                                <img src="assets\img\cart\count.png" alt="">
-                                            </div>
-                                            <div class="counter_info">
-                                                <h2 class="counter_number">2170</h2>
-                                                <p>happy customers</p>
-                                            </div>
-                                        </div>
-                                    </div>
-                                     <div class="col-lg-3 col-md-6 col-sm-6">
-                                        <div class="single_counterup count-two">
-                                            <div class="counter_img">
-                                                <img src="assets\img\cart\count2.png" alt="">
-                                            </div>
-                                            <div class="counter_info">
-                                                <h2 class="counter_number">8080</h2>
-                                                <p>AWARDS won</p>
-                                            </div>
-                                        </div>
-                                    </div>
-                                     <div class="col-lg-3 col-md-6 col-sm-6">
-                                        <div class="single_counterup">
-                                            <div class="counter_img">
-                                                <img src="assets\img\cart\count3.png" alt="">
-                                            </div>
-                                            <div class="counter_info">
-                                                <h2 class="counter_number">2150</h2>
-                                                <p>HOURS WORKED</p>
-                                            </div>
-                                        </div>
-                                    </div>
-                                     <div class="col-lg-3 col-md-6 col-sm-6">
-                                        <div class="single_counterup count-two">
-                                            <div class="counter_img">
-                                                <img src="assets\img\cart\cart5.png" alt="">
-                                            </div>
-                                            <div class="counter_info">
-                                                <h2 class="counter_number">2170</h2>
-                                                <p>COMPLETE PROJECTS</p>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                        </div>
-                        <!--counterup end-->
-
-                        <!--about progress bar -->
-                        <div class="about_progressbar">
-                            <div class="row align-items-center">
-                                <div class="col-lg-6 col-md-6">
-                                    <div class="progressbar_inner">
-                                       <h2>We have Skills to show</h2>
-                                        <div class="progress_skill">
-                                            <div class="progress">
-                                                <div class="progress-bar about_prog wow fadeInLeft" data-wow-duration="0.8s" data-wow-delay=".3s" role="progressbar" style="width: 60%" aria-valuenow="25" aria-valuemin="0" aria-valuemax="100">
-                                                    <span class="progress_persent">HTML/CSS</span>    
-                                                </div>
-                                            </div>
-                                            <span class="progress_discount">60%</span>
-                                        </div>
-                                        <div class="progress_skill">
-                                            <div class="progress">
-                                                <div class="progress-bar about_prog wow fadeInLeft" data-wow-duration="0.8s" data-wow-delay=".5s" role="progressbar" style="width: 90%" aria-valuenow="25" aria-valuemin="0" aria-valuemax="100">
-
-                                                    <span class="progress_persent">WORDPRESS THEME </span>
-                                                </div>
-
-                                            </div>
-                                             <span class="progress_discount">90%</span>
-                                        </div> 
-                                        <div class="progress_skill">
-                                            <div class="progress">
-                                                <div class="progress-bar about_prog wow fadeInLeft" data-wow-duration="0.8s" data-wow-delay=".7s" role="progressbar" style="width: 70%" aria-valuenow="25" aria-valuemin="0" aria-valuemax="100">
-
-                                                    <span class="progress_persent">Typhography </span>
-                                                </div>
-
-                                            </div>
-                                             <span class="progress_discount">70%</span>
-                                        </div> 
-                                         <div class="progress_skill">
-                                            <div class="progress">
-                                                <div class="progress-bar about_prog wow fadeInLeft" data-wow-duration="0.8s" data-wow-delay=".7s" role="progressbar" style="width: 80%" aria-valuenow="25" aria-valuemin="0" aria-valuemax="100">
-
-                                                    <span class="progress_persent">Branding  </span>
-                                                </div>
-
-                                            </div>
-                                             <span class="progress_discount">80%</span>
-                                        </div> 
-                                    </div>           
-                                </div>
-                                <div class="col-lg-6 col-md-6">
-                                    <div class="about__img">
-                                        <img src="assets\img\ship\about3.jpg" alt="">
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <!--about progress bar end -->
-                        
-                        <!--brand logo strat--> 
-                        <div class="brand_logo brand_about">
-                            <div class="block_title">
-                                <h3>Brands</h3>
-                            </div>
+                        <!--faq area start-->
+                        <div class="faq_content_area">
                             <div class="row">
-                                <div class="brand_active owl-carousel">
-                                    <div class="col-lg-2">
-                                        <div class="single_brand">
-                                            <a href="#"><img src="assets\img\brand\brand1.jpg" alt=""></a>
-                                        </div>
+                                <div class="col-12">
+                                    <div class="faq_content_wrapper">
+                                        <h4>Below are frequently asked questions, you may find the answer for yourself</h4>
+                                        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec id erat sagittis, faucibus metus malesuada, eleifend turpis. Mauris semper augue id nisl aliquet, a porta lectus mattis. Nulla at tortor augue. In eget enim diam. Donec gravida tortor sem, ac fermentum nibh rutrum sit amet. Nulla convallis mauris vitae congue consequat. Donec interdum nunc purus, vitae vulputate arcu fringilla quis. Vivamus iaculis euismod dui.</p>
+
                                     </div>
-                                    <div class="col-lg-2">
-                                        <div class="single_brand">
-                                            <a href="#"><img src="assets\img\brand\brand2.jpg" alt=""></a>
+                                </div>
+                            </div>  
+                        </div>
+                        
+                        
+                         <!--Accordion area-->
+                        <div class="accordion_area">
+                            <div class="row">
+                                <div class="col-12"> 
+                                    <div id="accordion" class="card__accordion">
+                                      <div class="card card_dipult">
+                                        <div class="card-header card_accor" id="headingOne">
+                                            <button class="btn btn-link" data-toggle="collapse" data-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
+                                              Mauris congue euismod purus at semper. Morbi et vulputate massa?
+
+                                              <i class="fa fa-plus"></i>
+                                              <i class="fa fa-minus"></i>
+
+                                            </button>
+
                                         </div>
-                                    </div>
-                                    <div class="col-lg-2">
-                                        <div class="single_brand">
-                                            <a href="#"><img src="assets\img\brand\brand3.jpg" alt=""></a>
+
+                                        <div id="collapseOne" class="collapse show" aria-labelledby="headingOne" data-parent="#accordion">
+                                          <div class="card-body">
+                                               <p>Donec mattis finibus elit ut tristique. Nullam tempus nunc eget arcu vulputate, eu porttitor tellus commodo. Aliquam erat volutpat. Aliquam consectetur lorem eu viverra lobortis. Morbi gravida, nisi id fringilla ultricies, elit lorem eleifend lorem</p>
+                                          </div>
                                         </div>
-                                    </div>
-                                    <div class="col-lg-2">
-                                        <div class="single_brand">
-                                            <a href="#"><img src="assets\img\brand\brand4.jpg" alt=""></a>
+                                      </div>
+                                      <div class="card  card_dipult">
+                                        <div class="card-header card_accor" id="headingTwo">
+                                            <button class="btn btn-link collapsed" data-toggle="collapse" data-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
+                                              Donec mattis finibus elit ut tristique?
+                                               <i class="fa fa-plus"></i>
+                                               <i class="fa fa-minus"></i>
+
+                                            </button>
                                         </div>
-                                    </div>
-                                    <div class="col-lg-2">
-                                        <div class="single_brand">
-                                            <a href="#"><img src="assets\img\brand\brand5.jpg" alt=""></a>
+                                        <div id="collapseTwo" class="collapse" aria-labelledby="headingTwo" data-parent="#accordion">
+                                          <div class="card-body">
+                                            <p>Donec mattis finibus elit ut tristique. Nullam tempus nunc eget arcu vulputate, eu porttitor tellus commodo. Aliquam erat volutpat. Aliquam consectetur lorem eu viverra lobortis. Morbi gravida, nisi id fringilla ultricies, elit lorem eleifend lorem</p>
+                                          </div>
                                         </div>
-                                    </div>
-                                    <div class="col-lg-2">
-                                        <div class="single_brand">
-                                            <a href="#"><img src="assets\img\brand\brand6.jpg" alt=""></a>
+                                      </div>
+                                      <div class="card  card_dipult">
+                                        <div class="card-header card_accor" id="headingThree">
+                                            <button class="btn btn-link collapsed" data-toggle="collapse" data-target="#collapseThree" aria-expanded="false" aria-controls="collapseThree">
+                                             Aenean elit orci, efficitur quis nisl at, accumsan?
+                                               <i class="fa fa-plus"></i>
+                                               <i class="fa fa-minus"></i>
+                                            </button>
                                         </div>
+                                        <div id="collapseThree" class="collapse" aria-labelledby="headingThree" data-parent="#accordion">
+                                          <div class="card-body">
+                                            <p>Donec mattis finibus elit ut tristique. Nullam tempus nunc eget arcu vulputate, eu porttitor tellus commodo. Aliquam erat volutpat. Aliquam consectetur lorem eu viverra lobortis. Morbi gravida, nisi id fringilla ultricies, elit lorem eleifend lorem</p>
+                                          </div>
+                                        </div>
+                                      </div>
+                                      <div class="card  card_dipult">
+                                        <div class="card-header card_accor" id="headingfour">
+                                            <button class="btn btn-link collapsed" data-toggle="collapse" data-target="#collapseeight" aria-expanded="false" aria-controls="collapseeight">
+                                             Pellentesque habitant morbi tristique senectus et netus?
+                                               <i class="fa fa-plus"></i>
+                                               <i class="fa fa-minus"></i>
+                                            </button>
+                                        </div>
+                                        <div id="collapseeight" class="collapse" aria-labelledby="headingfour" data-parent="#accordion">
+                                          <div class="card-body">
+                                            <p>Donec mattis finibus elit ut tristique. Nullam tempus nunc eget arcu vulputate, eu porttitor tellus commodo. Aliquam erat volutpat. Aliquam consectetur lorem eu viverra lobortis. Morbi gravida, nisi id fringilla ultricies, elit lorem eleifend lorem</p>
+                                          </div>
+                                        </div>
+                                      </div>
+                                      <div class="card  card_dipult">
+                                        <div class="card-header card_accor" id="headingfive">
+                                            <button class="btn btn-link collapsed" data-toggle="collapse" data-target="#collapseseven" aria-expanded="false" aria-controls="collapseseven">
+                                             Nam pellentesque aliquam metus?
+                                               <i class="fa fa-plus"></i>
+                                               <i class="fa fa-minus"></i>
+                                            </button>
+                                        </div>
+                                        <div id="collapseseven" class="collapse" aria-labelledby="headingfive" data-parent="#accordion">
+                                          <div class="card-body">
+                                            <p>Donec mattis finibus elit ut tristique. Nullam tempus nunc eget arcu vulputate, eu porttitor tellus commodo. Aliquam erat volutpat. Aliquam consectetur lorem eu viverra lobortis. Morbi gravida, nisi id fringilla ultricies, elit lorem eleifend lorem</p>
+                                          </div>
+                                        </div>
+                                      </div>
+
+                                      <div class="card  card_dipult">
+                                        <div class="card-header card_accor" id="headingsix">
+                                            <button class="btn btn-link collapsed" data-toggle="collapse" data-target="#collapsefour" aria-expanded="false" aria-controls="collapsefour">
+                                            Aenean elit orci, efficitur quis nisl at?
+                                               <i class="fa fa-plus"></i>
+                                               <i class="fa fa-minus"></i>
+                                            </button>
+                                        </div>
+                                        <div id="collapsefour" class="collapse" aria-labelledby="headingsix" data-parent="#accordion">
+                                          <div class="card-body">
+                                            <p>Donec mattis finibus elit ut tristique. Nullam tempus nunc eget arcu vulputate, eu porttitor tellus commodo. Aliquam erat volutpat. Aliquam consectetur lorem eu viverra lobortis. Morbi gravida, nisi id fringilla ultricies, elit lorem eleifend lorem</p>
+                                          </div>
+                                        </div>
+                                      </div>
+                                      <div class="card  card_dipult">
+                                        <div class="card-header card_accor" id="headingseven">
+                                            <button class="btn btn-link collapsed" data-toggle="collapse" data-target="#collapsefive" aria-expanded="false" aria-controls="collapsefive">
+                                             Morbi gravida, nisi id fringilla ultricies, elit lorem?
+                                               <i class="fa fa-plus"></i>
+                                               <i class="fa fa-minus"></i>
+                                            </button>
+                                        </div>
+                                        <div id="collapsefive" class="collapse" aria-labelledby="headingseven" data-parent="#accordion">
+                                          <div class="card-body">
+                                            <p>Donec mattis finibus elit ut tristique. Nullam tempus nunc eget arcu vulputate, eu porttitor tellus commodo. Aliquam erat volutpat. Aliquam consectetur lorem eu viverra lobortis. Morbi gravida, nisi id fringilla ultricies, elit lorem eleifend lorem</p>
+                                          </div>
+                                        </div>
+                                      </div>
+                                      <div class="card  card_dipult">
+                                        <div class="card-header card_accor" id="headingeight">
+                                            <button class="btn btn-link collapsed" data-toggle="collapse" data-target="#collapsesix" aria-expanded="false" aria-controls="collapsesix">
+                                             Aenean elit orci, efficitur quis nisl at, accumsan?
+                                               <i class="fa fa-plus"></i>
+                                               <i class="fa fa-minus"></i>
+                                            </button>
+                                        </div>
+                                        <div id="collapsesix" class="collapse" aria-labelledby="headingeight" data-parent="#accordion">
+                                          <div class="card-body">
+                                            <p>Donec mattis finibus elit ut tristique. Nullam tempus nunc eget arcu vulputate, eu porttitor tellus commodo. Aliquam erat volutpat. Aliquam consectetur lorem eu viverra lobortis. Morbi gravida, nisi id fringilla ultricies, elit lorem eleifend lorem</p>
+                                          </div>
+                                        </div>
+                                      </div>
                                     </div>
                                 </div>
                             </div>
-                        </div>       
-                        <!--brand logo end-->  
+                        </div>
+                        <!--Accordion area end-->
+                        <!--faq area end-->
                     </div>
                     <!--pos page inner end-->
                 </div>
@@ -757,3 +739,4 @@
         <script src="assets\js\main.js"></script>
     </body>
 </html>
+
