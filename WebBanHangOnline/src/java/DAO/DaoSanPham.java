@@ -40,7 +40,7 @@ public class DaoSanPham {
 
             while (rs.next()) {
                 SanPham sp = new SanPham(
-                        rs.getString("maSP"),
+                        rs.getInt("maSP"),
                         rs.getString("tenSp"),
                         rs.getDouble("donGiaBan"),
                         rs.getInt("soLuongHienCon"),
@@ -54,16 +54,16 @@ public class DaoSanPham {
         return list;
     }
 
-    public SanPham getSpbyId(String idSpAdd) {
+    public SanPham getSpbyId(int idSpAdd) {
         String sql = "select * from SanPham where maSP = ?";
         SanPham newSp = null;
         try {
             Connection con = CONTEXT.DatabaseConnection.getConnection();
             PreparedStatement stmt = con.prepareCall(sql);
-            stmt.setString(1, idSpAdd);
+            stmt.setInt(1, idSpAdd);
             ResultSet rs = stmt.executeQuery();
             while (rs.next()) {
-                String masp = rs.getString("maSp");
+                int masp = rs.getInt("maSp");
                 String tensp = rs.getString("tenSP");
                 double dongiaban = rs.getDouble("donGiaBan");
                 int soluonghienco = rs.getInt("soLuongHienCon");
@@ -76,37 +76,34 @@ public class DaoSanPham {
         return newSp;
     }
 
-    public boolean checkIdSp(String id, ArrayList<SanPham> listSp) {
+    public boolean checkIdSp(int id, ArrayList<SanPham> listSp) {
         for (SanPham sp : listSp) {
-            if (sp.getMaSP().equals(id)) {
+            if (sp.getMaSP() == id) {
                 return true;
             }
         }
         return false;
     }
-    public ArrayList<SanPham> removeSpById(String id, ArrayList<SanPham> listSp) {
+
+    public ArrayList<SanPham> removeSpById(int id, ArrayList<SanPham> listSp) {
         for (int i = 0; i <= listSp.size() - 1; i++) {
-            if (id.equals(listSp.get(i).getMaSP())) {
+            if (id==(listSp.get(i).getMaSP())) {
                 listSp.remove(i);
                 break;
             }
         }
         return listSp;
     }
-
-    
     public ArrayList<SanPham> getListspmoi() {
-        String sql = "SELECT TOP 10 *\n"
-                + "FROM SanPham\n"
-                + "ORDER BY CAST(SUBSTRING(MaSP, 3, LEN(MaSP)) AS INT) DESC;";
+       String sql = "SELECT TOP 10 * FROM SanPham ORDER BY maSP DESC;";
         ArrayList<SanPham> listnewsp = new ArrayList<SanPham>();
         SanPham newSp;
         try {
             Connection con = CONTEXT.DatabaseConnection.getConnection();
-            PreparedStatement stmt = con.prepareCall(sql);
+            PreparedStatement stmt = con.prepareStatement(sql);
             ResultSet rs = stmt.executeQuery();
             while (rs.next()) {
-                String masp = rs.getString("maSp");
+                int masp = rs.getInt("maSP");
                 String tensp = rs.getString("tenSP");
                 double dongiaban = rs.getDouble("donGiaBan");
                 int soluonghienco = rs.getInt("soLuongHienCon");
@@ -123,9 +120,9 @@ public class DaoSanPham {
     public static void main(String[] args) {
         DaoSanPham dao = new DaoSanPham();
         List<SanPham> list = dao.getListspmoi();
-
         for (SanPham sp : list) {
             System.out.println(sp);
         }
     }
+
 }

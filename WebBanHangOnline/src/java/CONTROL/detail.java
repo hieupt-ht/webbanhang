@@ -1,3 +1,5 @@
+package CONTROL;
+
 /*
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/JSP_Servlet/Servlet.java to edit this template
@@ -33,7 +35,7 @@ public class detail extends HttpServlet {
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
-        String idDetail = request.getParameter("idDetail");
+        int idDetail = Integer.parseInt(request.getParameter("idDetail"));
         DaoSanPham daosp = new DaoSanPham();
         SanPham sanphamdetail = daosp.getSpbyId(idDetail);
         request.setAttribute("sanphamdetail", sanphamdetail);

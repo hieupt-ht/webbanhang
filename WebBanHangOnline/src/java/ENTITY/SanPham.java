@@ -9,17 +9,17 @@ package ENTITY;
  * @author ThankPad
  */
 public class SanPham {
-    private String maSP;
+    private int maSP;
     private String tenSP;
     private double donGia;
     private int soLuongHienCon;
     private String linkAnh;
 
-    public String getMaSP() {
+    public int getMaSP() {
         return maSP;
     }
 
-    public void setMaSP(String maSP) {
+    public void setMaSP(int maSP) {
         this.maSP = maSP;
     }
 
@@ -58,7 +58,7 @@ public class SanPham {
     public SanPham() {
     }
 
-    public SanPham(String maSP, String tenSP, double donGia, int soLuongHienCon, String linkAnh) {
+    public SanPham(int maSP, String tenSP, double donGia, int soLuongHienCon, String linkAnh) {
         this.maSP = maSP;
         this.tenSP = tenSP;
         this.donGia = donGia;

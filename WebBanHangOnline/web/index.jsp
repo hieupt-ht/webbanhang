@@ -249,12 +249,8 @@
                                                             <ul>
                                                                 <c:if test="${sessionScope.acc != null}">
                                                                 <li><a href="#" title=" Add to Wishlist ">Add to Wishlist</a></li>
-<<<<<<< HEAD
                                                                 <li><a href="detail?idDetail=${sp.maSP}" data-toggle="modal" data-target="#modal_box" title="Quick view">View Detail</a></li>
-=======
                                                                 </c:if>
-                                                                <li><a href="#" data-toggle="modal" data-target="#modal_box" title="Quick view">View Detail</a></li>
->>>>>>> 6089d38eff03aa3ce304876355cbb75e724dbd83
                                                             </ul>
                                                         </div>
                                                     </div>

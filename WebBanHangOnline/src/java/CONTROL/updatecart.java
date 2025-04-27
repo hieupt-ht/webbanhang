@@ -49,7 +49,7 @@ public class updatecart extends HttpServlet {
             if (ids != null && soluongs != null) {
                 for (int i = 0; i <= ids.length - 1; i++) {
                     String idsp = ids[i];
-                    cartProduct cartproduct = dao.getCartproductByid(idsp, listcart);
+                    cartProduct cartproduct = dao.getCartproductByid(Integer.parseInt(idsp), listcart);
                     cartproduct.setSoLuong(Integer.parseInt(soluongs[i]));
                     cartproduct.setTongTien(Integer.parseInt(soluongs[i]) * cartproduct.getDonGia());
                 }

@@ -9,7 +9,7 @@ package ENTITY;
  * @author LE KHAC HIEU
  */
 public class cartProduct {
-    private String maSP;
+    private int maSP;
     private String tenSP;
     private double donGia;
     private int soLuongHienCon;
@@ -17,7 +17,7 @@ public class cartProduct {
     private int soLuong;
     private double tongTien;
 
-    public cartProduct(String maSP, String tenSP, double donGia, int soLuongHienCon, String linkAnh, int soLuong, double tongTien) {
+    public cartProduct(int maSP, String tenSP, double donGia, int soLuongHienCon, String linkAnh, int soLuong, double tongTien) {
         this.maSP = maSP;
         this.tenSP = tenSP;
         this.donGia = donGia;
@@ -30,11 +30,11 @@ public class cartProduct {
     public cartProduct() {
     }
 
-    public String getMaSP() {
+    public int getMaSP() {
         return maSP;
     }
 
-    public void setMaSP(String maSP) {
+    public void setMaSP(int maSP) {
         this.maSP = maSP;
     }
 

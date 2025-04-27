@@ -44,9 +44,10 @@ public class cartControl extends HttpServlet {
         if (gioHang == null) {
             gioHang = new ArrayList<cartProduct>();
         }
-        String idSpCart = request.getParameter("idAddCart");
+        int idSpCart = Integer.parseInt(request.getParameter("idAddCart"));
         DaoSanPham daoSanPham = new DaoSanPham();
         SanPham sanPhamAddCart = daoSanPham.getSpbyId(idSpCart);
+        
         cartProduct cartproduct = new cartProduct(sanPhamAddCart.getMaSP(), sanPhamAddCart.getTenSP(), sanPhamAddCart.getDonGia()
                 , sanPhamAddCart.getSoLuongHienCon(), sanPhamAddCart.getLinkAnh(), 1, sanPhamAddCart.getDonGia());
         gioHang.add(cartproduct);

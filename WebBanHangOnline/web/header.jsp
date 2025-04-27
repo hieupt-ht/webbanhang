@@ -116,7 +116,6 @@
                     <nav>
                         <ul>
                             <li class="active"><a href="index.jsp">Home</a>
-
                             </li>
                             <li><a href="shop.html">shop</a>
                                 <div class="mega_menu jewelry">
