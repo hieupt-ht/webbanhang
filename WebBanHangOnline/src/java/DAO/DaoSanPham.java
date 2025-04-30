@@ -13,6 +13,7 @@ import ENTITY.cartProduct;
 import java.util.List;
 import java.util.ArrayList;
 import java.sql.PreparedStatement;
+import java.sql.SQLException;
 
 /**
  *
@@ -32,7 +33,7 @@ public class DaoSanPham {
 
     public List<SanPham> getAllSanPham() {
         List<SanPham> list = new ArrayList<SanPham>();
-        String sql = "{call sp_SanPham_GetAll}";
+        String sql = "select * from SanPham";
         try {
             c = CONTEXT.DatabaseConnection.getConnection();
             stmt = c.prepareCall(sql);
@@ -44,12 +45,12 @@ public class DaoSanPham {
                         rs.getString("tenSp"),
                         rs.getDouble("donGiaBan"),
                         rs.getInt("soLuongHienCon"),
-                        rs.getString("linkAnh")
+                        rs.getString("linkAnh"),
+                        rs.getString("DMno")
                 );
                 list.add(sp);
             }
-        } catch (Exception e) {
-            e.printStackTrace();
+        } catch (SQLException e) {
         }
         return list;
     }
@@ -69,7 +70,8 @@ public class DaoSanPham {
                 int soluonghienco = rs.getInt("soLuongHienCon");
                 String dmno = rs.getString("DMno");
                 String linkanh = rs.getString("linkAnh");
-                newSp = new SanPham(masp, tensp, dongiaban, soluonghienco, linkanh);
+                String DMno = rs.getString("DMno");
+                newSp = new SanPham(masp, tensp, dongiaban, soluonghienco, linkanh,DMno);
             }
         } catch (Exception e) {
         }
@@ -98,7 +100,7 @@ public class DaoSanPham {
     public ArrayList<SanPham> getListspmoi() {
         String sql = "SELECT TOP 10 *\n"
                 + "FROM SanPham\n"
-                + "ORDER BY CAST(SUBSTRING(MaSP, 3, LEN(MaSP)) AS INT) DESC;";
+                + "ORDER BY MaSP DESC;";
         ArrayList<SanPham> listnewsp = new ArrayList<SanPham>();
         SanPham newSp;
         try {
@@ -112,17 +114,70 @@ public class DaoSanPham {
                 int soluonghienco = rs.getInt("soLuongHienCon");
                 String dmno = rs.getString("DMno");
                 String linkanh = rs.getString("linkAnh");
-                newSp = new SanPham(masp, tensp, dongiaban, soluonghienco, linkanh);
+                String DMno = rs.getString("DMno");
+                newSp = new SanPham(masp, tensp, dongiaban, soluonghienco, linkanh,DMno);
                 listnewsp.add(newSp);
             }
         } catch (Exception e) {
         }
         return listnewsp;
     }
+    
+    public List<SanPham> getSanPhamByDM(String maDM) {
+        List<SanPham> list = new ArrayList<SanPham>();
+        String sql = "select * from SanPham\n" +
+                        "where DMno = ?";
+        try {
+            c = CONTEXT.DatabaseConnection.getConnection();
+            stmt = c.prepareCall(sql);
+            stmt.setString(1, maDM);
+            rs = stmt.executeQuery();
+
+            while (rs.next()) {
+                SanPham sp = new SanPham(
+                        rs.getString("maSP"),
+                        rs.getString("tenSp"),
+                        rs.getDouble("donGiaBan"),
+                        rs.getInt("soLuongHienCon"),
+                        rs.getString("linkAnh"),
+                        rs.getString("DMno")
+                );
+                list.add(sp);
+            }
+        } catch (SQLException e) {
+        }
+        return list;
+    }
+    
+    public List<SanPham> searchSP(String text) {
+        List<SanPham> list = new ArrayList<SanPham>();
+        String sql = "select * from SanPham\n" +
+                        "where tenSP like ?";
+        try {
+            c = CONTEXT.DatabaseConnection.getConnection();
+            stmt = c.prepareCall(sql);
+            stmt.setString(1,"%" + text + "%");
+            rs = stmt.executeQuery();
+
+            while (rs.next()) {
+                SanPham sp = new SanPham(
+                        rs.getString("maSP"),
+                        rs.getString("tenSp"),
+                        rs.getDouble("donGiaBan"),
+                        rs.getInt("soLuongHienCon"),
+                        rs.getString("linkAnh"),
+                        rs.getString("DMno")
+                );
+                list.add(sp);
+            }
+        } catch (SQLException e) {
+        }
+        return list;
+    }
 
     public static void main(String[] args) {
         DaoSanPham dao = new DaoSanPham();
-        List<SanPham> list = dao.getListspmoi();
+        List<SanPham> list = dao.searchSP("Gucci");
 
         for (SanPham sp : list) {
             System.out.println(sp);

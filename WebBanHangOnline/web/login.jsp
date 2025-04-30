@@ -62,7 +62,7 @@
                                                 <form action="login">
                                                     <p class="text-danger">${message1}</p>
                                                     <p>   
-                                                        <label>Username or email <span>*</span></label>
+                                                        <label>Email <span>*</span></label>
                                                         <input name="user" type="text">
                                                      </p>
                                                      <p>   

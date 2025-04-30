@@ -52,86 +52,14 @@
                                     <!--sidebar banner end-->
 
                                     <!--categorie menu start-->
-                                    <div class="sidebar_widget catrgorie mb-35">
-                                        <h3>Categories</h3>
-                                        <ul>
-                                            <li class="has-sub"><a href="#"><i class="fa fa-caret-right"></i> women</a>
-                                                <ul class="categorie_sub">
-                                                    <li><a href="#"><i class="fa fa-caret-right"></i> Accessories</a>
-                                                        <ul class="categorie_sub">
-                                                            <li><a href="#"><i class="fa fa-caret-right"></i> Accessories</a></li>
-                                                            <li><a href="#"><i class="fa fa-caret-right"></i> Dresses</a></li>
-                                                            <li><a href="#"><i class="fa fa-caret-right"></i> Tops</a></li>
-                                                            <li><a href="#"><i class="fa fa-caret-right"></i> HandBags</a></li>
-                                                        </ul> 
-                                                    </li>
-                                                    <li><a href="#"><i class="fa fa-caret-right"></i> Dresses</a></li>
-                                                    <li><a href="#"><i class="fa fa-caret-right"></i> Tops</a></li>
-                                                    <li><a href="#"><i class="fa fa-caret-right"></i> HandBags</a></li>
-                                                </ul>     
+                                    <div class="category">
+                                        <h3 class="category-title">CATEGORIES</h3>
+                                        <ul class="category-list">
+                                        <c:forEach var="dm" items="${listDM}">
+                                            <li class="category-item">
+                                                <a href="catelory?idDM=${dm.maDM}">${dm.tenDM}</a>
                                             </li>
-                                            <li class="has-sub"><a href="#"><i class="fa fa-caret-right"></i> Men</a>
-                                                <ul class="categorie_sub">
-                                                    <li><a href="#"><i class="fa fa-caret-right"></i> Accessories</a>
-                                                        <ul class="categorie_sub">
-                                                            <li><a href="#"><i class="fa fa-caret-right"></i> Accessories</a></li>
-                                                            <li><a href="#"><i class="fa fa-caret-right"></i> Dresses</a></li>
-                                                            <li><a href="#"><i class="fa fa-caret-right"></i> Tops</a></li>
-                                                            <li><a href="#"><i class="fa fa-caret-right"></i> HandBags</a></li>
-                                                        </ul> 
-                                                    </li>
-                                                    <li><a href="#"><i class="fa fa-caret-right"></i> Dresses</a></li>
-                                                    <li><a href="#"><i class="fa fa-caret-right"></i> Tops</a></li>
-                                                    <li><a href="#"><i class="fa fa-caret-right"></i> HandBags</a></li>
-                                                </ul> 
-                                            </li>
-                                            <li class="has-sub"><a href="#"><i class="fa fa-caret-right"></i> Footwear</a>
-                                                <ul class="categorie_sub">
-                                                    <li><a href="#"><i class="fa fa-caret-right"></i> Accessories</a>
-                                                        <ul class="categorie_sub">
-                                                            <li><a href="#"><i class="fa fa-caret-right"></i> Accessories</a></li>
-                                                            <li><a href="#"><i class="fa fa-caret-right"></i> Dresses</a></li>
-                                                            <li><a href="#"><i class="fa fa-caret-right"></i> Tops</a></li>
-                                                            <li><a href="#"><i class="fa fa-caret-right"></i> HandBags</a></li>
-                                                        </ul> 
-                                                    </li>
-                                                    <li><a href="#"><i class="fa fa-caret-right"></i> Dresses</a></li>
-                                                    <li><a href="#"><i class="fa fa-caret-right"></i> Tops</a></li>
-                                                    <li><a href="#"><i class="fa fa-caret-right"></i> HandBags</a></li>
-                                                </ul> 
-
-                                            </li>
-                                            <li class="has-sub"><a href="#"><i class="fa fa-caret-right"></i> Jewelry</a>
-                                                <ul class="categorie_sub">
-                                                    <li><a href="#"><i class="fa fa-caret-right"></i> Accessories</a>
-                                                        <ul class="categorie_sub">
-                                                            <li><a href="#"><i class="fa fa-caret-right"></i> Accessories</a></li>
-                                                            <li><a href="#"><i class="fa fa-caret-right"></i> Dresses</a></li>
-                                                            <li><a href="#"><i class="fa fa-caret-right"></i> Tops</a></li>
-                                                            <li><a href="#"><i class="fa fa-caret-right"></i> HandBags</a></li>
-                                                        </ul> 
-                                                    </li>
-                                                    <li><a href="#"><i class="fa fa-caret-right"></i> Dresses</a></li>
-                                                    <li><a href="#"><i class="fa fa-caret-right"></i> Tops</a></li>
-                                                    <li><a href="#"><i class="fa fa-caret-right"></i> HandBags</a></li>
-                                                </ul> 
-                                            </li>
-                                            <li class="has-sub"><a href="#"><i class="fa fa-caret-right"></i> Lady</a>
-                                                <ul class="categorie_sub">
-                                                    <li><a href="#"><i class="fa fa-caret-right"></i> Accessories</a>
-                                                        <ul class="categorie_sub">
-                                                            <li><a href="#"><i class="fa fa-caret-right"></i> Accessories</a></li>
-                                                            <li><a href="#"><i class="fa fa-caret-right"></i> Dresses</a></li>
-                                                            <li><a href="#"><i class="fa fa-caret-right"></i> Tops</a></li>
-                                                            <li><a href="#"><i class="fa fa-caret-right"></i> HandBags</a></li>
-                                                        </ul> 
-                                                    </li>
-                                                    <li><a href="#"><i class="fa fa-caret-right"></i> Dresses</a></li>
-                                                    <li><a href="#"><i class="fa fa-caret-right"></i> Tops</a></li>
-                                                    <li><a href="#"><i class="fa fa-caret-right"></i> HandBags</a></li>
-                                                </ul> 
-                                            </li>
-
+                                        </c:forEach>
                                         </ul>
                                     </div>
                                     <!--categorie menu end-->
@@ -222,14 +150,18 @@
                                     </div> 
                                     <!--banner slider start-->
 
+                                <c:forEach var="dm" items="${listDM}">
                                     <!--new product area start-->
                                     <div class="new_product_area">
                                         <div class="block_title">
-                                            <h3>Sản phầm mới</h3>
+                                            <h3>${dm.tenDM}</h3>
                                         </div>
                                         <div class="row">   
                                             <div class="product_active owl-carousel">                                             
-                                            <c:forEach var="sp" items="${sessionScope.listSP}">
+                                            <c:forEach var="sp" items="${listAll}">
+                                                <c:if test="${sp.DMno == dm.maDM}">
+                                                    
+                                                
                                                 <div class="col-lg-3">
                                                     <div class="single_product">
                                                         <div class="product_thumb">
@@ -249,148 +181,20 @@
                                                             <ul>
                                                                 <c:if test="${sessionScope.acc != null}">
                                                                 <li><a href="#" title=" Add to Wishlist ">Add to Wishlist</a></li>
-<<<<<<< HEAD
-                                                                <li><a href="detail?idDetail=${sp.maSP}" data-toggle="modal" data-target="#modal_box" title="Quick view">View Detail</a></li>
-=======
                                                                 </c:if>
                                                                 <li><a href="#" data-toggle="modal" data-target="#modal_box" title="Quick view">View Detail</a></li>
->>>>>>> 6089d38eff03aa3ce304876355cbb75e724dbd83
                                                             </ul>
                                                         </div>
                                                     </div>
-                                                </div>                                  
+                                                </div>       
+                                                </c:if>
                                             </c:forEach>    
                                             </div>           
                                         </div>       
                                     </div> 
                                     <!--new product area start-->  
-
-                                    <!--featured product start--> 
-                                    <div class="featured_product">
-                                        <div class="block_title">
-                                            <h3>Featured Products</h3>
-                                        </div>
-                                        <div class="row">
-                                            <div class="product_active owl-carousel">
-                                                <div class="col-lg-3">
-                                                    <div class="single_product">
-                                                        <div class="product_thumb">
-                                                           <a href="single-product.html"><img src="assets\img\product\product7.jpg" alt=""></a> 
-                                                           <div class="hot_img">
-                                                               <img src="assets\img\cart\span-hot.png" alt="">
-                                                           </div>
-                                                           <div class="product_action">
-                                                               <a href="#"> <i class="fa fa-shopping-cart"></i> Add to cart</a>
-                                                           </div>
-                                                        </div>
-                                                        <div class="product_content">
-                                                            <span class="product_price">$60.00</span>
-                                                            <h3 class="product_title"><a href="single-product.html">Maecenas sit amet</a></h3>
-                                                        </div>
-                                                        <div class="product_info">
-                                                            <ul>
-                                                                <li><a href="#" title=" Add to Wishlist ">Add to Wishlist</a></li>
-                                                                <li><a href="#" data-toggle="modal" data-target="#modal_box" title="Quick view">View Detail</a></li>
-                                                            </ul>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                                <div class="col-lg-3">
-                                                    <div class="single_product">
-                                                        <div class="product_thumb">
-                                                           <a href="single-product.html"><img src="assets\img\product\product8.jpg" alt=""></a> 
-                                                           <div class="img_icone">
-                                                               <img src="assets\img\cart\span-new.png" alt="">
-                                                           </div>
-                                                           <div class="product_action">
-                                                               <a href="#"> <i class="fa fa-shopping-cart"></i> Add to cart</a>
-                                                           </div>
-                                                        </div>
-                                                        <div class="product_content">
-                                                            <span class="product_price">$50.00</span>
-                                                            <h3 class="product_title"><a href="single-product.html">Sed non turpis</a></h3>
-                                                        </div>
-                                                        <div class="product_info">
-                                                            <ul>
-                                                                <li><a href="#" title=" Add to Wishlist ">Add to Wishlist</a></li>
-                                                                <li><a href="#" data-toggle="modal" data-target="#modal_box" title="Quick view">View Detail</a></li>
-                                                            </ul>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                                <div class="col-lg-3">
-                                                    <div class="single_product">
-                                                        <div class="product_thumb">
-                                                           <a href="single-product.html"><img src="assets\img\product\product9.jpg" alt=""></a> 
-                                                           <div class="img_icone">
-                                                               <img src="assets\img\cart\span-new.png" alt="">
-                                                           </div>
-                                                           <div class="product_action">
-                                                               <a href="#"> <i class="fa fa-shopping-cart"></i> Add to cart</a>
-                                                           </div>
-                                                        </div>
-                                                        <div class="product_content">
-                                                            <span class="product_price">$70.00</span>
-                                                            <h3 class="product_title"><a href="single-product.html">Donec ac congue</a></h3>
-                                                        </div>
-                                                        <div class="product_info">
-                                                            <ul>
-                                                                <li><a href="#" title=" Add to Wishlist ">Add to Wishlist</a></li>
-                                                                <li><a href="#" data-toggle="modal" data-target="#modal_box" title="Quick view">View Detail</a></li>
-                                                            </ul>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                                <div class="col-lg-3">
-                                                    <div class="single_product">
-                                                        <div class="product_thumb">
-                                                           <a href="single-product.html"><img src="assets\img\product\product3.jpg" alt=""></a> 
-                                                           <div class="hot_img">
-                                                               <img src="assets\img\cart\span-hot.png" alt="">
-                                                           </div>
-                                                           <div class="product_action">
-                                                               <a href="#"> <i class="fa fa-shopping-cart"></i> Add to cart</a>
-                                                           </div>
-                                                        </div>
-                                                        <div class="product_content">
-                                                            <span class="product_price">$60.00</span>
-                                                            <h3 class="product_title"><a href="single-product.html">Curabitur sodales</a></h3>
-                                                        </div>
-                                                        <div class="product_info">
-                                                            <ul>
-                                                                <li><a href="#" title=" Add to Wishlist ">Add to Wishlist</a></li>
-                                                                <li><a href="#" data-toggle="modal" data-target="#modal_box" title="Quick view">View Detail</a></li>
-                                                            </ul>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                                <div class="col-lg-3">
-                                                    <div class="single_product">
-                                                        <div class="product_thumb">
-                                                           <a href="single-product.html"><img src="assets\img\product\product2.jpg" alt=""></a> 
-                                                           <div class="img_icone">
-                                                               <img src="assets\img\cart\span-new.png" alt="">
-                                                           </div>
-                                                           <div class="product_action">
-                                                               <a href="#"> <i class="fa fa-shopping-cart"></i> Add to cart</a>
-                                                           </div>
-                                                        </div>
-                                                        <div class="product_content">
-                                                            <span class="product_price">$50.00</span>
-                                                            <h3 class="product_title"><a href="single-product.html">Phasellus a arcu</a></h3>
-                                                        </div>
-                                                        <div class="product_info">
-                                                            <ul>
-                                                                <li><a href="#" title=" Add to Wishlist ">Add to Wishlist</a></li>
-                                                                <li><a href="#" data-toggle="modal" data-target="#modal_box" title="Quick view">View Detail</a></li>
-                                                            </ul>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                            </div> 
-                                        </div> 
-                                    </div>     
-                                    <!--featured product end--> 
+                                </c:forEach>
+                                    
 
                                     <!--banner area start-->
                                     <div class="banner_area mb-60">

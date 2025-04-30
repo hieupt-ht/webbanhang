@@ -1,6 +1,6 @@
 
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
-<%@page contentType="text/html" pageEncoding="UTF-8"%>
+<%@page contentType="text/jsp" pageEncoding="UTF-8"%>
 <div class="header_area">
     <!--header top--> 
     <div class="header_top">
@@ -26,11 +26,11 @@
             <div class="col-lg-6 col-md-6">
                 <div class="header_links">
                     <ul>
-                        <li><a href="contact.html" title="Contact">Contact</a></li>
+                        <li><a href="contact.jsp" title="Contact">Contact</a></li>
                             <c:if test="${sessionScope.acc != null}">
                             <li><a href="wishlist.jsp" title="wishlist">My wishlist</a></li>
                             <li><a href="myaccount.jsp" title="My account">My account</a></li>
-                            <li><a href="cart.html" title="My cart">My cart</a></li>
+                            <li><a href="cart.jsp" title="My cart">My cart</a></li>
                             </c:if>
                             <c:if test="${sessionScope.acc == null}">
                             <li><a href="login.jsp" title="Login">Login</a></li>
@@ -58,8 +58,8 @@
             <div class="col-lg-9 col-md-9">
                 <div class="header_right_info">
                     <div class="search_bar">
-                        <form action="#">
-                            <input placeholder="Search..." type="text">
+                        <form action="search">
+                            <input name="infor" placeholder="Search..." type="text">
                             <button type="submit"><i class="fa fa-search"></i></button>
                         </form>
                     </div>
@@ -118,19 +118,19 @@
                             <li class="active"><a href="index.jsp">Home</a>
 
                             </li>
-                            <li><a href="shop.html">shop</a>
+                            <li><a href="shop.jsp">shop</a>
                                 <div class="mega_menu jewelry">
                                     <div class="mega_items jewelry">
                                         <ul>
-                                            <li><a href="shop-list.html">shop list</a></li>
-                                            <li><a href="shop-fullwidth.html">shop Full Width Grid</a></li>
-                                            <li><a href="shop-fullwidth-list.html">shop Full Width list</a></li>
-                                            <li><a href="shop-sidebar.html">shop Right Sidebar</a></li>
-                                            <li><a href="shop-sidebar-list.html">shop list Right Sidebar</a></li>
-                                            <li><a href="single-product.html">Product Details</a></li>
-                                            <li><a href="single-product-sidebar.html">Product sidebar</a></li>
-                                            <li><a href="single-product-video.html">Product Details video</a></li>
-                                            <li><a href="single-product-gallery.html">Product Details Gallery</a></li>
+                                            <li><a href="shop-list.jsp">shop list</a></li>
+                                            <li><a href="shop-fullwidth.jsp">shop Full Width Grid</a></li>
+                                            <li><a href="shop-fullwidth-list.jsp">shop Full Width list</a></li>
+                                            <li><a href="shop-sidebar.jsp">shop Right Sidebar</a></li>
+                                            <li><a href="shop-sidebar-list.jsp">shop list Right Sidebar</a></li>
+                                            <li><a href="single-product.jsp">Product Details</a></li>
+                                            <li><a href="single-product-sidebar.jsp">Product sidebar</a></li>
+                                            <li><a href="single-product-video.jsp">Product Details video</a></li>
+                                            <li><a href="single-product-gallery.jsp">Product Details Gallery</a></li>
                                         </ul>
                                     </div>
                                 </div>  
@@ -214,9 +214,9 @@
                             </li>
 
 
-                            <li><a href="blog.html">blog</a>
+                            <li><a href="blog.jsp">blog</a>
                             </li>
-                            <li><a href="contact.html">contact us</a></li>
+                            <li><a href="contact.jsp">contact us</a></li>
 
                         </ul>
                     </nav>
@@ -224,29 +224,29 @@
                 <div class="mobile-menu d-lg-none">
                     <nav>
                         <ul>
-                            <li><a href="index.html">Home</a>
+                            <li><a href="index.jsp">Home</a>
                                 <div>
                                     <div>
                                         <ul>
-                                            <li><a href="index.html">Home 1</a></li>
-                                            <li><a href="index-2.html">Home 2</a></li>
+                                            <li><a href="index.jsp">Home 1</a></li>
+                                            <li><a href="index-2.jsp">Home 2</a></li>
                                         </ul>
                                     </div>
                                 </div> 
                             </li>
-                            <li><a href="shop.html">shop</a>
+                            <li><a href="shop.jsp">shop</a>
                                 <div>
                                     <div>
                                         <ul>
-                                            <li><a href="shop-list.html">shop list</a></li>
-                                            <li><a href="shop-fullwidth.html">shop Full Width Grid</a></li>
-                                            <li><a href="shop-fullwidth-list.html">shop Full Width list</a></li>
-                                            <li><a href="shop-sidebar.html">shop Right Sidebar</a></li>
-                                            <li><a href="shop-sidebar-list.html">shop list Right Sidebar</a></li>
-                                            <li><a href="single-product.html">Product Details</a></li>
-                                            <li><a href="single-product-sidebar.html">Product sidebar</a></li>
-                                            <li><a href="single-product-video.html">Product Details video</a></li>
-                                            <li><a href="single-product-gallery.html">Product Details Gallery</a></li>
+                                            <li><a href="shop-list.jsp">shop list</a></li>
+                                            <li><a href="shop-fullwidth.jsp">shop Full Width Grid</a></li>
+                                            <li><a href="shop-fullwidth-list.jsp">shop Full Width list</a></li>
+                                            <li><a href="shop-sidebar.jsp">shop Right Sidebar</a></li>
+                                            <li><a href="shop-sidebar-list.jsp">shop list Right Sidebar</a></li>
+                                            <li><a href="single-product.jsp">Product Details</a></li>
+                                            <li><a href="single-product-sidebar.jsp">Product sidebar</a></li>
+                                            <li><a href="single-product-video.jsp">Product Details video</a></li>
+                                            <li><a href="single-product-gallery.jsp">Product Details Gallery</a></li>
                                         </ul>
                                     </div>
                                 </div>  
@@ -334,51 +334,51 @@
                                         <div>
                                             <h3><a href="#">Column1</a></h3>
                                             <ul>
-                                                <li><a href="portfolio.html">Portfolio</a></li>
-                                                <li><a href="portfolio-details.html">single portfolio </a></li>
-                                                <li><a href="about.html">About Us </a></li>
-                                                <li><a href="about-2.html">About Us 2</a></li>
-                                                <li><a href="services.html">Service </a></li>
-                                                <li><a href="my-account.html">my account </a></li>
+                                                <li><a href="portfolio.jsp">Portfolio</a></li>
+                                                <li><a href="portfolio-details.jsp">single portfolio </a></li>
+                                                <li><a href="about.jsp">About Us </a></li>
+                                                <li><a href="about-2.jsp">About Us 2</a></li>
+                                                <li><a href="services.jsp">Service </a></li>
+                                                <li><a href="my-account.jsp">my account </a></li>
                                             </ul>
                                         </div>
                                         <div>
                                             <h3><a href="#">Column2</a></h3>
                                             <ul>
-                                                <li><a href="blog.html">Blog </a></li>
-                                                <li><a href="blog-details.html">Blog  Details </a></li>
-                                                <li><a href="blog-fullwidth.html">Blog FullWidth</a></li>
-                                                <li><a href="blog-sidebar.html">Blog  Sidebar</a></li>
-                                                <li><a href="faq.html">Frequently Questions</a></li>
-                                                <li><a href="404.html">404</a></li>
+                                                <li><a href="blog.jsp">Blog </a></li>
+                                                <li><a href="blog-details.jsp">Blog  Details </a></li>
+                                                <li><a href="blog-fullwidth.jsp">Blog FullWidth</a></li>
+                                                <li><a href="blog-sidebar.jsp">Blog  Sidebar</a></li>
+                                                <li><a href="faq.jsp">Frequently Questions</a></li>
+                                                <li><a href="404.jsp">404</a></li>
                                             </ul>
                                         </div>
                                         <div>
                                             <h3><a href="#">Column3</a></h3>
                                             <ul>
-                                                <li><a href="contact.html">Contact</a></li>
-                                                <li><a href="cart.html">cart</a></li>
-                                                <li><a href="checkout.html">Checkout  </a></li>
-                                                <li><a href="wishlist.html">Wishlist</a></li>
-                                                <li><a href="login.html">Login</a></li>
+                                                <li><a href="contact.jsp">Contact</a></li>
+                                                <li><a href="cart.jsp">cart</a></li>
+                                                <li><a href="checkout.jsp">Checkout  </a></li>
+                                                <li><a href="wishlist.jsp">Wishlist</a></li>
+                                                <li><a href="login.jsp">Login</a></li>
                                             </ul>
                                         </div>
                                     </div>
                                 </div>
                             </li>
 
-                            <li><a href="blog.html">blog</a>
+                            <li><a href="blog.jsp">blog</a>
                                 <div>
                                     <div>
                                         <ul>
-                                            <li><a href="blog-details.html">blog details</a></li>
-                                            <li><a href="blog-fullwidth.html">blog fullwidth</a></li>
-                                            <li><a href="blog-sidebar.html">blog sidebar</a></li>
+                                            <li><a href="blog-details.jsp">blog details</a></li>
+                                            <li><a href="blog-fullwidth.jsp">blog fullwidth</a></li>
+                                            <li><a href="blog-sidebar.jsp">blog sidebar</a></li>
                                         </ul>
                                     </div>
                                 </div>  
                             </li>
-                            <li><a href="contact.html">contact us</a></li>
+                            <li><a href="contract.jsp">contact us</a></li>
 
                         </ul>
                     </nav>

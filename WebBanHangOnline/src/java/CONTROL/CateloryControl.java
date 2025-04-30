@@ -10,21 +10,19 @@ import ENTITY.DanhMuc;
 import ENTITY.SanPham;
 import java.io.IOException;
 import java.io.PrintWriter;
-import java.util.AbstractList;
-import java.util.ArrayList;
 import java.util.List;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import javax.servlet.http.HttpSession;
+
 /**
  *
  * @author ThankPad
  */
-@WebServlet(name = "IndexControl", urlPatterns = {"/index"})
-public class IndexControl extends HttpServlet {
+@WebServlet(name = "CateloryControl", urlPatterns = {"/catelory"})
+public class CateloryControl extends HttpServlet {
 
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
@@ -38,17 +36,20 @@ public class IndexControl extends HttpServlet {
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
+        
+        String maDM = request.getParameter("idDM");
         DaoSanPham daoSp = new DaoSanPham();
-        List<SanPham> listAll = daoSp.getAllSanPham();
+        List<SanPham> listByidDM = daoSp.getSanPhamByDM(maDM);
         
         DaoDanhMuc daodm = new DaoDanhMuc();
         List<DanhMuc> listdm = daodm.getAllDanhMuc();
         
-        request.setAttribute("listAll", listAll);
+        request.setAttribute("listnew", listByidDM);
         request.setAttribute("listDM", listdm);
-        request.getRequestDispatcher("index.jsp").forward(request, response);
+    
+        request.getRequestDispatcher("shop-fullwidth-list.jsp").forward(request, response);
     }
-
+    
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">
     /**
      * Handles the HTTP <code>GET</code> method.

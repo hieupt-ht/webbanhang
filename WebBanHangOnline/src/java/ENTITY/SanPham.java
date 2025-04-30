@@ -14,6 +14,7 @@ public class SanPham {
     private double donGia;
     private int soLuongHienCon;
     private String linkAnh;
+    private String DMno;
 
     public String getMaSP() {
         return maSP;
@@ -55,21 +56,33 @@ public class SanPham {
         this.linkAnh = linkAnh;
     }
 
+    public String getDMno() {
+        return DMno;
+    }
+
+    public void setDMno(String DMno) {
+        this.DMno = DMno;
+    }
+
+    
+    
     public SanPham() {
     }
 
-    public SanPham(String maSP, String tenSP, double donGia, int soLuongHienCon, String linkAnh) {
+    public SanPham(String maSP, String tenSP, double donGia, int soLuongHienCon, String linkAnh, String DMno) {
         this.maSP = maSP;
         this.tenSP = tenSP;
         this.donGia = donGia;
         this.soLuongHienCon = soLuongHienCon;
         this.linkAnh = linkAnh;
+        this.DMno = DMno;
     }
 
     @Override
     public String toString() {
-        return "SanPham{" + "maSP=" + maSP + ", tenSP=" + tenSP + ", donGia=" + donGia + ", soLuongHienCon=" + soLuongHienCon + ", linkAnh=" + linkAnh + '}';
+        return "SanPham{" + "maSP=" + maSP + ", tenSP=" + tenSP + ", donGia=" + donGia + ", soLuongHienCon=" + soLuongHienCon + ", linkAnh=" + linkAnh + ", DMno=" + DMno + '}';
     }
+
     
     
 }
