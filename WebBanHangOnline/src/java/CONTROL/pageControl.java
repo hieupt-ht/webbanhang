@@ -8,9 +8,7 @@ import DAO.DaoSanPham;
 import ENTITY.SanPham;
 import java.io.IOException;
 import java.io.PrintWriter;
-import java.util.AbstractList;
 import java.util.ArrayList;
-import java.util.List;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -20,10 +18,10 @@ import javax.servlet.http.HttpSession;
 
 /**
  *
- * @author ThankPad
+ * @author LE KHAC HIEU
  */
-@WebServlet(name = "IndexControl", urlPatterns = {"/index"})
-public class IndexControl extends HttpServlet {
+@WebServlet(name = "pageControl", urlPatterns = {"/pageControl"})
+public class pageControl extends HttpServlet {
 
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
@@ -37,21 +35,23 @@ public class IndexControl extends HttpServlet {
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
-        HttpSession session = request.getSession();
-        DaoSanPham daoSp = new DaoSanPham();
-        List<SanPham> listnewsp = (List<SanPham>) session.getAttribute("listSp");
-        if (listnewsp == null) {
-            listnewsp = daoSp.getListspmoi();
+        String number = request.getParameter("number");
+        DAO.DaoSanPham dao = new DaoSanPham();
+        if(number == null)
+            number = "1";
+        int numberpage = Integer.parseInt(number);
+        ArrayList<SanPham> list = dao.getListSpByOffset(numberpage);
+        int page;
+        int count = dao.countSp();
+        if (count % 12 == 0) {
+            page = count / 12;
+        } else {
+            page = count / 12 + 1;
         }
-        session.setAttribute("listSP", listnewsp);
-
-        DaoSanPham daoSp2 = new DaoSanPham();
-        List<SanPham> listnewsp2 = (List<SanPham>) session.getAttribute("listSPNoiBat");
-        if (listnewsp == null) {
-            listnewsp = daoSp2.getListspNoiBat();
-        }
-        session.setAttribute("listSPNoiBat", listnewsp);
-        response.sendRedirect("index.jsp");
+        request.setAttribute("listfullwidth", list);
+        request.setAttribute("page", page);
+        request.setAttribute("tag", numberpage);
+        request.getRequestDispatcher("shop-fullwidth.jsp").forward(request, response);
     }
 
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">
@@ -92,5 +92,4 @@ public class IndexControl extends HttpServlet {
     public String getServletInfo() {
         return "Short description";
     }// </editor-fold>
-
 }

@@ -122,7 +122,7 @@
                                     <div class="mega_items jewelry">
                                         <ul>
                                             <li><a href="shop-list.html">shop list</a></li>
-                                            <li><a href="shop-fullwidth.html">shop Full Width Grid</a></li>
+                                            <li><a href="pageControl">shop Full Width Grid</a></li>
                                             <li><a href="shop-fullwidth-list.html">shop Full Width list</a></li>
                                             <li><a href="shop-sidebar.html">shop Right Sidebar</a></li>
                                             <li><a href="shop-sidebar-list.html">shop list Right Sidebar</a></li>

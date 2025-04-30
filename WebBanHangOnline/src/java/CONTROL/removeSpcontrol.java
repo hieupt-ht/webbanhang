@@ -47,6 +47,8 @@ public class removeSpcontrol extends HttpServlet {
         boolean checkID = dao.checkIdCartSp(idRm, gioHang);
         if (checkID == true) {
             gioHang = dao.removeCartSpById(idRm, gioHang);
+            if(gioHang.size() == 0)
+                session.removeAttribute("gioHang");
             response.sendRedirect("cart.jsp");
         }
     }

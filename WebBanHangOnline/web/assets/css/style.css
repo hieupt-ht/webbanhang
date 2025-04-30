@@ -3352,6 +3352,9 @@
 .blog__page_content {
 	margin-bottom: 20px;
 }
+.page_active {
+    color: #e84c3d;
+}
 .comments__title h3 {
 	font-size: 18px;
 	text-transform: capitalize;
@@ -3821,6 +3824,50 @@
 	cursor: pointer;
 	z-index: 9;
 }
+.category {
+    background-color: #00b7a7; /* Màu nền xanh */
+    padding: 20px;
+    border: 5px solid #00a89a; /* Viền ngoài nhạt hơn một chút */
+}
+
+.category-title {
+    color: white;
+    font-size: 24px;
+    margin-bottom: 20px;
+    font-weight: bold;
+    text-transform: uppercase;
+}
+
+.category-list {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.category-item {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px 0;
+    border-top: 1px solid #00a89a; /* Đường gạch ngang giữa các mục */
+}
+
+.category-item:first-child {
+    border-top: none; /* Xóa border ở mục đầu tiên */
+}
+
+.category-item a {
+    color: white;
+    text-decoration: none;
+    font-size: 18px;
+}
+
+.toggle-icon {
+    color: white;
+    font-size: 20px;
+    cursor: pointer;
+}
+
 .modal-content button span{
     
 }

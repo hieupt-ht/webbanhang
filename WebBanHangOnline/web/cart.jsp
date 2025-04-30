@@ -152,7 +152,7 @@
                                                     <p class="cart_amount">£215.00</p>
                                                 </div>
                                                 <div class="checkout_btn">
-                                                    <a href="checkout.jsp">Proceed to Checkout</a>
+                                                    <a href="checkout">Proceed to Checkout</a>
                                                 </div>
                                             </div>
                                         </div>

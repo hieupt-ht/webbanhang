@@ -87,15 +87,16 @@ public class DaoSanPham {
 
     public ArrayList<SanPham> removeSpById(int id, ArrayList<SanPham> listSp) {
         for (int i = 0; i <= listSp.size() - 1; i++) {
-            if (id==(listSp.get(i).getMaSP())) {
+            if (id == (listSp.get(i).getMaSP())) {
                 listSp.remove(i);
                 break;
             }
         }
         return listSp;
     }
+
     public ArrayList<SanPham> getListspmoi() {
-       String sql = "SELECT TOP 10 * FROM SanPham ORDER BY maSP DESC;";
+        String sql = "SELECT TOP 10 * FROM SanPham ORDER BY maSP DESC;";
         ArrayList<SanPham> listnewsp = new ArrayList<SanPham>();
         SanPham newSp;
         try {
@@ -117,12 +118,80 @@ public class DaoSanPham {
         return listnewsp;
     }
 
+    public ArrayList<SanPham> getListspNoiBat() {
+        String sql = "SELECT TOP 5 * FROM SanPham ORDER BY maSP ASC;";
+        ArrayList<SanPham> listnewsp = new ArrayList<SanPham>();
+        SanPham newSp;
+        try {
+            Connection con = CONTEXT.DatabaseConnection.getConnection();
+            PreparedStatement stmt = con.prepareStatement(sql);
+            ResultSet rs = stmt.executeQuery();
+            while (rs.next()) {
+                int masp = rs.getInt("maSP");
+                String tensp = rs.getString("tenSP");
+                double dongiaban = rs.getDouble("donGiaBan");
+                int soluonghienco = rs.getInt("soLuongHienCon");
+                String dmno = rs.getString("DMno");
+                String linkanh = rs.getString("linkAnh");
+                newSp = new SanPham(masp, tensp, dongiaban, soluonghienco, linkanh);
+                listnewsp.add(newSp);
+            }
+        } catch (Exception e) {
+        }
+        return listnewsp;
+    }
+
+    public int countSp() {
+        String sql = "select COUNT(*) as total from sanPham";
+        int count = 0;
+        try {
+            Connection con = CONTEXT.DatabaseConnection.getConnection();
+            PreparedStatement stmt = con.prepareStatement(sql);
+            ResultSet rs = stmt.executeQuery();
+            while (rs.next()) {
+                count = rs.getInt("total");
+            }
+
+        } catch (Exception e) {
+        }
+        return count;
+    }
+
+    public ArrayList<SanPham> getListSpByOffset(int index) {
+        ArrayList<SanPham> list = new ArrayList<>();
+        String sql = "SELECT *\n"
+                + "FROM SanPham\n"
+                + "ORDER BY maSP\n"
+                + "OFFSET ? ROWS FETCH NEXT 12 ROWS ONLY;";
+        SanPham newSp;
+        try {
+            Connection con = CONTEXT.DatabaseConnection.getConnection();
+            PreparedStatement stmt = con.prepareStatement(sql);
+            stmt.setInt(1, (index - 1) * 12);
+            ResultSet rs = stmt.executeQuery();
+            while (rs.next()) {
+                int masp = rs.getInt("maSP");
+                String tensp = rs.getString("tenSP");
+                double dongiaban = rs.getDouble("donGiaBan");
+                int soluonghienco = rs.getInt("soLuongHienCon");
+                String dmno = rs.getString("DMno");
+                String linkanh = rs.getString("linkAnh");
+                newSp = new SanPham(masp, tensp, dongiaban, soluonghienco, linkanh);
+                list.add(newSp);
+            }
+        } catch (Exception e) {
+        }
+        return list;
+    }
+
     public static void main(String[] args) {
         DaoSanPham dao = new DaoSanPham();
-        List<SanPham> list = dao.getListspmoi();
+        List<SanPham> list = dao.getListSpByOffset(1);
         for (SanPham sp : list) {
             System.out.println(sp);
         }
+        int count = dao.countSp();
+        System.out.println(count);
     }
 
 }
