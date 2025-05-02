@@ -4,8 +4,12 @@
  */
 package CONTROL;
 
+import DAO.DaoSanPham;
+import ENTITY.SanPham;
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.util.ArrayList;
+import java.util.List;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -33,8 +37,24 @@ public class SearchControl extends HttpServlet {
         response.setContentType("text/html;charset=UTF-8");
         request.setCharacterEncoding("UTF-8");
         String infor = request.getParameter("infor");
-        
-        
+        String number = request.getParameter("number");
+        DAO.DaoSanPham dao = new DaoSanPham();
+        if(number == null)
+            number = "1";
+        int numberpage = Integer.parseInt(number);
+        List<SanPham> list = dao.getSanPhamTheoTenVaPhanTrang(infor, numberpage);
+        int page;
+        int count = dao.serachSP(infor).size();
+        if (count % 12 == 0) {
+            page = count / 12;
+        } else {
+            page = count / 12 + 1;
+        }
+        request.setAttribute("listfullwidth", list);
+        request.setAttribute("page", page);
+        request.setAttribute("soLuongSP", count);
+        request.setAttribute("tag", numberpage);
+        request.getRequestDispatcher("shop-fullwidth.jsp").forward(request, response);        
     }
 
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">

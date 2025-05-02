@@ -41,12 +41,14 @@ public class removeSpcontrol extends HttpServlet {
         if (gioHang == null) {
             gioHang = new ArrayList<cartProduct>();
         }
-        String idSpCart = request.getParameter("idAddCart");
+        int idSpCart = Integer.parseInt(request.getParameter("idAddCart"));
         DAO.Daocartproduct dao = new DAO.Daocartproduct();
-        String idRm = request.getParameter("idrm");
+        int idRm = Integer.parseInt(request.getParameter("idrm"));
         boolean checkID = dao.checkIdCartSp(idRm, gioHang);
         if (checkID == true) {
             gioHang = dao.removeCartSpById(idRm, gioHang);
+            if(gioHang.size() == 0)
+                session.removeAttribute("gioHang");
             response.sendRedirect("cart.jsp");
         }
     }

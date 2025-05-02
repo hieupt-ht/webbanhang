@@ -116,14 +116,13 @@
                     <nav>
                         <ul>
                             <li class="active"><a href="index.jsp">Home</a>
-
                             </li>
-                            <li><a href="shop.jsp">shop</a>
+                            <li><a href="shop">shop</a>
                                 <div class="mega_menu jewelry">
                                     <div class="mega_items jewelry">
                                         <ul>
                                             <li><a href="shop-list.jsp">shop list</a></li>
-                                            <li><a href="shop-fullwidth.jsp">shop Full Width Grid</a></li>
+                                            <li><a href="pageControl">shop Full Width Grid</a></li>
                                             <li><a href="shop-fullwidth-list.jsp">shop Full Width list</a></li>
                                             <li><a href="shop-sidebar.jsp">shop Right Sidebar</a></li>
                                             <li><a href="shop-sidebar-list.jsp">shop list Right Sidebar</a></li>

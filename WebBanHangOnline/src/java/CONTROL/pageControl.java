@@ -6,26 +6,22 @@ package CONTROL;
 
 import DAO.DaoSanPham;
 import ENTITY.SanPham;
-import ENTITY.cartProduct;
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.util.ArrayList;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import java.util.ArrayList;
 import javax.servlet.http.HttpSession;
-import javax.servlet.RequestDispatcher;
-import javax.servlet.ServletResponse;
-import org.apache.tomcat.jni.SSLContext;
 
 /**
  *
  * @author LE KHAC HIEU
  */
-@WebServlet(name = "cartControl", urlPatterns = {"/cartControl"})
-public class cartControl extends HttpServlet {
+@WebServlet(name = "pageControl", urlPatterns = {"/pageControl"})
+public class pageControl extends HttpServlet {
 
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
@@ -39,22 +35,25 @@ public class cartControl extends HttpServlet {
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
-        HttpSession session = request.getSession();
-        ArrayList<cartProduct> gioHang = (ArrayList<cartProduct>) session.getAttribute("gioHang");
-        if (gioHang == null) {
-            gioHang = new ArrayList<cartProduct>();
+        String number = request.getParameter("number");
+        DAO.DaoSanPham dao = new DaoSanPham();
+        if(number == null)
+            number = "1";
+        int numberpage = Integer.parseInt(number);
+        ArrayList<SanPham> list = dao.getListSpByOffset(numberpage);
+        int page;
+        int count = dao.countSp();
+        if (count % 12 == 0) {
+            page = count / 12;
+        } else {
+            page = count / 12 + 1;
         }
-        int idSpCart = Integer.parseInt(request.getParameter("idAddCart"));
-        DaoSanPham daoSanPham = new DaoSanPham();
-        SanPham sanPhamAddCart = daoSanPham.getSpbyId(idSpCart);
-        
-        cartProduct cartproduct = new cartProduct(sanPhamAddCart.getMaSP(), sanPhamAddCart.getTenSP(), sanPhamAddCart.getDonGia()
-                , sanPhamAddCart.getSoLuongHienCon(), sanPhamAddCart.getLinkAnh(), 1, sanPhamAddCart.getDonGia());
-        gioHang.add(cartproduct);
-        session.setAttribute("gioHang", gioHang);
-        response.sendRedirect("cart.jsp");
+        request.setAttribute("listfullwidth", list);
+        request.setAttribute("page", page);
+        request.setAttribute("soLuongSP", count);
+        request.setAttribute("tag", numberpage);
+        request.getRequestDispatcher("shop-fullwidth.jsp").forward(request, response);
     }
-    
 
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">
     /**
@@ -94,5 +93,4 @@ public class cartControl extends HttpServlet {
     public String getServletInfo() {
         return "Short description";
     }// </editor-fold>
-
 }

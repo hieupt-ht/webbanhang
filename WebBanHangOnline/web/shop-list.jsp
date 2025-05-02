@@ -4,6 +4,9 @@
 ﻿<!doctype html>
 <html class="no-js" lang="zxx">
     <head>
+        <link rel="stylesheet" href="https://code.jquery.com/ui/1.13.2/themes/base/jquery-ui.css">
+        <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
+        <script src="https://code.jquery.com/ui/1.13.2/jquery-ui.js"></script>
         <meta charset="utf-8">
         <meta http-equiv="x-ua-compatible" content="ie=edge">
         <title>Coron-shop list</title>
@@ -1031,3 +1034,28 @@
         <script src="assets\js\main.js"></script>
     </body>
 </html>
+
+
+<script>
+    $(function () {
+        $("#slider-range").slider({
+            range: true,
+            min: 0,
+            max: 1000000, // hoặc tùy theo dữ liệu của bạn
+            values: [100000, 500000], // giá trị mặc định ban đầu
+            slide: function (event, ui) {
+                $("#amount").val(ui.values[0] + " - " + ui.values[1]);
+            },
+            change: function (event, ui) {
+                // Gửi request lọc sản phẩm khi slider thay đổi
+                const min = ui.values[0];
+                const max = ui.values[1];
+                window.location.href = "filterByPrice?min=" + min + "&max=" + max;
+            }
+        });
+
+        // Hiển thị giá trị mặc định khi trang tải
+        $("#amount").val($("#slider-range").slider("values", 0) +
+            " - " + $("#slider-range").slider("values", 1));
+    });
+</script>

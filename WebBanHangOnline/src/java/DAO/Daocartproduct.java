@@ -16,26 +16,26 @@ public class Daocartproduct {
     public Daocartproduct() {
     }
 
-    public boolean checkIdCartSp(String id, ArrayList<cartProduct> listSp) {
+    public boolean checkIdCartSp(int id, ArrayList<cartProduct> listSp) {
         for (cartProduct sp : listSp) {
-            if (sp.getMaSP().equals(id)) {
+            if (sp.getMaSP() == id) {
                 return true;
             }
         }
         return false;
     }
-   public ArrayList<cartProduct> removeCartSpById(String id, ArrayList<cartProduct> listSp) {
+   public ArrayList<cartProduct> removeCartSpById(int id, ArrayList<cartProduct> listSp) {
         for (int i = 0; i <= listSp.size() - 1; i++) {
-            if (id.equals(listSp.get(i).getMaSP())) {
+            if (id == (listSp.get(i).getMaSP())) {
                 listSp.remove(i);
                 break;
             }
         }
         return listSp;
     }
-    public cartProduct getCartproductByid(String masp, ArrayList<cartProduct> listSp) {
+    public cartProduct getCartproductByid(int masp, ArrayList<cartProduct> listSp) {
         for (cartProduct c : listSp) {
-            if (c.getMaSP().equals(masp)) {
+            if (c.getMaSP() == masp) {
                 return c;
             }
         }

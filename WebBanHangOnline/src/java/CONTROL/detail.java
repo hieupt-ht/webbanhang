@@ -1,31 +1,27 @@
+package CONTROL;
+
 /*
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/JSP_Servlet/Servlet.java to edit this template
  */
-package CONTROL;
 
 import DAO.DaoSanPham;
 import ENTITY.SanPham;
-import ENTITY.cartProduct;
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.util.HashSet;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import java.util.ArrayList;
-import javax.servlet.http.HttpSession;
-import javax.servlet.RequestDispatcher;
-import javax.servlet.ServletResponse;
-import org.apache.tomcat.jni.SSLContext;
 
 /**
  *
  * @author LE KHAC HIEU
  */
-@WebServlet(name = "cartControl", urlPatterns = {"/cartControl"})
-public class cartControl extends HttpServlet {
+@WebServlet(urlPatterns = {"/detail"})
+public class detail extends HttpServlet {
 
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
@@ -39,22 +35,12 @@ public class cartControl extends HttpServlet {
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
-        HttpSession session = request.getSession();
-        ArrayList<cartProduct> gioHang = (ArrayList<cartProduct>) session.getAttribute("gioHang");
-        if (gioHang == null) {
-            gioHang = new ArrayList<cartProduct>();
-        }
-        int idSpCart = Integer.parseInt(request.getParameter("idAddCart"));
-        DaoSanPham daoSanPham = new DaoSanPham();
-        SanPham sanPhamAddCart = daoSanPham.getSpbyId(idSpCart);
-        
-        cartProduct cartproduct = new cartProduct(sanPhamAddCart.getMaSP(), sanPhamAddCart.getTenSP(), sanPhamAddCart.getDonGia()
-                , sanPhamAddCart.getSoLuongHienCon(), sanPhamAddCart.getLinkAnh(), 1, sanPhamAddCart.getDonGia());
-        gioHang.add(cartproduct);
-        session.setAttribute("gioHang", gioHang);
-        response.sendRedirect("cart.jsp");
+        int idDetail = Integer.parseInt(request.getParameter("idDetail"));
+        DaoSanPham daosp = new DaoSanPham();
+        SanPham sanphamdetail = daosp.getSpbyId(idDetail);
+        request.setAttribute("sanphamdetail", sanphamdetail);
+        request.getRequestDispatcher("index.jsp").forward(request, response);
     }
-    
 
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">
     /**
