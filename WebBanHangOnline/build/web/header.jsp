@@ -121,7 +121,7 @@
                                 <div class="mega_menu jewelry">
                                     <div class="mega_items jewelry">
                                         <ul>
-                                            <li><a href="shop-list.jsp">shop list</a></li>
+                                            <li><a href="shoplist">shop list</a></li>
                                             <li><a href="pageControl">shop Full Width Grid</a></li>
                                             <li><a href="shop-fullwidth-list.jsp">shop Full Width list</a></li>
                                             <li><a href="shop-sidebar.jsp">shop Right Sidebar</a></li>
