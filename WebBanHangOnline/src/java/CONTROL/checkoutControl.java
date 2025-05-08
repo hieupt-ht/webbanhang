@@ -4,6 +4,7 @@
  */
 package CONTROL;
 
+import DAO.AccountDao;
 import java.io.IOException;
 import java.io.PrintWriter;
 import javax.servlet.ServletException;
@@ -12,6 +13,7 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
+import ENTITY.Account;
 /**
  *
  * @author LE KHAC HIEU
@@ -31,7 +33,23 @@ public class checkoutControl extends HttpServlet {
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
-        response.sendRedirect("checkout.jsp");
+        HttpSession session = request.getSession();
+        Account acc = (Account) session.getAttribute("acc");
+        if(acc == null){
+               request.setAttribute("message_notLogin", "Bạn cần đăng nhập trước");
+               request.getRequestDispatcher("checkout.jsp").forward(request, response);
+        }
+        else
+        {
+             String firstName = (String) request.getAttribute("firstName");
+             String lastName = (String) request.getAttribute("lastName");
+             String companyName = (String) request.getAttribute("companyName");
+             String streetAddress = (String) request.getAttribute("streetAddress");
+             String homeNumber = (String) request.getAttribute("homeNumber");
+             String city = (String) request.getAttribute("city");
+             String phone = (String) request.getAttribute("phone");
+             String email = (String) request.getAttribute("email");             
+        }
     }
  
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">

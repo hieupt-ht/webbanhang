@@ -51,7 +51,7 @@
             <!--logo start-->
             <div class="col-lg-3 col-md-3">
                 <div class="logo">
-                    <a href="index.jsp"><img src="assets\img\logo\logo.jpg.png" alt=""></a>
+                    <a href="index"><img src="assets\img\logo\logo.jpg.png" alt=""></a>
                 </div>
             </div>
             <!--logo end-->
