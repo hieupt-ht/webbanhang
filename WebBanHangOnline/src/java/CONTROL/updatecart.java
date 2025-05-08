@@ -4,12 +4,18 @@
  */
 package CONTROL;
 
+import DAO.DaoKhachHang;
 import DAO.DaoSanPham;
 import DAO.Daocartproduct;
+import DAO.daoGioHang;
+import ENTITY.Account;
+import ENTITY.SanPham;
 import ENTITY.cartProduct;
+import ENTITY.gioHang;
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.util.ArrayList;
+import java.util.List;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -43,27 +49,59 @@ public class updatecart extends HttpServlet {
             if (listcart == null) {
                 listcart = new ArrayList<cartProduct>();
             }
-            Daocartproduct dao = new Daocartproduct();
-            String ids[] = request.getParameterValues("maSP");
-            String soluongs[] = request.getParameterValues("soluong");
-            if (ids != null && soluongs != null) {
-                for (int i = 0; i <= ids.length - 1; i++) {
-                    String idsp = ids[i];
-                    cartProduct cartproduct = dao.getCartproductByid(Integer.parseInt(idsp), listcart);
-                    cartproduct.setSoLuong(Integer.parseInt(soluongs[i]));
-                    cartproduct.setTongTien(Integer.parseInt(soluongs[i]) * cartproduct.getDonGia());
+            if (session.getAttribute("acc") == null) {
+                Daocartproduct dao = new Daocartproduct();
+                String ids[] = request.getParameterValues("maSP");
+                String soluongs[] = request.getParameterValues("soluong");
+                if (ids != null && soluongs != null) {
+                    for (int i = 0; i <= ids.length - 1; i++) {
+                        String idsp = ids[i];
+                        cartProduct cartproduct = dao.getCartproductByid(Integer.parseInt(idsp), listcart);
+                        cartproduct.setSoLuong(Integer.parseInt(soluongs[i]));
+                        cartproduct.setTongTien(Integer.parseInt(soluongs[i]) * cartproduct.getDonGia());
+                    }
                 }
+                session.setAttribute("gioHang", listcart);
+                int sum = 0;
+                int dem = 0;
+                for (cartProduct c : listcart) {
+                    sum += c.getTongTien();
+                    dem++;
+                }
+                session.setAttribute("minicartsoluong", dem);
+                session.setAttribute("minicarttongtien", sum);
+                response.sendRedirect("cart.jsp");
+            } else {
+                String ids[] = request.getParameterValues("maSP");
+                String soluongs[] = request.getParameterValues("soluong");
+                Account account = (Account) session.getAttribute("acc");
+                String email = account.getEmail();
+                DaoKhachHang kh = new DaoKhachHang();
+                int maKH = kh.selectmaKH(email);
+                daoGioHang daogiohang = new daoGioHang();
+                for (int i = 0; i <= ids.length - 1; i++) {
+                    int idSp = Integer.parseInt(ids[i]);
+                    daogiohang.updateGioHang(maKH, idSp, Integer.parseInt(soluongs[i]));
+                }
+                List<gioHang> listGioHang = daogiohang.getAllGioHang(maKH);
+                listcart = new ArrayList<cartProduct>();
+                DaoSanPham daoSanPham = new DaoSanPham();
+                for (gioHang gh : listGioHang) {
+                    SanPham sp = daoSanPham.getSpbyId(gh.getMaSp());
+                    cartProduct cartproduct = new cartProduct(sp.getMaSP(), sp.getTenSP(), sp.getDonGia(), sp.getSoLuongHienCon(), sp.getLinkAnh(), gh.getSoLuong(), gh.getTongTien());
+                    listcart.add(cartproduct);
+                }
+                session.setAttribute("gioHang", listcart);
+                int sum = 0;
+                int dem = 0;
+                for (cartProduct c : listcart) {
+                    sum += c.getTongTien();
+                    dem++;
+                }
+                session.setAttribute("minicartsoluong", dem);
+                session.setAttribute("minicarttongtien", sum);
+                response.sendRedirect("cart.jsp");
             }
-            session.setAttribute("gioHang", listcart);
-            int sum = 0;
-            int dem = 0;
-            for (cartProduct c : listcart) {
-                sum += c.getTongTien();
-                dem++;
-            }
-            session.setAttribute("minicartsoluong", dem);
-            session.setAttribute("minicarttongtien", sum);
-            response.sendRedirect("cart.jsp");
 
             //request.getRequestDispatcher("cart.jsp").forward(request, response);
         }

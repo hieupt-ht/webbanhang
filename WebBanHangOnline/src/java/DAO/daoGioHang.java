@@ -58,22 +58,21 @@ public class daoGioHang {
         } catch (Exception e) {
         }
     }
-    public void updateGioHang(int maKH, int maSP, int soLuong, double donGia)
+    public void updateGioHang(int maKH, int maSP, int soLuong)
     {
-        String sql = "update DONGIA set soLuong = ?, donGia = ? where maKH = ? and maSP = ?";
+        String sql = "update GIOHANG set soLuong = ? where maKH = ? and maSP = ?";
         try {
             Connection con = CONTEXT.DatabaseConnection.getConnection();
             PreparedStatement stmt = con.prepareStatement(sql);
             stmt.setInt(1, soLuong);
-            stmt.setDouble(2, donGia);
-            stmt.setInt(3, maKH);
-            stmt.setInt(4, maSP);
+            stmt.setInt(2, maKH);
+            stmt.setInt(3, maSP);
             stmt.executeUpdate();
         } catch (Exception e) {
         }
     }
     public static void main(String[] args) {
         daoGioHang gh = new daoGioHang();
-        gh.insertGioHang(3, 4, 1, 1929199);
+        gh.updateGioHang(3, 14, 4);
     }
 }

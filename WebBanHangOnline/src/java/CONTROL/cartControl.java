@@ -63,16 +63,11 @@ public class cartControl extends HttpServlet {
         } else {
             daoGioHang daogh = new daoGioHang();
             ArrayList<cartProduct> gioHang = (ArrayList<cartProduct>) session.getAttribute("gioHang");
-            if (gioHang == null) {
-                gioHang = new ArrayList<cartProduct>();
-            }
             Account account = (Account) session.getAttribute("acc");
             String email = account.getEmail();
             DaoKhachHang kh = new DaoKhachHang();
             int maKH = kh.selectmaKH(email);
-            for (cartProduct sp : gioHang) {
-                daogh.insertGioHang(maKH, sp.getMaSP(), sp.getSoLuong(), sp.getDonGia());
-            }
+
             int idSpCart = Integer.parseInt(request.getParameter("idAddCart"));
             DaoSanPham daoSanPham = new DaoSanPham();
             SanPham sanPhamAddCart = daoSanPham.getSpbyId(idSpCart);

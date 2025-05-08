@@ -143,13 +143,13 @@
                                                 </div>
                                                 <div class="cart_subtotal ">
                                                     <p>Shipping</p>
-                                                    <p class="cart_amount"><span>Flat Rate:</span> £255.00</p>
+                                                    <p class="cart_amount"><span>Flat Rate:</span> 0</p>
                                                 </div>
                                                 <a href="#">Calculate shipping</a>
 
                                                 <div class="cart_subtotal">
                                                     <p>Total</p>
-                                                    <p class="cart_amount">£215.00</p>
+                                                    <p class="cart_amount">0</p>
                                                 </div>
                                                 <div class="checkout_btn">
                                                     <a href="checkout.jsp">Proceed to Checkout</a>

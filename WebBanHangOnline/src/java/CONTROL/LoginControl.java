@@ -5,9 +5,17 @@
 package CONTROL;
 
 import DAO.AccountDao;
+import DAO.DaoKhachHang;
+import DAO.DaoSanPham;
+import DAO.daoGioHang;
 import ENTITY.Account;
+import ENTITY.SanPham;
+import ENTITY.cartProduct;
+import ENTITY.gioHang;
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.util.ArrayList;
+import java.util.List;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -36,7 +44,7 @@ public class LoginControl extends HttpServlet {
         response.setContentType("text/html;charset=UTF-8");
         String userOrPassword = request.getParameter("user");
         String password = request.getParameter("password");
-        
+
         AccountDao dao = new AccountDao();
         Account a = dao.Login(userOrPassword, password);
         if (a == null) {
@@ -45,6 +53,35 @@ public class LoginControl extends HttpServlet {
         } else {
             HttpSession session = request.getSession();
             session.setAttribute("acc", a);
+
+            String email = a.getEmail();
+            DaoKhachHang kh = new DaoKhachHang();
+            int maKH = kh.selectmaKH(email);
+            DaoSanPham daoSanPham = new DaoSanPham();
+            daoGioHang daogh = new daoGioHang();
+            ArrayList<cartProduct> gioHang = (ArrayList<cartProduct>) session.getAttribute("gioHang");
+            if (gioHang != null) {
+                for (cartProduct sp : gioHang) {
+                    daogh.insertGioHang(maKH, sp.getMaSP(), sp.getSoLuong(), sp.getDonGia());
+                }
+            }
+            List<gioHang> listGioHang = daogh.getAllGioHang(maKH);
+            gioHang = new ArrayList<cartProduct>();
+            for (gioHang gh : listGioHang) {
+                SanPham sp = daoSanPham.getSpbyId(gh.getMaSp());
+                cartProduct cartproduct = new cartProduct(sp.getMaSP(), sp.getTenSP(), sp.getDonGia(), sp.getSoLuongHienCon(), sp.getLinkAnh(), gh.getSoLuong(), gh.getTongTien());
+                gioHang.add(cartproduct);
+            }
+            int dem = 0;
+            int sum = 0;
+
+            for (cartProduct sp : gioHang) {
+                dem++;
+                sum += sp.getTongTien();
+            }
+            session.setAttribute("gioHang", gioHang);
+            session.setAttribute("minicartsoluong", dem);
+            session.setAttribute("minicarttongtien", sum);
             response.sendRedirect("index");
         }
     }
