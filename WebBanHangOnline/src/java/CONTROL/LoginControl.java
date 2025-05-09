@@ -52,21 +52,26 @@ public class LoginControl extends HttpServlet {
             request.getRequestDispatcher("login.jsp").forward(request, response);
         } else {
             HttpSession session = request.getSession();
-            session.setAttribute("acc", a);
 
+            System.out.println("Session acc: " + session.getAttribute("acc"));
+            System.out.println(session.getAttribute("gioHang"));
+
+            session.setAttribute("acc", a);
             String email = a.getEmail();
             DaoKhachHang kh = new DaoKhachHang();
             int maKH = kh.selectmaKH(email);
+            System.out.println(maKH);
             DaoSanPham daoSanPham = new DaoSanPham();
             daoGioHang daogh = new daoGioHang();
-            ArrayList<cartProduct> gioHang = (ArrayList<cartProduct>) session.getAttribute("gioHang");
-            if (gioHang != null) {
-                for (cartProduct sp : gioHang) {
+            ArrayList<cartProduct> gioHangsession = (ArrayList<cartProduct>) session.getAttribute("gioHang");
+            if (gioHangsession != null) {
+                for (cartProduct sp : gioHangsession) {
                     daogh.insertGioHang(maKH, sp.getMaSP(), sp.getSoLuong(), sp.getDonGia());
                 }
+                session.removeAttribute("gioHang");
             }
             List<gioHang> listGioHang = daogh.getAllGioHang(maKH);
-            gioHang = new ArrayList<cartProduct>();
+            List<cartProduct> gioHang = new ArrayList<cartProduct>();
             for (gioHang gh : listGioHang) {
                 SanPham sp = daoSanPham.getSpbyId(gh.getMaSp());
                 cartProduct cartproduct = new cartProduct(sp.getMaSP(), sp.getTenSP(), sp.getDonGia(), sp.getSoLuongHienCon(), sp.getLinkAnh(), gh.getSoLuong(), gh.getTongTien());
@@ -79,6 +84,8 @@ public class LoginControl extends HttpServlet {
                 dem++;
                 sum += sp.getTongTien();
             }
+            System.out.println("Session acc: " + session.getAttribute("acc"));
+            System.out.println(gioHang.size());
             session.setAttribute("gioHang", gioHang);
             session.setAttribute("minicartsoluong", dem);
             session.setAttribute("minicarttongtien", sum);

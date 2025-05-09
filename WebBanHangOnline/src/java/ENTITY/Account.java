@@ -46,5 +46,10 @@ public class Account {
         this.password = password;
     }
 
+    @Override
+    public String toString() {
+        return "Account{" + "email=" + email + '}';
+    }
+
     
 }

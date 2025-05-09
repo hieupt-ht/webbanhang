@@ -29,18 +29,19 @@ public class daoGioHang {
         }
     }
     public List<gioHang> getAllGioHang(int maKH){
-        String sql = "select * from GIOHANG";
+        String sql = "select * from GIOHANG where maKH = ?";
         List<gioHang> listGioHang = new ArrayList<>();
         try {
             Connection con = CONTEXT.DatabaseConnection.getConnection();
             PreparedStatement stmt = con.prepareStatement(sql);
+            stmt.setInt(1, maKH);
             ResultSet rs = stmt.executeQuery();
             while(rs.next()){
                 int maKhachHang = rs.getInt("maKH");
                 int maSP = rs.getInt("maSP");
                 int soLuong = rs.getInt("soLuong");
                 double donGia = rs.getDouble("donGia");
-                gioHang gh= new gioHang(maKH, maSP, soLuong, donGia, soLuong*donGia);
+                gioHang gh= new gioHang(maKhachHang, maSP, soLuong, donGia, soLuong*donGia);
                 listGioHang.add(gh);
             }
         } catch (Exception e) {
@@ -73,6 +74,7 @@ public class daoGioHang {
     }
     public static void main(String[] args) {
         daoGioHang gh = new daoGioHang();
-        gh.updateGioHang(3, 14, 4);
+//        gh.updateGioHang(3, 14, 4);
+           System.out.println(gh.getAllGioHang(1));
     }
 }

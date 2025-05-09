@@ -63,5 +63,10 @@ public class gioHang {
     public void setTongTien(double tongTien) {
         this.tongTien = tongTien;
     }
+
+    @Override
+    public String toString() {
+        return "gioHang{" + "maKH=" + maKH + ", maSp=" + maSp + ", soLuong=" + soLuong + ", donGia=" + donGia + ", tongTien=" + tongTien + '}';
+    }
     
 }
