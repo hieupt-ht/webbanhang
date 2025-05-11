@@ -41,11 +41,7 @@ public class CateloryControl extends HttpServlet {
         DaoSanPham daoSp = new DaoSanPham();
         List<SanPham> listByidDM = daoSp.getSanPhamByDM(maDM);
         
-        DaoDanhMuc daodm = new DaoDanhMuc();
-        List<DanhMuc> listdm = daodm.getAllDanhMuc();
-        
-        request.setAttribute("listnew", listByidDM);
-        request.setAttribute("listDM", listdm);
+        request.setAttribute("list", listByidDM);
     
         request.getRequestDispatcher("shop-fullwidth-list.jsp").forward(request, response);
     }

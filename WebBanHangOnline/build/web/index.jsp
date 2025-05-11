@@ -6,9 +6,11 @@
 
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
-﻿<!doctype html>
+<!doctype html>
 <html class="no-js" lang="zxx">
     <head>
+        <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+        <script src="assets/js/bootstrap.min.js"></script>
         <meta charset="utf-8">
         <meta http-equiv="x-ua-compatible" content="ie=edge">
         <title>Coron - Fashion eCommerce Bootstrap4 Template</title>
@@ -26,44 +28,44 @@
         <script src="assets\js\vendor\modernizr-2.8.3.min.js"></script>
     </head>
     <body>
-        <!-- Add your site or application content here -->
         <!--pos page start-->
         <div class="pos_page">
             <div class="container">
                 <!--pos page inner-->
                 <div class="pos_page_inner">  
                     <!--header area -->
-                    <jsp:include page = "header.jsp"></jsp:include>
-                        <!--header end -->
+                    <jsp:include page="header.jsp"></jsp:include>
+                    <!--header end -->
 
-                        <!--pos home section-->
-                        <div class=" pos_home_section">
-                            <div class="row pos_home">
-                                <div class="col-lg-3 col-md-8 col-12">
-                                    <!--sidebar banner-->
-                                    <div class="sidebar_widget banner mb-35">
-                                        <div class="banner_img mb-35">
-                                            <a href="#"><img src="assets\img\banner\banner5.jpg" alt=""></a>
-                                        </div>
-                                        <div class="banner_img">
-                                            <a href="#"><img src="assets\img\banner\banner6.jpg" alt=""></a>
-                                        </div>
+                    <!--pos home section-->
+                    <div class="pos_home_section">
+                        <div class="row pos_home">
+                            <div class="col-lg-3 col-md-8 col-12">
+                                <!--sidebar banner-->
+                                <div class="sidebar_widget banner mb-35">
+                                    <div class="banner_img mb-35">
+                                        <a href="#"><img src="assets\img\banner\banner5.jpg" alt=""></a>
                                     </div>
-                                    <!--sidebar banner end-->
+                                    <div class="banner_img">
+                                        <a href="#"><img src="assets\img\banner\banner6.jpg" alt=""></a>
+                                    </div>
+                                </div>
+                                <!--sidebar banner end-->
 
-                                    <!--categorie menu start-->
-                                    <div class="category">
-                                        <h3 class="category-title">CATEGORIES</h3>
-                                        <ul class="category-list">
+                                <!--categorie menu start-->
+                                <div class="category">
+                                    <h3 class="category-title">CATEGORIES</h3>
+                                    <ul class="category-list">
                                         <c:forEach var="dm" items="${listDM}">
                                             <li class="category-item">
                                                 <a href="catelory?idDM=${dm.maDM}">${dm.tenDM}</a>
                                             </li>
                                         </c:forEach>
-                                    </div>
-                                    <!--categorie menu end-->
+                                    </ul>
+                                </div>
+                                <!--categorie menu end-->
 
-                                    <!--wishlist block start-->
+                                <!--wishlist block start-->
                                 <c:if test="${sessionScope.acc != null}">
                                     <div class="sidebar_widget wishlist mb-35">
                                         <div class="block_title">
@@ -96,7 +98,7 @@
                                             </div>
                                         </div>
                                         <div class="block_content">
-                                            <p>2  products</p>
+                                            <p>2 products</p>
                                             <a href="wishlist.jsp">» My wishlists</a>
                                         </div>
                                     </div>
@@ -104,15 +106,14 @@
                                 <!--wishlist block end-->
 
                                 <!--sidebar banner-->
-                                <div class="sidebar_widget bottom ">
+                                <div class="sidebar_widget bottom">
                                     <div class="banner_img">
                                         <a href="#"><img src="assets\img\banner\banner9.jpg" alt=""></a>
                                     </div>
                                 </div>
                                 <!--sidebar banner end-->
-
-                                </div>
-                                <div class="col-lg-9 col-md-12">
+                            </div>
+                            <div class="col-lg-9 col-md-12">
                                 <!--banner slider start-->
                                 <div class="banner_slider slider_1">
                                     <div class="slider_active owl-carousel">
@@ -120,7 +121,7 @@
                                             <div class="slider_content">
                                                 <div class="slider_content_inner">  
                                                     <h1>Women's Fashion</h1>
-                                                    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. </p>
+                                                    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit.</p>
                                                     <a href="#">shop now</a>
                                                 </div>     
                                             </div>    
@@ -129,7 +130,7 @@
                                             <div class="slider_content">
                                                 <div class="slider_content_inner">  
                                                     <h1>New Collection</h1>
-                                                    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. </p>
+                                                    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit.</p>
                                                     <a href="#">shop now</a>
                                                 </div>         
                                             </div>         
@@ -138,16 +139,14 @@
                                             <div class="slider_content">  
                                                 <div class="slider_content_inner">  
                                                     <h1>Best Collection</h1>
-                                                    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. </p>
+                                                    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit.</p>
                                                     <a href="#">shop now</a>
                                                 </div> 
                                             </div> 
                                         </div>
                                     </div>
                                 </div> 
-                                <!--banner slider start-->
-                                
-
+                                <!--banner slider end-->
 
                                 <c:forEach var="dm" items="${listDM}">
                                     <!--new product area start-->
@@ -157,112 +156,40 @@
                                         </div>
                                         <div class="row">   
                                             <div class="product_active owl-carousel">                                             
-                                            <c:forEach var="sp" items="${listAll}">
-                                                <c:if test="${sp.DMno == dm.maDM}">
-                                                    
-                              
-                                                <div class="col-lg-3">
-                                                    <div class="single_product">
-                                                        <div class="product_thumb">
-                                                            <a href="single-product.html"><img src="${sp.linkAnh}" alt=""></a> 
-                                                            <div class="img_icone">
-                                                                <img src="assets\img\cart\span-new.png" alt="">
+                                                <c:forEach var="sp" items="${listAll}">
+                                                    <c:if test="${sp.DMno == dm.maDM}">
+                                                        <div class="col-lg-3">
+                                                            <div class="single_product">
+                                                                <div class="product_thumb">
+                                                                    <a href="single-product.html"><img src="${sp.linkAnh}" alt=""></a> 
+                                                                    <div class="img_icone">
+                                                                        <img src="assets\img\cart\span-new.png" alt="">
+                                                                    </div>
+                                                                    <div class="product_action">
+                                                                        <a href="cartControl?idAddCart=${sp.maSP}"> <i class="fa fa-shopping-cart"></i> Add to cart</a>
+                                                                    </div>
+                                                                </div>
+                                                                <div class="product_content">
+                                                                    <span class="product_price">$ ${sp.donGia}</span>
+                                                                    <h3 class="product_title"><a href="single-product.html">${sp.tenSP}</a></h3>
+                                                                </div>
+                                                                <div class="product_info">
+                                                                    <ul>
+                                                                        <c:if test="${sessionScope.acc != null}">
+                                                                            <li><a href="#" title="Add to Wishlist">Add to Wishlist</a></li>
+                                                                        </c:if>
+                                                                        <li><a href="#" class="view-detail" data-id="${sp.maSP}" title="Quick view">View Detail</a></li>
+                                                                    </ul>
+                                                                </div>
                                                             </div>
-                                                            <div class="product_action">
-                                                                <a href="cartControl?idAddCart=${sp.maSP}"> <i class="fa fa-shopping-cart"></i> Add to cart</a>
-                                                            </div>
-                                                        </div>
-                                                        <div class="product_content">
-                                                            <span class="product_price"> $ ${sp.donGia}</span>
-                                                            <h3 class="product_title"><a href="single-product.html">${sp.tenSP}</a></h3>
-                                                        </div>
-                                                        <div class="product_info">
-                                                            <ul>
-                                                                <c:if test="${sessionScope.acc != null}">
-                                                                <li><a href="#" title=" Add to Wishlist ">Add to Wishlist</a></li>
-                                                                </c:if>
-                                                                <li><a href="detail?idDetail=${sp.maSP}" data-toggle="modal" data-target="#modal_box" title="Quick view">View Detail</a></li>
-                                                                    
-                                                            </ul>
-                                                        </div>
-                                                    </div>
-                                                </div>       
-                                                </c:if>
-                                            </c:forEach>    
+                                                        </div>       
+                                                    </c:if>
+                                                </c:forEach>    
                                             </div>           
                                         </div>       
                                     </div> 
-                                    <!--new product area start-->  
+                                    <!--new product area end-->  
                                 </c:forEach>
-                                    
-
-                                    <!--banner area start-->
-                                    <div class="banner_area mb-60">
-                                        <div class="row">
-                                            <div class="col-lg-6 col-md-6">
-                                                <div class="single_banner">
-                                                    <a href="#"><img src="assets\img\banner\banner7.jpg" alt=""></a>
-                                                    <div class="banner_title">
-                                                        <p>Up to <span> 40%</span> off</p>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                            <div class="col-lg-6 col-md-6">
-                                                <div class="single_banner">
-                                                    <a href="#"><img src="assets\img\banner\banner8.jpg" alt=""></a>
-                                                    <div class="banner_title title_2">
-                                                        <p>sale off <span> 30%</span></p>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>     
-                                    <!--banner area end--> 
-
-                                    <!--brand logo strat--> 
-                                    <div class="brand_logo mb-60">
-                                        <div class="block_title">
-                                            <h3>Brands</h3>
-                                        </div>
-                                        <div class="row">
-                                            <div class="brand_active owl-carousel">
-                                                <div class="col-lg-2">
-                                                    <div class="single_brand">
-                                                        <a href="#"><img src="assets\img\brand\brand1.jpg" alt=""></a>
-                                                    </div>
-                                                </div>
-                                                <div class="col-lg-2">
-                                                    <div class="single_brand">
-                                                        <a href="#"><img src="assets\img\brand\brand2.jpg" alt=""></a>
-                                                    </div>
-                                                </div>
-                                                <div class="col-lg-2">
-                                                    <div class="single_brand">
-                                                        <a href="#"><img src="assets\img\brand\brand3.jpg" alt=""></a>
-                                                    </div>
-                                                </div>
-                                                <div class="col-lg-2">
-                                                    <div class="single_brand">
-                                                        <a href="#"><img src="assets\img\brand\brand4.jpg" alt=""></a>
-                                                    </div>
-                                                </div>
-                                                <div class="col-lg-2">
-                                                    <div class="single_brand">
-                                                        <a href="#"><img src="assets\img\brand\brand5.jpg" alt=""></a>
-                                                    </div>
-                                                </div>
-                                                <div class="col-lg-2">
-                                                    <div class="single_brand">
-                                                        <a href="#"><img src="assets\img\brand\brand6.jpg" alt=""></a>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                        </div>   
-                                    </div>       
-                                </div> 
-                                <!--new product area start-->  
-
 
                                 <!--banner area start-->
                                 <div class="banner_area mb-60">
@@ -271,7 +198,7 @@
                                             <div class="single_banner">
                                                 <a href="#"><img src="assets\img\banner\banner7.jpg" alt=""></a>
                                                 <div class="banner_title">
-                                                    <p>Up to <span> 40%</span> off</p>
+                                                    <p>Up to <span>40%</span> off</p>
                                                 </div>
                                             </div>
                                         </div>
@@ -279,7 +206,7 @@
                                             <div class="single_banner">
                                                 <a href="#"><img src="assets\img\banner\banner8.jpg" alt=""></a>
                                                 <div class="banner_title title_2">
-                                                    <p>sale off <span> 30%</span></p>
+                                                    <p>sale off <span>30%</span></p>
                                                 </div>
                                             </div>
                                         </div>
@@ -287,7 +214,7 @@
                                 </div>     
                                 <!--banner area end--> 
 
-                                <!--brand logo strat--> 
+                                <!--brand logo start--> 
                                 <div class="brand_logo mb-60">
                                     <div class="block_title">
                                         <h3>Brands</h3>
@@ -326,12 +253,11 @@
                                             </div>
                                         </div>
                                     </div>
-                                </div>       
-                                <!--brand logo end-->   
-                                </div>
-                            </div>
-                        </div>  
-                    </div>
+                                </div>   
+                                <!--brand logo end--> 
+                            </div> 
+                        </div>
+                    </div>  
                     <!--pos home section end-->
                 </div>
                 <!--pos page inner end-->
@@ -340,107 +266,61 @@
         <!--pos page end-->
 
         <!--footer area start-->
-        <jsp:include page = "footer.jsp"></jsp:include>
-            <!--footer area end-->
+        <jsp:include page="footer.jsp"></jsp:include>
+        <!--footer area end-->
 
-            <!-- modal area start --> 
-            <div class="modal fade" id="modal_box" tabindex="-1" role="dialog" aria-hidden="true">
-                <div class="modal-dialog modal-dialog-centered" role="document">
-                    <div class="modal-content">
-                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                            <span aria-hidden="true">&times;</span>
-                        </button>
-                        <div class="modal_body">
-                            <div class="container">
-                                <div class="row">
-                                    <div class="col-lg-5 col-md-5 col-sm-12">
-                                        <div class="modal_tab">  
-                                            <div class="tab-content" id="pills-tabContent">
-                                                <div class="tab-pane fade show active" id="tab1" role="tabpanel">
-                                                    <div class="modal_tab_img">
-                                                        <a href="#"><img src="${sanphamdetail.linkAnh}" alt=""></a>    
-                                                </div>
-                                            </div>
-                                            <div class="tab-pane fade" id="tab2" role="tabpanel">
+        <!-- modal area start --> 
+        <div class="modal fade" id="modal_box" tabindex="-1" role="dialog" aria-hidden="true">
+            <div class="modal-dialog modal-dialog-centered" role="document">
+                <div class="modal-content">
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                    <div class="modal_body">
+                        <div class="container">
+                            <div class="row">
+                                <div class="col-lg-5 col-md-5 col-sm-12">
+                                    <div class="modal_tab">
+                                        <div class="tab-content" id="pills-tabContent">
+                                            <div class="tab-pane fade show active" id="tab1" role="tabpanel">
                                                 <div class="modal_tab_img">
-                                                    <a href="#"><img src="assets\img\product\product14.jpg" alt=""></a>    
-                                                </div>
-                                            </div>
-                                            <div class="tab-pane fade" id="tab3" role="tabpanel">
-                                                <div class="modal_tab_img">
-                                                    <a href="#"><img src="assets\img\product\product15.jpg" alt=""></a>    
+                                                    <a href="#"><img id="modal_product_image" src="" alt=""></a>
                                                 </div>
                                             </div>
                                         </div>
-                                        <div class="modal_tab_button">    
-                                            <ul class="nav product_navactive" role="tablist">
-                                                <li>
-                                                    <a class="nav-link active" data-toggle="tab" href="#tab1" role="tab" aria-controls="tab1" aria-selected="false"><img src="assets\img\cart\cart17.jpg" alt=""></a>
-                                                </li>
-                                                <li>
-                                                    <a class="nav-link" data-toggle="tab" href="#tab2" role="tab" aria-controls="tab2" aria-selected="false"><img src="assets\img\cart\cart18.jpg" alt=""></a>
-                                                </li>
-                                                <li>
-                                                    <a class="nav-link button_three" data-toggle="tab" href="#tab3" role="tab" aria-controls="tab3" aria-selected="false"><img src="assets\img\cart\cart19.jpg" alt=""></a>
-                                                </li>
-                                            </ul>
-                                        </div>    
-                                    </div>  
-                                </div> 
+                                    </div>
+                                </div>
                                 <div class="col-lg-7 col-md-7 col-sm-12">
                                     <div class="modal_right">
                                         <div class="modal_title mb-10">
-                                            <h2>Handbag feugiat</h2> 
+                                            <h2 id="modal_product_name"></h2>
                                         </div>
                                         <div class="modal_price mb-10">
-                                            <span class="new_price">$64.99</span>    
-                                            <span class="old_price">$78.99</span>    
+                                            <span class="new_price" id="modal_product_price"></span>
                                         </div>
                                         <div class="modal_content mb-10">
-                                            <p>Short-sleeved blouse with feminine draped sleeve detail.</p>    
+                                            <p id="modal_product_description"></p>
                                         </div>
                                         <div class="modal_size mb-15">
                                             <h2>size</h2>
-                                            <ul>
-                                                <li><a href="#">s</a></li>
-                                                <li><a href="#">m</a></li>
-                                                <li><a href="#">l</a></li>
-                                                <li><a href="#">xl</a></li>
-                                                <li><a href="#">xxl</a></li>
-                                            </ul>
+                                            <ul id="modal_product_sizes"></ul>
                                         </div>
                                         <div class="modal_add_to_cart mb-15">
-                                            <form action="#">
-                                                <input min="0" max="100" step="2" value="1" type="number">
+                                            <form action="cartControl">
+                                                <input type="hidden" name="idAddCart" id="modal_product_id">
+                                                <input min="0" max="100" step="1" value="1" type="number" name="quantity">
                                                 <button type="submit">add to cart</button>
                                             </form>
-                                        </div>   
-                                        <div class="modal_description mb-15">
-                                            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,</p>    
-                                        </div> 
-                                        <div class="modal_social">
-                                            <h2>Share this product</h2>
-                                            <ul>
-                                                <li><a href="#"><i class="fa fa-facebook"></i></a></li>
-                                                <li><a href="#"><i class="fa fa-twitter"></i></a></li>
-                                                <li><a href="#"><i class="fa fa-pinterest"></i></a></li>
-                                                <li><a href="#"><i class="fa fa-google-plus"></i></a></li>
-                                                <li><a href="#"><i class="fa fa-linkedin"></i></a></li>
-                                            </ul>    
-                                        </div>      
-                                    </div>    
-                                </div>    
-                            </div>     
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
                         </div>
-                    </div>    
+                    </div>
                 </div>
             </div>
-        </div> 
-
+        </div>
         <!-- modal area end --> 
-
-
-
 
         <!-- all js here -->
         <script src="assets\js\vendor\jquery-1.12.0.min.js"></script>
@@ -451,3 +331,54 @@
         <script src="assets\js\main.js"></script>
     </body>
 </html>
+
+
+<script>
+$(document).ready(function() {
+    $('.view-detail').on('click', function(e) {
+        e.preventDefault();
+        var idDetail = $(this).data('id');
+        console.log('ID Detail:', idDetail);
+
+        $.ajax({
+            url: 'detail',
+            type: 'GET',
+            data: { idDetail: idDetail },
+            dataType: 'json',
+            success: function(data) {
+                console.log('Dữ liệu nhận được:', data);
+                if (data.error) {
+                    alert('Lỗi: ' + data.error);
+                    return;
+                }
+
+                // Lấy thông tin sản phẩm từ data.product
+                var product = data.product;
+                $('#modal_product_image').attr('src', product.linkAnh || 'assets/img/default.jpg');
+                $('#modal_product_name').text(product.tenSP || 'Không có tên');
+                $('#modal_product_price').text('$' + (product.donGia || 0));
+                $('#modal_product_description').text(product.moTa || 'Không có mô tả');
+                $('#modal_product_id').val(product.maSP);
+
+                // Lấy danh sách kích cỡ từ data.sizes
+                var sizesHtml = '';
+                if (Array.isArray(data.sizes)) {
+                    data.sizes.forEach(function(size) {
+                        sizesHtml += '<li><a href="#">' + size + '</a></li>';
+                    });
+                } else {
+                    sizesHtml = '<li><a href="#">Không có kích cỡ</a></li>';
+                }
+                $('#modal_product_sizes').html(sizesHtml);
+
+                // Hiển thị modal
+                $('#modal_box').modal('show');
+            },
+            error: function(xhr, status, error) {
+                console.log('Lỗi AJAX:', status, error);
+                alert('Không thể tải thông tin sản phẩm.');
+            }
+        });
+    });
+});
+</script>

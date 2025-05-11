@@ -304,11 +304,32 @@ public class DaoSanPham {
         return list;
     }
     
+    public List<String> getSizeBySP(int idSP) {
+        List<String> list = new ArrayList<String>();
+        String sql = "SELECT s.Size\n" +
+                    "FROM SanPham sp\n" +
+                    "JOIN DanhMuc dm ON sp.DMno = dm.maDM\n" +
+                    "JOIN tbSize s ON s.DMno = dm.maDM\n" +
+                    "WHERE sp.maSP = ?";
+        try {
+            c = CONTEXT.DatabaseConnection.getConnection();
+            stmt = c.prepareCall(sql);
+            stmt.setInt(1, idSP);
+            rs = stmt.executeQuery();
+
+            while (rs.next()) {
+                list.add(rs.getString("Size"));
+            }
+        } catch (SQLException e) {
+        }
+        return list;
+    }
+    
     public static void main(String[] args) {
         DaoSanPham dao = new DaoSanPham();
-        List<SanPham> list = dao.filterByPrice(0, 100);
-        for(SanPham sp: list) {
-            System.out.println(sp);
+        List<String> list = dao.getSizeBySP(20);
+        for(String o: list) {
+            System.out.println(o + " ");
         }
     }
 

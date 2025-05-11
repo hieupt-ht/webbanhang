@@ -4,12 +4,15 @@ package CONTROL;
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/JSP_Servlet/Servlet.java to edit this template
  */
-
+import com.google.gson.Gson;
 import DAO.DaoSanPham;
 import ENTITY.SanPham;
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.util.HashMap;
 import java.util.HashSet;
+import java.util.List;
+import java.util.Map;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -34,12 +37,37 @@ public class detail extends HttpServlet {
      */
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        response.setContentType("text/html;charset=UTF-8");
-        int idDetail = Integer.parseInt(request.getParameter("idDetail"));
-        DaoSanPham daosp = new DaoSanPham();
-        SanPham sanphamdetail = daosp.getSpbyId(idDetail);
-        request.setAttribute("sanphamdetail", sanphamdetail);
-        request.getRequestDispatcher("index.jsp").forward(request, response);
+        response.setContentType("application/json");
+        response.setCharacterEncoding("UTF-8");
+
+        try (PrintWriter out = response.getWriter()) {
+            int idDetail = Integer.parseInt(request.getParameter("idDetail"));
+            DaoSanPham dao = new DaoSanPham();
+
+            // Lấy thông tin sản phẩm
+            SanPham sanphamdetail = dao.getSpbyId(idDetail);
+
+            if (sanphamdetail != null) {
+                // Lấy danh sách kích cỡ
+                List<String> list = dao.getSizeBySP(idDetail);
+
+                // Tạo một Map để chứa cả sản phẩm và danh sách kích cỡ
+                Map<String, Object> responseData = new HashMap<>();
+                responseData.put("product", sanphamdetail); // Thông tin sản phẩm
+                responseData.put("sizes", list); // Danh sách kích cỡ riêng lẻ
+
+                // Chuyển Map thành JSON
+                Gson gson = new Gson();
+                String json = gson.toJson(responseData);
+                out.write(json);
+            } else {
+                out.write("{\"error\": \"Sản phẩm không tồn tại\"}");
+                response.setStatus(HttpServletResponse.SC_NOT_FOUND);
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+            response.getWriter().write("{\"error\": \"Lỗi server: " + e.getMessage() + "\"}");
+        }
     }
 
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">
