@@ -9,20 +9,23 @@ package ENTITY;
  * @author LE KHAC HIEU
  */
 public class gioHang {
-    private int maKH, maSp, soLuong;
+    private int maKH, maSp, maSize, soLuong;
     private double donGia;
     private double tongTien;
 
     public gioHang() {
     }
 
-    public gioHang(int maKH, int maSp, int soLuong, double donGia, double tongTien) {
+    public gioHang(int maKH, int maSp, int maSize, int soLuong, double donGia, double tongTien) {
         this.maKH = maKH;
         this.maSp = maSp;
+        this.maSize = maSize;
         this.soLuong = soLuong;
         this.donGia = donGia;
         this.tongTien = tongTien;
     }
+
+
 
     public int getMaKH() {
         return maKH;
@@ -64,9 +67,18 @@ public class gioHang {
         this.tongTien = tongTien;
     }
 
+    public int getMaSize() {
+        return maSize;
+    }
+
+    public void setMaSize(int maSize) {
+        this.maSize = maSize;
+    }
+
     @Override
     public String toString() {
-        return "gioHang{" + "maKH=" + maKH + ", maSp=" + maSp + ", soLuong=" + soLuong + ", donGia=" + donGia + ", tongTien=" + tongTien + '}';
+        return "gioHang{" + "maKH=" + maKH + ", maSp=" + maSp + ", maSize=" + maSize + ", soLuong=" + soLuong + ", donGia=" + donGia + ", tongTien=" + tongTien + '}';
     }
+
     
 }

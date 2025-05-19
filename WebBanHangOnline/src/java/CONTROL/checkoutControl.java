@@ -14,6 +14,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 import ENTITY.Account;
+import DAO.DaoKhachHang;
 /**
  *
  * @author LE KHAC HIEU
@@ -48,7 +49,14 @@ public class checkoutControl extends HttpServlet {
              String homeNumber = (String) request.getAttribute("homeNumber");
              String city = (String) request.getAttribute("city");
              String phone = (String) request.getAttribute("phone");
-             String email = (String) request.getAttribute("email");             
+             String email = (String) request.getAttribute("email");    
+             
+             String address = homeNumber + ", " + streetAddress +", " + city;
+             String fullName = firstName + " " + lastName;
+             
+             DaoKhachHang daoKH = new DaoKhachHang();
+             int maKH = daoKH.selectmaKH(acc.getEmail());
+             
         }
     }
  

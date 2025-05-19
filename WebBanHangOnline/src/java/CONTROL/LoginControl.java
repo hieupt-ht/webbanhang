@@ -8,10 +8,12 @@ import DAO.AccountDao;
 import DAO.DaoKhachHang;
 import DAO.DaoSanPham;
 import DAO.daoGioHang;
+import DAO.daoSize;
 import ENTITY.Account;
 import ENTITY.SanPham;
 import ENTITY.cartProduct;
 import ENTITY.gioHang;
+import ENTITY.size;
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.util.ArrayList;
@@ -66,15 +68,18 @@ public class LoginControl extends HttpServlet {
             ArrayList<cartProduct> gioHangsession = (ArrayList<cartProduct>) session.getAttribute("gioHang");
             if (gioHangsession != null) {
                 for (cartProduct sp : gioHangsession) {
-                    daogh.insertGioHang(maKH, sp.getMaSP(), sp.getSoLuong(), sp.getDonGia());
+                    daogh.insertGioHang(maKH, sp.getMaSP(), sp.getIdsize(), sp.getSoLuong(), sp.getDonGia());
                 }
                 session.removeAttribute("gioHang");
             }
             List<gioHang> listGioHang = daogh.getAllGioHang(maKH);
             List<cartProduct> gioHang = new ArrayList<cartProduct>();
+            daoSize daosize = new daoSize();
             for (gioHang gh : listGioHang) {
-                SanPham sp = daoSanPham.getSpbyId(gh.getMaSp());
-                cartProduct cartproduct = new cartProduct(sp.getMaSP(), sp.getTenSP(), sp.getDonGia(), sp.getSoLuongHienCon(), sp.getLinkAnh(), gh.getSoLuong(), gh.getTongTien());
+             SanPham sp = daoSanPham.getSpbyId(gh.getMaSp());
+                size sizeObj = daosize.getSizebyId(gh.getMaSize());
+                cartProduct cartproduct = new cartProduct(sp.getMaSP(), sp.getTenSP(), sp.getDonGia(), sp.getSoLuongHienCon(),
+                        sp.getLinkAnh(), sizeObj.getSize(), gh.getMaSize(), sizeObj.getDMno(), gh.getSoLuong(), gh.getTongTien());
                 gioHang.add(cartproduct);
             }
             int dem = 0;

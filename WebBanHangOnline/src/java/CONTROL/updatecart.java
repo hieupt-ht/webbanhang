@@ -8,14 +8,17 @@ import DAO.DaoKhachHang;
 import DAO.DaoSanPham;
 import DAO.Daocartproduct;
 import DAO.daoGioHang;
+import DAO.daoSize;
 import ENTITY.Account;
 import ENTITY.SanPham;
 import ENTITY.cartProduct;
 import ENTITY.gioHang;
+import ENTITY.size;
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Set;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -53,11 +56,19 @@ public class updatecart extends HttpServlet {
                 Daocartproduct dao = new Daocartproduct();
                 String ids[] = request.getParameterValues("maSP");
                 String soluongs[] = request.getParameterValues("soluong");
+                String nameSizes[] = request.getParameterValues("size");
+                daoSize daosize = new daoSize();
                 if (ids != null && soluongs != null) {
                     for (int i = 0; i <= ids.length - 1; i++) {
                         String idsp = ids[i];
+                        String nameSize = nameSizes[i];
+                        System.out.println(nameSize);
                         cartProduct cartproduct = dao.getCartproductByid(Integer.parseInt(idsp), listcart);
+                        System.out.println(cartproduct.getIdDm());
                         cartproduct.setSoLuong(Integer.parseInt(soluongs[i]));
+                        size sizeobj = daosize.getSizebyName_Dm(nameSize, cartproduct.getIdDm());
+                        cartproduct.setIdsize(sizeobj.getIdSize());
+                        cartproduct.setSize(sizeobj.getSize());
                         cartproduct.setTongTien(Integer.parseInt(soluongs[i]) * cartproduct.getDonGia());
                     }
                 }
@@ -74,21 +85,33 @@ public class updatecart extends HttpServlet {
             } else {
                 String ids[] = request.getParameterValues("maSP");
                 String soluongs[] = request.getParameterValues("soluong");
+                String nameSizes[] = request.getParameterValues("size");
                 Account account = (Account) session.getAttribute("acc");
                 String email = account.getEmail();
                 DaoKhachHang kh = new DaoKhachHang();
                 int maKH = kh.selectmaKH(email);
+                Daocartproduct dao = new Daocartproduct();
                 daoGioHang daogiohang = new daoGioHang();
+                daoSize daosize = new daoSize();
                 for (int i = 0; i <= ids.length - 1; i++) {
-                    int idSp = Integer.parseInt(ids[i]);
-                    daogiohang.updateGioHang(maKH, idSp, Integer.parseInt(soluongs[i]));
+                    String idsp = ids[i];
+                    String nameSize = nameSizes[i];
+                    System.out.println(nameSize);
+                    cartProduct cartproduct = dao.getCartproductByid(Integer.parseInt(idsp), listcart);
+                    size sizeobj = daosize.getSizebyName_Dm(nameSize, cartproduct.getIdDm());
+                    daogiohang.updateGioHang(maKH, Integer.parseInt(idsp), Integer.parseInt(soluongs[i]), sizeobj.getIdSize());
                 }
                 List<gioHang> listGioHang = daogiohang.getAllGioHang(maKH);
+                for(gioHang g : listGioHang)
+                    System.out.println(g);
+                
                 listcart = new ArrayList<cartProduct>();
                 DaoSanPham daoSanPham = new DaoSanPham();
                 for (gioHang gh : listGioHang) {
                     SanPham sp = daoSanPham.getSpbyId(gh.getMaSp());
-                    cartProduct cartproduct = new cartProduct(sp.getMaSP(), sp.getTenSP(), sp.getDonGia(), sp.getSoLuongHienCon(), sp.getLinkAnh(), gh.getSoLuong(), gh.getTongTien());
+                    size sizeObj = daosize.getSizebyId(gh.getMaSize());
+                    cartProduct cartproduct = new cartProduct(sp.getMaSP(), sp.getTenSP(), sp.getDonGia(), sp.getSoLuongHienCon(),
+                            sp.getLinkAnh(), sizeObj.getSize(), gh.getMaSize(), sizeObj.getDMno(), gh.getSoLuong(), gh.getTongTien());
                     listcart.add(cartproduct);
                 }
                 session.setAttribute("gioHang", listcart);

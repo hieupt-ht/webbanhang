@@ -15,15 +15,16 @@ import java.util.List;
  * @author LE KHAC HIEU
  */
 public class daoGioHang {
-    public void insertGioHang(int maKH, int maSP, int soLuong, double donGia){
-        String sql = "insert into GIOHANG values(?, ?, ?, ?)";
+    public void insertGioHang(int maKH, int maSP, int maSize, int soLuong, double donGia){
+        String sql = "insert into GIOHANG values(?, ?, ?, ?, ?)";
         try {
             Connection con = CONTEXT.DatabaseConnection.getConnection();
             PreparedStatement stmt = con.prepareStatement(sql);
             stmt.setInt(1, maKH);
             stmt.setInt(2, maSP);
-            stmt.setInt(3, soLuong);
-            stmt.setDouble(4, donGia);
+            stmt.setInt(3, maSize);
+            stmt.setInt(4, soLuong);
+            stmt.setDouble(5, donGia);
             stmt.executeUpdate();
         } catch (Exception e) {
         }
@@ -39,9 +40,10 @@ public class daoGioHang {
             while(rs.next()){
                 int maKhachHang = rs.getInt("maKH");
                 int maSP = rs.getInt("maSP");
+                int maSize = rs.getInt("Sizeno");
                 int soLuong = rs.getInt("soLuong");
                 double donGia = rs.getDouble("donGia");
-                gioHang gh= new gioHang(maKhachHang, maSP, soLuong, donGia, soLuong*donGia);
+                gioHang gh =  new gioHang(maKH, maSP, maSize, soLuong, donGia, donGia*soLuong);
                 listGioHang.add(gh);
             }
         } catch (Exception e) {
@@ -59,15 +61,16 @@ public class daoGioHang {
         } catch (Exception e) {
         }
     }
-    public void updateGioHang(int maKH, int maSP, int soLuong)
+    public void updateGioHang(int maKH, int maSP, int soLuong, int size)
     {
-        String sql = "update GIOHANG set soLuong = ? where maKH = ? and maSP = ?";
+        String sql = "update GIOHANG set soLuong = ?, Sizeno = ? where maKH = ? and maSP = ?";
         try {
             Connection con = CONTEXT.DatabaseConnection.getConnection();
             PreparedStatement stmt = con.prepareStatement(sql);
             stmt.setInt(1, soLuong);
-            stmt.setInt(2, maKH);
-            stmt.setInt(3, maSP);
+            stmt.setInt(2, size);
+            stmt.setInt(3, maKH);
+            stmt.setInt(4, maSP);
             stmt.executeUpdate();
         } catch (Exception e) {
         }

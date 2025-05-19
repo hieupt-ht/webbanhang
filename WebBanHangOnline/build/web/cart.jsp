@@ -66,20 +66,39 @@
                                                             <th class="product_name">Product</th>
                                                             <th class="product-price">Price</th>
                                                             <th class="product_quantity">Quantity</th>
+                                                            <th class="product_size">Size</th>
                                                             <th class="product_total">Total</th>
                                                         </tr>
                                                     </thead>
                                                     <tbody>
                                                     <c:forEach var="sp" items="${sessionScope.gioHang}">
-                                                        <tr data-price="${sp.donGia}">
+                                                        <tr>
                                                             <td class="product_remove"><a href="removeSpcontrol?idrm=${sp.maSP}"><i class="fa fa-trash-o"></i></a></td>
                                                             <td class="product_thumb"><a href="#"><img src="${sp.linkAnh}" alt=""></a></td>
                                                             <td class="product_name"><a href="#">${sp.tenSP}</a></td>
                                                             <td class="product-price">${sp.donGia}</td>
+
                                                             <td class="product_quantity">
                                                                 <input name="soluong" min="0" max="100" value=${sp.soLuong != 1? sp.soLuong:1} type="number" oninput="updateTotal(this)">
                                                             </td>
+                                                            <c:if test="${sp.idDm != 2}">
+                                                                <td class="product_size">
+                                                                    <select name="size">
+                                                                        <option value="S" ${sp.size == 'S' ? 'selected' : ''}>S</option>
+                                                                        <option value="M" ${sp.size == 'M' ? 'selected' : ''}>M</option>
+                                                                        <option value="L" ${sp.size == 'L' ? 'selected' : ''}>L</option>
+                                                                        <option value="XL" ${sp.size == 'XL' ? 'selected' : ''}>XL</option>
+                                                                        <option value="XXL" ${sp.size == 'XXL' ? 'selected' : ''}>XXL</option>
+                                                                    </select>
+                                                                </td>
+                                                            </c:if>
+                                                            <c:if test = "${sp.idDm ==2}">
+                                                                <td class ="product_size">
+                                                                    <input name="size" min="38" max="40" value ="${sp.size}" type="number" oninput="updateTotal(this)">
+                                                                </td>
+                                                             </c:if>
                                                             <input type="hidden" name="maSP" value="${sp.maSP}">
+                                                            <!--<input type="hidden" name="idsize" value="${sp.idsize}">-->
                                                             <td class="product_total">${sp.donGia}</td>
                                                         </tr>
                                                     </c:forEach>
