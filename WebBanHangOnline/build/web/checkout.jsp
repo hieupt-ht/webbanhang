@@ -62,14 +62,15 @@
                                         <div id="checkout_login" class="collapse" data-parent="#accordion">
                                             <div class="checkout_info">
                                                 <p>If you have shopped with us before, please enter your details in the boxes below. If you are a new customer please proceed to the Billing & Shipping section.</p>  
-                                                <!--                                                    <form action="#">  -->
+                                                <form action="login">  
+                                                    <p style="color:red; font-weight: bold;">${requestScope.message1}</p>
                                                 <div class="form_group mb-20">
                                                     <label>Username or email <span>*</span></label>
-                                                    <input type="text">     
+                                                    <input name="user" type="text">     
                                                 </div>
                                                 <div class="form_group mb-25">
                                                     <label>Password  <span>*</span></label>
-                                                    <input type="text">     
+                                                    <input name="password" type="text">     
                                                 </div> 
                                                 <div class="form_group group_3 ">
                                                     <input value="Login" type="submit">
@@ -79,120 +80,120 @@
                                                     </label>     
                                                 </div>
                                                 <a href="#">Lost your password?</a>
-                                                <!--                                                    </form>          -->
-                                            </div>
-                                        </div>    
-                                    </div>
-                                    <div class="user-actions mb-20">
-                                        <h3> 
-                                            <i class="fa fa-file-o" aria-hidden="true"></i>
-                                            Returning customer?
-                                            <a class="Returning" href="#" data-toggle="collapse" data-target="#checkout_coupon" aria-expanded="true">Click here to enter your code</a>     
-
-                                        </h3>
-                                        <div id="checkout_coupon" class="collapse" data-parent="#accordion">
-                                            <div class="checkout_info">
-                                                <form action="#">
-                                                    <input placeholder="Coupon code" type="text">
-                                                    <input value="Apply coupon" type="submit">
-                                                </form>
-                                            </div>
-                                        </div>    
+                                            </form>          
+                                        </div>
                                     </div>    
                                 </div>
+                                <div class="user-actions mb-20">
+                                    <h3> 
+                                        <i class="fa fa-file-o" aria-hidden="true"></i>
+                                        Returning customer?
+                                        <a class="Returning" href="#" data-toggle="collapse" data-target="#checkout_coupon" aria-expanded="true">Click here to enter your code</a>     
+
+                                    </h3>
+                                    <div id="checkout_coupon" class="collapse" data-parent="#accordion">
+                                        <div class="checkout_info">
+                                            <form action="#">
+                                                <input placeholder="Coupon code" type="text">
+                                                <input value="Apply coupon" type="submit">
+                                            </form>
+                                        </div>
+                                    </div>    
+                                </div>    
                             </div>
-                            <div class="checkout_form">
-                                <form action="checkout" method="post">
-                                    <div class="row">
-                                        <div class="col-lg-6 col-md-6">
-                                            <!--                                            <form action="#">-->
-                                            <h3>Billing Details</h3>
-                                            <div class="row">
+                        </div>
+                        <div class="checkout_form">
+                            <form action="checkout" method="post">
+                                <div class="row">
+                                    <div class="col-lg-6 col-md-6">
+                                        <!--                                            <form action="#">-->
+                                        <h3>Billing Details</h3>
+                                        <div class="row">
 
-                                                <div class="col-lg-6 mb-30">
-                                                    <label>First Name <span>*</span></label>
-                                                    <input name="firstName" type="text">    
-                                                </div>
-                                                <div class="col-lg-6 mb-30">
-                                                    <label>Last Name  <span>*</span></label>
-                                                    <input name="lastName" type="text"> 
-                                                </div>
-                                                <div class="col-12 mb-30">
-                                                    <label>Company Name</label>
-                                                    <input name="companyName" type="text">     
-                                                </div>
-                                                <div class="col-12 mb-30">
-                                                    <label for="country">country <span>*</span></label>
-                                                    <select name="cuntry" id="country"> 
-                                                        <option value="2">bangladesh</option>      
-                                                        <option value="3">Algeria</option> 
-                                                        <option value="4">Afghanistan</option>    
-                                                        <option value="5">Ghana</option>    
-                                                        <option value="6">Albania</option>    
-                                                        <option value="7">Bahrain</option>    
-                                                        <option value="8">Colombia</option>    
-                                                        <option value="9">Dominican Republic</option>   
-                                                    </select>
-                                                </div>
+                                            <div class="col-lg-6 mb-30">
+                                                <label>First Name <span>*</span></label>
+                                                <input name="firstName" type="text">    
+                                            </div>
+                                            <div class="col-lg-6 mb-30">
+                                                <label>Last Name  <span>*</span></label>
+                                                <input name="lastName" type="text"> 
+                                            </div>
+                                            <div class="col-12 mb-30">
+                                                <label>Company Name</label>
+                                                <input name="companyName" type="text">     
+                                            </div>
+                                            <div class="col-12 mb-30">
+                                                <label for="country">country <span>*</span></label>
+                                                <select name="cuntry" id="country"> 
+                                                    <option value="2">bangladesh</option>      
+                                                    <option value="3">Algeria</option> 
+                                                    <option value="4">Afghanistan</option>    
+                                                    <option value="5">Ghana</option>    
+                                                    <option value="6">Albania</option>    
+                                                    <option value="7">Bahrain</option>    
+                                                    <option value="8">Colombia</option>    
+                                                    <option value="9">Dominican Republic</option>   
+                                                </select>
+                                            </div>
 
-                                                <div class="col-12 mb-30">
-                                                    <label>Street address  <span>*</span></label>
-                                                    <input name="streetAddress" placeholder="House number and street name" type="text">     
-                                                </div>
-                                                <div class="col-12 mb-30">
-                                                    <input name="homeNumber" placeholder="Apartment, suite, unit etc. (optional)" type="text">     
-                                                </div>
-                                                <div class="col-12 mb-30">
-                                                    <label>Town / City <span>*</span></label>
-                                                    <input name="city" type="text">    
-                                                </div> 
-                                                <div class="col-12 mb-30">
-                                                    <label>State / County <span>*</span></label>
-                                                    <input type="text">    
-                                                </div> 
-                                                <div class="col-lg-6 mb-30">
-                                                    <label>Phone<span>*</span></label>
-                                                    <input name="phone" type="text"> 
+                                            <div class="col-12 mb-30">
+                                                <label>Street address  <span>*</span></label>
+                                                <input name="streetAddress" placeholder="House number and street name" type="text">     
+                                            </div>
+                                            <div class="col-12 mb-30">
+                                                <input name="homeNumber" placeholder="Apartment, suite, unit etc. (optional)" type="text">     
+                                            </div>
+                                            <div class="col-12 mb-30">
+                                                <label>Town / City <span>*</span></label>
+                                                <input name="city" type="text">    
+                                            </div> 
+                                            <div class="col-12 mb-30">
+                                                <label>State / County <span>*</span></label>
+                                                <input type="text">    
+                                            </div> 
+                                            <div class="col-lg-6 mb-30">
+                                                <label>Phone<span>*</span></label>
+                                                <input name="phone" type="text"> 
 
-                                                </div> 
-                                                <div class="col-lg-6 mb-30">
-                                                    <label> Email Address   <span>*</span></label>
-                                                    <input name="email" type="text"> 
+                                            </div> 
+                                            <div class="col-lg-6 mb-30">
+                                                <label> Email Address   <span>*</span></label>
+                                                <input name="email" type="text"> 
 
-                                                </div> 
-                                                <div class="col-12 mb-30">
-                                                    <input id="account" type="checkbox" data-target="createp_account">
-                                                    <label for="account" data-toggle="collapse" data-target="#collapseOne" aria-controls="collapseOne">Create an account?</label>
+                                            </div> 
+                                            <div class="col-12 mb-30">
+                                                <input id="account" type="checkbox" data-target="createp_account">
+                                                <label for="account" data-toggle="collapse" data-target="#collapseOne" aria-controls="collapseOne">Create an account?</label>
 
-                                                    <div id="collapseOne" class="collapse one" data-parent="#accordion">
-                                                        <div class="card-body1">
-                                                            <label> Account password   <span>*</span></label>
-                                                            <input placeholder="password" type="password">  
-                                                        </div>
+                                                <div id="collapseOne" class="collapse one" data-parent="#accordion">
+                                                    <div class="card-body1">
+                                                        <label> Account password   <span>*</span></label>
+                                                        <input placeholder="password" type="password">  
                                                     </div>
                                                 </div>
-
-                                                <div class="col-12">
-                                                    <div class="order-notes">
-                                                        <label for="order_note">Order Notes</label>
-                                                        <textarea id="order_note" placeholder="Notes about your order, e.g. special notes for delivery."></textarea>
-                                                    </div>    
-                                                </div>     	    	    	    	    	    	    
                                             </div>
-                                            <!--                                            </form>    -->
+
+                                            <div class="col-12">
+                                                <div class="order-notes">
+                                                    <label for="order_note">Order Notes</label>
+                                                    <textarea id="order_note" placeholder="Notes about your order, e.g. special notes for delivery."></textarea>
+                                                </div>    
+                                            </div>     	    	    	    	    	    	    
                                         </div>
-                                        <div class="col-lg-6 col-md-6">
-                                            <!--                                            <form action="checkoutControl">    -->
-                                            <h3>Your order</h3> 
-                                            <div class="order_table table-responsive mb-30">
-                                                <table>
-                                                    <thead>
-                                                        <tr>
-                                                            <th>Product</th>
-                                                            <th>Total</th>
-                                                        </tr>
-                                                    </thead>
-                                                    <tbody>
+                                        <!--                                            </form>    -->
+                                    </div>
+                                    <div class="col-lg-6 col-md-6">
+                                        <!--                                            <form action="checkoutControl">    -->
+                                        <h3>Your order</h3> 
+                                        <div class="order_table table-responsive mb-30">
+                                            <table>
+                                                <thead>
+                                                    <tr>
+                                                        <th>Product</th>
+                                                        <th>Total</th>
+                                                    </tr>
+                                                </thead>
+                                                <tbody>
                                                     <c:forEach items="${sessionScope.gioHang}" var="sp">
                                                         <tr>
                                                             <td>${sp.tenSP}<strong> × ${sp.soLuong}</strong></td>
@@ -258,92 +259,80 @@
             </div>
         </div>
         <!--pos page end-->
+        <!--dat hang thanh cong-->
+        <c:if test="${requestScope.result = 1}">
+            <style>
+                /* Lớp phủ mờ */
+                #overlay {
+                    position: fixed;
+                    top: 0;
+                    left: 0;
+                    width: 100vw;
+                    height: 100vh;
+                    background: rgba(0, 0, 0, 0.5); /* mờ */
+                    display: flex;
+                    justify-content: center;
+                    align-items: center;
+                    z-index: 9999;
+                }
 
+                .success-box {
+                    background: #fff;
+                    padding: 30px 40px;
+                    border-radius: 12px;
+                    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2);
+                    text-align: center;
+                    animation: fadeIn 0.3s ease-in-out;
+                }
+
+                .success-box h2 {
+                    margin-bottom: 10px;
+                    color: green;
+                }
+
+                .close-btn {
+                    margin-top: 20px;
+                    padding: 10px 20px;
+                    background-color: green;
+                    color: white;
+                    border: none;
+                    border-radius: 6px;
+                    cursor: pointer;
+                }
+
+                .close-btn:hover {
+                    background-color: darkgreen;
+                }
+
+                @keyframes fadeIn {
+                    from {
+                        opacity: 0;
+                        transform: scale(0.95);
+                    }
+                    to {
+                        opacity: 1;
+                        transform: scale(1);
+                    }
+                }
+            </style>
+
+            <div id="overlay">
+                <div class="success-box">
+                    <h2>🎉 Đặt hàng thành công!</h2>
+                    <p>Cảm ơn bạn đã mua hàng. Đơn hàng của bạn đang được xử lý.</p>
+                    <button class="close-btn" onclick="closeSuccess()">Đóng</button>
+                </div>
+            </div>
+
+            <script>
+                function closeSuccess() {
+                    document.getElementById("overlay").style.display = "none";
+                }
+            </script>
+        </c:if>
+        <!--end dat hang thanh cong--> 
         <!--footer area start-->
-        <div class="footer_area">
-            <div class="footer_top">
-                <div class="container">
-                    <div class="row">
-                        <div class="col-lg-3 col-md-6 col-sm-6">
-                            <div class="footer_widget">
-                                <h3>About us</h3>
-                                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
-                                <div class="footer_widget_contect">
-                                    <p><i class="fa fa-map-marker" aria-hidden="true"></i>  19 Interpro Road Madison, AL 35758, USA</p>
-
-                                    <p><i class="fa fa-mobile" aria-hidden="true"></i> (012) 234 432 3568</p>
-                                    <a href="#"><i class="fa fa-envelope-o" aria-hidden="true"></i> Contact@plazathemes.com </a>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-lg-3 col-md-6 col-sm-6">
-                            <div class="footer_widget">
-                                <h3>My Account</h3>
-                                <ul>
-                                    <li><a href="#">Your Account</a></li>
-                                    <li><a href="#">My orders</a></li>
-                                    <li><a href="#">My credit slips</a></li>
-                                    <li><a href="#">My addresses</a></li>
-                                    <li><a href="#">Login</a></li>
-                                </ul>
-                            </div>
-                        </div>
-                        <div class="col-lg-3 col-md-6 col-sm-6">
-                            <div class="footer_widget">
-                                <h3>Informations</h3>
-                                <ul>
-                                    <li><a href="#">Specials</a></li>
-                                    <li><a href="#">Our store(s)!</a></li>
-                                    <li><a href="#">My credit slips</a></li>
-                                    <li><a href="#">Terms and conditions</a></li>
-                                    <li><a href="#">About us</a></li>
-                                </ul>
-                            </div>
-                        </div>
-                        <div class="col-lg-3 col-md-6 col-sm-6">
-                            <div class="footer_widget">
-                                <h3>extras</h3>
-                                <ul>
-                                    <li><a href="#"> Brands</a></li>
-                                    <li><a href="#"> Gift Vouchers </a></li>
-                                    <li><a href="#"> Affiliates </a></li>
-                                    <li><a href="#"> Specials </a></li>
-                                    <li><a href="#"> Privacy policy </a></li>
-                                </ul>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div class="footer_bottom">
-                <div class="container">
-                    <div class="row align-items-center">
-                        <div class="col-lg-6 col-md-6">
-                            <div class="copyright_area">
-                                <ul>
-                                    <li><a href="#"> about us </a></li>
-                                    <li><a href="#">  Customer Service  </a></li>
-                                    <li><a href="#">  Privacy Policy  </a></li>
-                                </ul>
-                                <p>Copyright &copy; 2018 <a href="#">Pos Coron</a>. All rights reserved. </p>
-                            </div>
-                        </div>
-                        <div class="col-lg-6 col-md-6">
-                            <div class="footer_social text-right">
-                                <ul>
-                                    <li><a href="#"><i class="fa fa-facebook"></i></a></li>
-                                    <li><a href="#"><i class="fa fa-twitter"></i></a></li>
-                                    <li><a href="#"><i class="fa fa-google-plus" aria-hidden="true"></i></a></li>
-                                    <li><a class="pinterest" href="#"><i class="fa fa-pinterest-p" aria-hidden="true"></i></a></li>
-
-                                    <li><a href="#"><i class="fa fa-wifi" aria-hidden="true"></i></a></li>
-                                </ul>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
+        <jsp:include page="footer.jsp"></jsp:include>
         <!--footer area end-->
 
         <!-- all js here -->

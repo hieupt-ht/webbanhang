@@ -72,7 +72,7 @@
                                                     </thead>
                                                     <tbody>
                                                     <c:forEach var="sp" items="${sessionScope.gioHang}">
-                                                        <tr>
+                                                        <tr data-price="${sp.donGia}">
                                                             <td class="product_remove"><a href="removeSpcontrol?idrm=${sp.maSP}"><i class="fa fa-trash-o"></i></a></td>
                                                             <td class="product_thumb"><a href="#"><img src="${sp.linkAnh}" alt=""></a></td>
                                                             <td class="product_name"><a href="#">${sp.tenSP}</a></td>
@@ -96,39 +96,45 @@
                                                                 <td class ="product_size">
                                                                     <input name="size" min="38" max="40" value ="${sp.size}" type="number" oninput="updateTotal(this)">
                                                                 </td>
-                                                             </c:if>
-                                                            <input type="hidden" name="maSP" value="${sp.maSP}">
-                                                            <!--<input type="hidden" name="idsize" value="${sp.idsize}">-->
-                                                            <td class="product_total">${sp.donGia}</td>
-                                                        </tr>
-                                                    </c:forEach>
+                                                            </c:if>
+                                                    <input type="hidden" name="maSP" value="${sp.maSP}">
+                                                    <!--<input type="hidden" name="idsize" value="${sp.idsize}">-->
+                                                    <td class="product_total">${sp.donGia}</td>
+                                                    </tr>
+                                                </c:forEach>
                                                 <script type="text/javascript">
                                                     function updateTotal(input) {
                                                         let tr = input.closest('tr');
                                                         let price = parseFloat(tr.dataset.price);
-                                                        let quantity = parseInt(input.value);
+                                                        let quantity = parseInt(tr.querySelector('input[name="soluong"]').value);
                                                         let totalCell = tr.querySelector('.product_total');
-                                                        totalCell.textContent = (price * quantity).toLocaleString('vi-VN') + ' ₫';
-                                                        updateCartTotal();  // gọi tính tổng giỏ hàng sau mỗi lần đổi
+
+                                                        if (!isNaN(price) && !isNaN(quantity)) {
+                                                            totalCell.textContent = (price * quantity).toLocaleString('vi-VN') + ' ₫';
+                                                        }
+                                                        updateCartTotal(); // cập nhật tổng giỏ hàng
                                                     }
 
                                                     function updateCartTotal() {
                                                         let total = 0;
-                                                        document.querySelectorAll('tr').forEach(tr => {
+                                                        document.querySelectorAll('tr[data-price]').forEach(tr => {
                                                             let price = parseFloat(tr.dataset.price);
-                                                            let input = tr.querySelector('input[type="number"]');
-                                                            if (input) {
+                                                            let input = tr.querySelector('input[name="soluong"]');
+                                                            if (input && !isNaN(price)) {
                                                                 let quantity = parseInt(input.value);
-                                                                total += price * quantity;
+                                                                if (!isNaN(quantity)) {
+                                                                    total += price * quantity;
+                                                                }
                                                             }
                                                         });
-                                                        document.getElementById('totalMoney').textContent = total.toLocaleString('vi-VN') + ' ₫';
+                                                        let totalMoney = document.getElementById('totalMoney');
+                                                        if (totalMoney) {
+                                                            totalMoney.textContent = total.toLocaleString('vi-VN') + ' ₫';
+                                                        }
                                                     }
 
                                                     // Tính tổng lần đầu khi trang load
-                                                    window.onload = function () {
-                                                        updateCartTotal();
-                                                    };
+                                                    window.onload = updateCartTotal;
                                                 </script>
                                                 </tbody>
                                             </table>   

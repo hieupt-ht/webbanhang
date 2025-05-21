@@ -95,7 +95,7 @@ public class cartControl extends HttpServlet {
                 SanPham sp = daoSanPham.getSpbyId(gh.getMaSp());
                 size sizeObj = daosize.getSizebyId(gh.getMaSize());
                 cartProduct cartproduct = new cartProduct(sp.getMaSP(), sp.getTenSP(), sp.getDonGia(), sp.getSoLuongHienCon(),
-                        sp.getLinkAnh(), sizeObj.getSize(), gh.getMaSize(), sizeObj.getDMno(), gh.getSoLuong(), gh.getTongTien());
+                        sp.getLinkAnh(), sizeObj.getSize(), gh.getMaSize(), sizeObj.getDMno(), gh.getSoLuong(), gh.getSoLuong()*gh.getDonGia());
                 gioHang.add(cartproduct);
             }
             session.setAttribute("gioHang", gioHang);

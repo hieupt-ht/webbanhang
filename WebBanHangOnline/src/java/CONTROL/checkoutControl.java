@@ -5,6 +5,7 @@
 package CONTROL;
 
 import DAO.AccountDao;
+import DAO.DaoDonDatHangHoaDon;
 import java.io.IOException;
 import java.io.PrintWriter;
 import javax.servlet.ServletException;
@@ -15,6 +16,10 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 import ENTITY.Account;
 import DAO.DaoKhachHang;
+import DAO.daoChiTietDH;
+import DAO.daoGioHang;
+import ENTITY.gioHang;
+import java.util.List;
 /**
  *
  * @author LE KHAC HIEU
@@ -44,19 +49,38 @@ public class checkoutControl extends HttpServlet {
         {
              String firstName = (String) request.getAttribute("firstName");
              String lastName = (String) request.getAttribute("lastName");
-             String companyName = (String) request.getAttribute("companyName");
+             //String companyName = (String) request.getAttribute("companyName");
              String streetAddress = (String) request.getAttribute("streetAddress");
              String homeNumber = (String) request.getAttribute("homeNumber");
              String city = (String) request.getAttribute("city");
              String phone = (String) request.getAttribute("phone");
              String email = (String) request.getAttribute("email");    
              
+             // dia chi
              String address = homeNumber + ", " + streetAddress +", " + city;
+             // nguoi nhan
              String fullName = firstName + " " + lastName;
              
+             //insert donDatHangHoaDon
              DaoKhachHang daoKH = new DaoKhachHang();
              int maKH = daoKH.selectmaKH(acc.getEmail());
+             DaoDonDatHangHoaDon daoDonDatHangHD = new DaoDonDatHangHoaDon();
+             daoDonDatHangHD.insertDonDatHangHoaDon(maKH, address, email, phone, fullName);
+             //lay ma don hang vua moi insert
+             int maDH = daoDonDatHangHD.getNewMaDH();
+            // lay tat ca san pham tu gio hang
+            daoGioHang daogh = new daoGioHang();
+            List<gioHang> listGH = daogh.getAllGioHang(maKH);
+             //insert chiTietDonHang
+             daoChiTietDH daoChiTietDH = new daoChiTietDH();
              
+             for(gioHang sp : listGH){
+                 daoChiTietDH.insertChiTietDH(maDH, sp.getMaSp(), sp.getMaSize(), sp.getSoLuong(), sp.getDonGia());
+             }
+             daogh.deleteAllGH(maKH);
+             session.invalidate();
+             request.setAttribute("result", 1);
+             request.getRequestDispatcher("checkout.jsp").forward(request, response);
         }
     }
  
