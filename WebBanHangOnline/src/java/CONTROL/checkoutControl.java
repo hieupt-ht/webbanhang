@@ -39,6 +39,7 @@ public class checkoutControl extends HttpServlet {
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
+        request.setCharacterEncoding("UTF-8");
         HttpSession session = request.getSession();
         Account acc = (Account) session.getAttribute("acc");
         if(acc == null){
@@ -47,20 +48,21 @@ public class checkoutControl extends HttpServlet {
         }
         else
         {
-             String firstName = (String) request.getAttribute("firstName");
-             String lastName = (String) request.getAttribute("lastName");
+             String firstName = (String) request.getParameter("firstName");
+             String lastName = (String) request.getParameter("lastName");
              //String companyName = (String) request.getAttribute("companyName");
-             String streetAddress = (String) request.getAttribute("streetAddress");
-             String homeNumber = (String) request.getAttribute("homeNumber");
-             String city = (String) request.getAttribute("city");
-             String phone = (String) request.getAttribute("phone");
-             String email = (String) request.getAttribute("email");    
+             String streetAddress = (String) request.getParameter("streetAddress");
+             String homeNumber = (String) request.getParameter("homeNumber");
+             String city = (String) request.getParameter("city");
+             String phone = (String) request.getParameter("phone");
+             String email = (String) request.getParameter("email");    
              
              // dia chi
              String address = homeNumber + ", " + streetAddress +", " + city;
+             System.out.print(address);
              // nguoi nhan
              String fullName = firstName + " " + lastName;
-             
+             System.out.print(fullName);
              //insert donDatHangHoaDon
              DaoKhachHang daoKH = new DaoKhachHang();
              int maKH = daoKH.selectmaKH(acc.getEmail());

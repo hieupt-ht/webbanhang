@@ -22,7 +22,7 @@ import java.util.List;
 public class DaoDonDatHangHoaDon {
 
     public void insertDonDatHangHoaDon(int maKH, String diaChi, String email, String sdt, String nguoiNhan) {
-        String sql = "INSERT INTO DonDatHang_HoaDon (KHno, ngayTaoDH, diaChi, email, SDT, nguoiNhan) VALUES (?, ?, ? ,?, ?)";
+        String sql = "INSERT INTO DonDatHang_HoaDon (KHno, ngayTaoDH, diaChi, email, SDT, nguoiNhan) VALUES (?, ?, ? ,?, ?, ?)";
         LocalDate nowdate = LocalDate.now();
         java.sql.Date sqlDate = java.sql.Date.valueOf(nowdate);
         
@@ -37,8 +37,7 @@ public class DaoDonDatHangHoaDon {
             stmt.setString(6, nguoiNhan);
             stmt.executeUpdate();
         } catch (Exception e) {
-        }
-        
+        }      
     }
     public List<donDatHangHoaDon> getAllDonDatHangHoaDon_byIdKh(int maKH){
         String sql = "select * from DonDatHang_HoaDon where KHno = " + maKH;
@@ -103,5 +102,8 @@ public class DaoDonDatHangHoaDon {
 //
 //    return maDH;
 //}
-
+    public static void main(String[] args) {
+            DaoDonDatHangHoaDon dh = new DaoDonDatHangHoaDon();
+            dh.insertDonDatHangHoaDon(3, "xom11", "haha@gmial.com", "12345", "hi");
+        }
 }

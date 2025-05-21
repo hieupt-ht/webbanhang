@@ -260,7 +260,7 @@
         </div>
         <!--pos page end-->
         <!--dat hang thanh cong-->
-        <c:if test="${requestScope.result = 1}">
+      <c:if test="${requestScope.result == 1}">
             <style>
                 /* Lớp phủ mờ */
                 #overlay {
@@ -275,7 +275,6 @@
                     align-items: center;
                     z-index: 9999;
                 }
-
                 .success-box {
                     background: #fff;
                     padding: 30px 40px;
@@ -330,6 +329,7 @@
                 }
             </script>
         </c:if>
+
         <!--end dat hang thanh cong--> 
         <!--footer area start-->
         <jsp:include page="footer.jsp"></jsp:include>
