@@ -46,7 +46,7 @@ public class DaoSanPham {
                         rs.getDouble("donGiaBan"),
                         rs.getInt("soLuongHienCon"),
                         rs.getString("linkAnh"),
-                        rs.getString("DMno")
+                        rs.getInt("DMno")
                 );
                 list.add(sp);
             }
@@ -68,9 +68,8 @@ public class DaoSanPham {
                 String tensp = rs.getString("tenSP");
                 double dongiaban = rs.getDouble("donGiaBan");
                 int soluonghienco = rs.getInt("soLuongHienCon");
-                String dmno = rs.getString("DMno");
                 String linkanh = rs.getString("linkAnh");
-                String DMno = rs.getString("DMno");
+                int DMno = rs.getInt("DMno");
                 newSp = new SanPham(masp, tensp, dongiaban, soluonghienco, linkanh,DMno);
             }
         } catch (Exception e) {
@@ -115,7 +114,7 @@ public class DaoSanPham {
                         rs.getDouble("donGiaBan"),
                         rs.getInt("soLuongHienCon"),
                         rs.getString("linkAnh"),
-                        rs.getString("DMno")
+                        rs.getInt("DMno")                       
                 );
                 list.add(sp);
             }
@@ -144,7 +143,7 @@ public class DaoSanPham {
                     rs.getDouble("donGiaBan"),
                     rs.getInt("soLuongHienCon"),
                     rs.getString("linkAnh"),
-                    rs.getString("DMno")
+                    rs.getInt("DMno")
                 );
                 list.add(sp);
             }
@@ -175,7 +174,7 @@ public class DaoSanPham {
                     rs.getDouble("donGiaBan"),
                     rs.getInt("soLuongHienCon"),
                     rs.getString("linkAnh"),
-                    rs.getString("DMno")
+                    rs.getInt("DMno")
                 );
                 list.add(sp);
             }
@@ -198,7 +197,7 @@ public class DaoSanPham {
                 String tensp = rs.getString("tenSP");
                 double dongiaban = rs.getDouble("donGiaBan");
                 int soluonghienco = rs.getInt("soLuongHienCon");
-                String dmno = rs.getString("DMno");
+                int dmno = rs.getInt("DMno");
                 String linkanh = rs.getString("linkAnh");
                 newSp = new SanPham(masp, tensp, dongiaban, soluonghienco, linkanh, dmno);
                 listnewsp.add(newSp);
@@ -241,7 +240,7 @@ public class DaoSanPham {
                 String tensp = rs.getString("tenSP");
                 double dongiaban = rs.getDouble("donGiaBan");
                 int soluonghienco = rs.getInt("soLuongHienCon");
-                String dmno = rs.getString("DMno");
+                int dmno = rs.getInt("DMno");
                 String linkanh = rs.getString("linkAnh");
                 newSp = new SanPham(masp, tensp, dongiaban, soluonghienco, linkanh, dmno);
                 list.add(newSp);
@@ -268,7 +267,7 @@ public class DaoSanPham {
                         rs.getDouble("donGiaBan"),
                         rs.getInt("soLuongHienCon"),
                         rs.getString("linkAnh"),
-                        rs.getString("DMno")
+                        rs.getInt("DMno")
                 );
                 list.add(sp);
             }
@@ -295,7 +294,7 @@ public class DaoSanPham {
                         rs.getDouble("donGiaBan"),
                         rs.getInt("soLuongHienCon"),
                         rs.getString("linkAnh"),
-                        rs.getString("DMno")
+                        rs.getInt("DMno")
                 );
                 list.add(sp);
             }

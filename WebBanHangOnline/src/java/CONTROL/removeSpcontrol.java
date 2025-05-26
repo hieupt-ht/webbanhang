@@ -4,7 +4,11 @@
  */
 package CONTROL;
 
+import DAO.DaoKhachHang;
 import DAO.DaoSanPham;
+import DAO.daoGioHang;
+import DAO.daoSize;
+import ENTITY.Account;
 import ENTITY.SanPham;
 import ENTITY.cartProduct;
 import java.io.IOException;
@@ -16,6 +20,9 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
+import ENTITY.gioHang;
+import ENTITY.size;
+import java.util.List;
 
 /**
  *
@@ -36,21 +43,46 @@ public class removeSpcontrol extends HttpServlet {
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
-     HttpSession session = request.getSession();
+        HttpSession session = request.getSession();
         ArrayList<cartProduct> gioHang = (ArrayList<cartProduct>) session.getAttribute("gioHang");
         if (gioHang == null) {
             gioHang = new ArrayList<cartProduct>();
         }
-        int idSpCart = Integer.parseInt(request.getParameter("idAddCart"));
-        DAO.Daocartproduct dao = new DAO.Daocartproduct();
-        int idRm = Integer.parseInt(request.getParameter("idrm"));
-        boolean checkID = dao.checkIdCartSp(idRm, gioHang);
-        if (checkID == true) {
-            gioHang = dao.removeCartSpById(idRm, gioHang);
-            if(gioHang.size() == 0)
-                session.removeAttribute("gioHang");
+        if (session.getAttribute("acc") == null) {
+            int idSpCart = Integer.parseInt(request.getParameter("idAddCart"));
+            DAO.Daocartproduct dao = new DAO.Daocartproduct();
+            int idRm = Integer.parseInt(request.getParameter("idrm"));
+            boolean checkID = dao.checkIdCartSp(idRm, gioHang);
+            if (checkID == true) {
+                gioHang = dao.removeCartSpById(idRm, gioHang);
+                if (gioHang.size() == 0) {
+                    session.removeAttribute("gioHang");
+                }
+                response.sendRedirect("cart.jsp");
+            }
+        } else {
+            int idrm = Integer.parseInt(request.getParameter("idrm"));
+            daoGioHang daoGioHang = new daoGioHang();
+            Account account = (Account) session.getAttribute("acc");
+            String email = account.getEmail();
+            DaoKhachHang kh = new DaoKhachHang();
+            int maKH = kh.selectmaKH(email);
+            daoGioHang.deleteSP(maKH, idrm);
+            DaoSanPham daoSanPham = new DaoSanPham();
+            List<gioHang> listGioHang = daoGioHang.getAllGioHang(maKH);
+            gioHang = new ArrayList<cartProduct>();
+            daoSize daosize = new daoSize();
+            for (gioHang gh : listGioHang) {
+            SanPham sp = daoSanPham.getSpbyId(gh.getMaSp());
+                size sizeObj = daosize.getSizebyId(gh.getMaSize());
+                cartProduct cartproduct = new cartProduct(sp.getMaSP(), sp.getTenSP(), sp.getDonGia(), sp.getSoLuongHienCon(),
+                        sp.getLinkAnh(), sizeObj.getSize(), gh.getMaSize(), sizeObj.getDMno(), gh.getSoLuong(), gh.getTongTien());
+                gioHang.add(cartproduct);
+            }
+            session.setAttribute("gioHang", gioHang);
             response.sendRedirect("cart.jsp");
         }
+
     }
 
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">

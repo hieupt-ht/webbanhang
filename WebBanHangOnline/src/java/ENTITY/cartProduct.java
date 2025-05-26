@@ -14,18 +14,45 @@ public class cartProduct {
     private double donGia;
     private int soLuongHienCon;
     private String linkAnh;
+    private String size;
+    private int idsize;
+    private int idDm;
     private int soLuong;
     private double tongTien;
 
-    public cartProduct(int maSP, String tenSP, double donGia, int soLuongHienCon, String linkAnh, int soLuong, double tongTien) {
+    public cartProduct(int maSP, String tenSP, double donGia, int soLuongHienCon, String linkAnh, String size, int idsize, int idDm, int soLuong, double tongTien) {
         this.maSP = maSP;
         this.tenSP = tenSP;
         this.donGia = donGia;
         this.soLuongHienCon = soLuongHienCon;
         this.linkAnh = linkAnh;
+        this.size = size;
+        this.idsize = idsize;
+        this.idDm = idDm;
         this.soLuong = soLuong;
         this.tongTien = tongTien;
     }
+
+    public int getIdsize() {
+        return idsize;
+    }
+
+    public void setIdsize(int idsize) {
+        this.idsize = idsize;
+    }
+
+
+
+    public int getIdDm() {
+        return idDm;
+    }
+
+    public void setIdDm(int idDm) {
+        this.idDm = idDm;
+    }
+
+
+ 
 
     public cartProduct() {
     }
@@ -85,4 +112,18 @@ public class cartProduct {
     public void setTongTien(double tongTien) {
         this.tongTien = tongTien;
     }
+
+    public String getSize() {
+        return size;
+    }
+
+    public void setSize(String size) {
+        this.size = size;
+    }
+
+    @Override
+    public String toString() {
+        return "cartProduct{" + "maSP=" + maSP + ", tenSP=" + tenSP + ", donGia=" + donGia + ", soLuongHienCon=" + soLuongHienCon + ", linkAnh=" + linkAnh + ", size=" + size + ", idsize=" + idsize + ", idDm=" + idDm + ", soLuong=" + soLuong + ", tongTien=" + tongTien + '}';
+    }
+    
 }

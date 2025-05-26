@@ -4,8 +4,19 @@
  */
 package CONTROL;
 
+import DAO.DaoKhachHang;
+import DAO.DaoSanPham;
+import DAO.daoGioHang;
+import DAO.daoSize;
+import ENTITY.Account;
+import ENTITY.SanPham;
+import ENTITY.cartProduct;
+import ENTITY.gioHang;
+import ENTITY.size;
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.util.ArrayList;
+import java.util.List;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -15,10 +26,10 @@ import javax.servlet.http.HttpSession;
 
 /**
  *
- * @author ThankPad
+ * @author LE KHAC HIEU
  */
-@WebServlet(name = "LogoutControl", urlPatterns = {"/logout"})
-public class LogoutControl extends HttpServlet {
+@WebServlet(name = "loadCart", urlPatterns = {"/loadCart"})
+public class loadCart extends HttpServlet {
 
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
@@ -33,10 +44,30 @@ public class LogoutControl extends HttpServlet {
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
         HttpSession session = request.getSession();
-        session.removeAttribute("acc");
-        session.removeAttribute("gioHang");
-        session.invalidate();
-        response.sendRedirect("index");
+        if (session.getAttribute("acc") != null) {
+            ArrayList<cartProduct> gioHang = (ArrayList<cartProduct>) session.getAttribute("gioHang");
+            if (gioHang == null) {
+                gioHang = new ArrayList<cartProduct>();
+            }
+            Account account = (Account) session.getAttribute("acc");
+            String email = account.getEmail();
+            DaoKhachHang kh = new DaoKhachHang();
+            int maKH = kh.selectmaKH(email);
+            daoGioHang daogh = new daoGioHang();
+            DaoSanPham daoSanPham = new DaoSanPham();
+            List<gioHang> listGioHang = daogh.getAllGioHang(maKH);
+            gioHang = new ArrayList<cartProduct>();
+            daoSize daosize = new daoSize();
+            for (gioHang gh : listGioHang) {
+              SanPham sp = daoSanPham.getSpbyId(gh.getMaSp());
+                size sizeObj = daosize.getSizebyId(gh.getMaSize());
+                cartProduct cartproduct = new cartProduct(sp.getMaSP(), sp.getTenSP(), sp.getDonGia(), sp.getSoLuongHienCon(),
+                        sp.getLinkAnh(), sizeObj.getSize(), gh.getMaSize(), sizeObj.getDMno(), gh.getSoLuong(), gh.getTongTien());
+                gioHang.add(cartproduct);
+            }
+            session.setAttribute("gioHang", gioHang);
+        }
+        response.sendRedirect("cart.jsp");
     }
 
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">

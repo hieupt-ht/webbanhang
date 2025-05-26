@@ -66,6 +66,7 @@
                                                             <th class="product_name">Product</th>
                                                             <th class="product-price">Price</th>
                                                             <th class="product_quantity">Quantity</th>
+                                                            <th class="product_size">Size</th>
                                                             <th class="product_total">Total</th>
                                                         </tr>
                                                     </thead>
@@ -76,40 +77,64 @@
                                                             <td class="product_thumb"><a href="#"><img src="${sp.linkAnh}" alt=""></a></td>
                                                             <td class="product_name"><a href="#">${sp.tenSP}</a></td>
                                                             <td class="product-price">${sp.donGia}</td>
+
                                                             <td class="product_quantity">
                                                                 <input name="soluong" min="0" max="100" value=${sp.soLuong != 1? sp.soLuong:1} type="number" oninput="updateTotal(this)">
                                                             </td>
-                                                            <input type="hidden" name="maSP" value="${sp.maSP}">
-                                                            <td class="product_total">${sp.donGia}</td>
-                                                        </tr>
-                                                    </c:forEach>
+                                                            <c:if test="${sp.idDm != 2}">
+                                                                <td class="product_size">
+                                                                    <select name="size">
+                                                                        <option value="S" ${sp.size == 'S' ? 'selected' : ''}>S</option>
+                                                                        <option value="M" ${sp.size == 'M' ? 'selected' : ''}>M</option>
+                                                                        <option value="L" ${sp.size == 'L' ? 'selected' : ''}>L</option>
+                                                                        <option value="XL" ${sp.size == 'XL' ? 'selected' : ''}>XL</option>
+                                                                        <option value="XXL" ${sp.size == 'XXL' ? 'selected' : ''}>XXL</option>
+                                                                    </select>
+                                                                </td>
+                                                            </c:if>
+                                                            <c:if test = "${sp.idDm ==2}">
+                                                                <td class ="product_size">
+                                                                    <input name="size" min="38" max="40" value ="${sp.size}" type="number" oninput="updateTotal(this)">
+                                                                </td>
+                                                            </c:if>
+                                                    <input type="hidden" name="maSP" value="${sp.maSP}">
+                                                    <!--<input type="hidden" name="idsize" value="${sp.idsize}">-->
+                                                    <td class="product_total">${sp.donGia}</td>
+                                                    </tr>
+                                                </c:forEach>
                                                 <script type="text/javascript">
                                                     function updateTotal(input) {
                                                         let tr = input.closest('tr');
                                                         let price = parseFloat(tr.dataset.price);
-                                                        let quantity = parseInt(input.value);
+                                                        let quantity = parseInt(tr.querySelector('input[name="soluong"]').value);
                                                         let totalCell = tr.querySelector('.product_total');
-                                                        totalCell.textContent = (price * quantity).toLocaleString('vi-VN') + ' ₫';
-                                                        updateCartTotal();  // gọi tính tổng giỏ hàng sau mỗi lần đổi
+
+                                                        if (!isNaN(price) && !isNaN(quantity)) {
+                                                            totalCell.textContent = (price * quantity).toLocaleString('vi-VN') + ' ₫';
+                                                        }
+                                                        updateCartTotal(); // cập nhật tổng giỏ hàng
                                                     }
 
                                                     function updateCartTotal() {
                                                         let total = 0;
-                                                        document.querySelectorAll('tr').forEach(tr => {
+                                                        document.querySelectorAll('tr[data-price]').forEach(tr => {
                                                             let price = parseFloat(tr.dataset.price);
-                                                            let input = tr.querySelector('input[type="number"]');
-                                                            if (input) {
+                                                            let input = tr.querySelector('input[name="soluong"]');
+                                                            if (input && !isNaN(price)) {
                                                                 let quantity = parseInt(input.value);
-                                                                total += price * quantity;
+                                                                if (!isNaN(quantity)) {
+                                                                    total += price * quantity;
+                                                                }
                                                             }
                                                         });
-                                                        document.getElementById('totalMoney').textContent = total.toLocaleString('vi-VN') + ' ₫';
+                                                        let totalMoney = document.getElementById('totalMoney');
+                                                        if (totalMoney) {
+                                                            totalMoney.textContent = total.toLocaleString('vi-VN') + ' ₫';
+                                                        }
                                                     }
 
                                                     // Tính tổng lần đầu khi trang load
-                                                    window.onload = function () {
-                                                        updateCartTotal();
-                                                    };
+                                                    window.onload = updateCartTotal;
                                                 </script>
                                                 </tbody>
                                             </table>   
@@ -143,16 +168,16 @@
                                                 </div>
                                                 <div class="cart_subtotal ">
                                                     <p>Shipping</p>
-                                                    <p class="cart_amount"><span>Flat Rate:</span> £255.00</p>
+                                                    <p class="cart_amount"><span>Flat Rate:</span> 0</p>
                                                 </div>
                                                 <a href="#">Calculate shipping</a>
 
                                                 <div class="cart_subtotal">
                                                     <p>Total</p>
-                                                    <p class="cart_amount">£215.00</p>
+                                                    <p class="cart_amount">0</p>
                                                 </div>
                                                 <div class="checkout_btn">
-                                                    <a href="checkout">Proceed to Checkout</a>
+                                                    <a href="checkout.jsp">Proceed to Checkout</a>
                                                 </div>
                                             </div>
                                         </div>

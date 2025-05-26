@@ -14,7 +14,7 @@ public class SanPham {
     private double donGia;
     private int soLuongHienCon;
     private String linkAnh;
-    private String DMno;
+    private int DMno;
 
     public int getMaSP() {
         return maSP;
@@ -56,11 +56,11 @@ public class SanPham {
         this.linkAnh = linkAnh;
     }
 
-    public String getDMno() {
+    public int getDMno() {
         return DMno;
     }
 
-    public void setDMno(String DMno) {
+    public void setDMno(int DMno) {
         this.DMno = DMno;
     }
 
@@ -69,7 +69,7 @@ public class SanPham {
     public SanPham() {
     }
 
-    public SanPham(int maSP, String tenSP, double donGia, int soLuongHienCon, String linkAnh, String DMno) {
+    public SanPham(int maSP, String tenSP, double donGia, int soLuongHienCon, String linkAnh, int DMno) {
         this.maSP = maSP;
         this.tenSP = tenSP;
         this.donGia = donGia;

@@ -46,7 +46,7 @@ public class DaoDanhMuc {
         }
         return list;
     }
-    
+ 
     public static void main(String[] args) {
         DaoDanhMuc dao = new DaoDanhMuc();
         List<DanhMuc> list = dao.getAllDanhMuc();

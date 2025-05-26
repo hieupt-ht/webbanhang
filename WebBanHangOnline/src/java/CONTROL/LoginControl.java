@@ -5,9 +5,19 @@
 package CONTROL;
 
 import DAO.AccountDao;
+import DAO.DaoKhachHang;
+import DAO.DaoSanPham;
+import DAO.daoGioHang;
+import DAO.daoSize;
 import ENTITY.Account;
+import ENTITY.SanPham;
+import ENTITY.cartProduct;
+import ENTITY.gioHang;
+import ENTITY.size;
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.util.ArrayList;
+import java.util.List;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -36,7 +46,7 @@ public class LoginControl extends HttpServlet {
         response.setContentType("text/html;charset=UTF-8");
         String userOrPassword = request.getParameter("user");
         String password = request.getParameter("password");
-        
+
         AccountDao dao = new AccountDao();
         Account a = dao.Login(userOrPassword, password);
         if (a == null) {
@@ -44,7 +54,48 @@ public class LoginControl extends HttpServlet {
             request.getRequestDispatcher("login.jsp").forward(request, response);
         } else {
             HttpSession session = request.getSession();
+
+            System.out.println("Session acc: " + session.getAttribute("acc"));
+            System.out.println(session.getAttribute("gioHang"));
+
             session.setAttribute("acc", a);
+
+            String email = a.getEmail();
+            DaoKhachHang kh = new DaoKhachHang();
+            int maKH = kh.selectmaKH(email);
+            System.out.println(maKH);
+            DaoSanPham daoSanPham = new DaoSanPham();
+            daoGioHang daogh = new daoGioHang();
+            ArrayList<cartProduct> gioHangsession = (ArrayList<cartProduct>) session.getAttribute("gioHang");
+            if (gioHangsession != null) {
+                for (cartProduct sp : gioHangsession) {
+                    daogh.insertGioHang(maKH, sp.getMaSP(), sp.getIdsize(), sp.getSoLuong(), sp.getDonGia());
+                }
+                session.removeAttribute("gioHang");
+            }
+            List<gioHang> listGioHang = daogh.getAllGioHang(maKH);
+            List<cartProduct> gioHang = new ArrayList<cartProduct>();
+            daoSize daosize = new daoSize();
+            for (gioHang gh : listGioHang) {
+             SanPham sp = daoSanPham.getSpbyId(gh.getMaSp());
+                size sizeObj = daosize.getSizebyId(gh.getMaSize());
+                cartProduct cartproduct = new cartProduct(sp.getMaSP(), sp.getTenSP(), sp.getDonGia(), sp.getSoLuongHienCon(),
+                        sp.getLinkAnh(), sizeObj.getSize(), gh.getMaSize(), sizeObj.getDMno(), gh.getSoLuong(), gh.getTongTien());
+                gioHang.add(cartproduct);
+            }
+            int dem = 0;
+            int sum = 0;
+
+            for (cartProduct sp : gioHang) {
+                dem++;
+                sum += sp.getTongTien();
+            }
+            System.out.println("Session acc: " + session.getAttribute("acc"));
+            System.out.println(gioHang.size());
+            session.setAttribute("gioHang", gioHang);
+            session.setAttribute("minicartsoluong", dem);
+            session.setAttribute("minicarttongtien", sum);
+            
             response.sendRedirect("index");
         }
     }
@@ -87,5 +138,4 @@ public class LoginControl extends HttpServlet {
     public String getServletInfo() {
         return "Short description";
     }// </editor-fold>
-
 }

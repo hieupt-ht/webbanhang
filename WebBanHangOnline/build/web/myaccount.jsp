@@ -99,7 +99,7 @@
                                                                     <td>$${ctdh.donGia} for 1 item </td>
                                                                     <td><a href="cart.html" class="view">view</a></td>
                                                                 </tr>
-                                                                </c:forEach>
+                                                            </c:forEach>
                                                             </tbody>
                                                         </table>
                                                     </div>

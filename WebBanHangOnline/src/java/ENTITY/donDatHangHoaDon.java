@@ -15,13 +15,24 @@ public class donDatHangHoaDon {
     private int KHno;
     private Date ngayTaoDH;
     private String diaChi;
+    private String nguoiNhan;
 
-    public donDatHangHoaDon(int maDH, int KHno, Date ngayTaoDH, String diaChi) {
+    public donDatHangHoaDon(int maDH, int KHno, Date ngayTaoDH, String diaChi, String nguoiNhan) {
         this.maDH = maDH;
         this.KHno = KHno;
         this.ngayTaoDH = ngayTaoDH;
         this.diaChi = diaChi;
+        this.nguoiNhan = nguoiNhan;
     }
+
+    public String getNguoiNhan() {
+        return nguoiNhan;
+    }
+
+    public void setNguoiNhan(String nguoiNhan) {
+        this.nguoiNhan = nguoiNhan;
+    }
+
 
     public donDatHangHoaDon() {
     }
