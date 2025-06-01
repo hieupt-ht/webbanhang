@@ -7,7 +7,7 @@ package DAO;
 import java.sql.Connection;
 import java.sql.ResultSet;
 import java.sql.PreparedStatement;
-import ENTITY.KhachHang;
+import ENTITY.khachHang;
 
 /**
  *

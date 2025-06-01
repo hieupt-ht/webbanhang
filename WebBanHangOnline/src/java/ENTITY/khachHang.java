@@ -8,7 +8,7 @@ package ENTITY;
  *
  * @author Windowns 10
  */
-public class KhachHang {
+public class khachHang {
     private String maKH;
     private String tenKH;
     private String SDT;
@@ -17,7 +17,7 @@ public class KhachHang {
     private String diaChi;
     private String gioiTinh;
     
-    public KhachHang(String maKH, String tenKH, String SDT, String Email, Double soDuTaiKhoan, String diaChi, String gioiTinh) {
+    public khachHang(String maKH, String tenKH, String SDT, String Email, Double soDuTaiKhoan, String diaChi, String gioiTinh) {
         this.maKH = maKH;
         this.tenKH = tenKH;
         this.SDT = SDT;
@@ -27,7 +27,7 @@ public class KhachHang {
         this.gioiTinh = gioiTinh;
     }
 
-    public KhachHang() {
+    public khachHang() {
     }
 
     public String getMaKH() {

@@ -49,7 +49,7 @@ public class removeSpcontrol extends HttpServlet {
             gioHang = new ArrayList<cartProduct>();
         }
         if (session.getAttribute("acc") == null) {
-            int idSpCart = Integer.parseInt(request.getParameter("idAddCart"));
+            //int idSpCart = Integer.parseInt(request.getParameter("idAddCart"));
             DAO.Daocartproduct dao = new DAO.Daocartproduct();
             int idRm = Integer.parseInt(request.getParameter("idrm"));
             boolean checkID = dao.checkIdCartSp(idRm, gioHang);
