@@ -176,7 +176,7 @@
                                                                 <div class="product_info">
                                                                     <ul>
                                                                         <c:if test="${sessionScope.acc != null}">
-                                                                            <li><a href="#" title="Add to Wishlist">Add to Wishlist</a></li>
+                                                                            <li><a href="addWishList?idwishlist=${sp.maSP}" title="Add to Wishlist">Add to Wishlist</a></li>
                                                                         </c:if>
                                                                         <li><a href="#" class="view-detail" data-id="${sp.maSP}" title="Quick view">View Detail</a></li>
                                                                     </ul>

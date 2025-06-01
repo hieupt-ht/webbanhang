@@ -3,12 +3,15 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
-            <file>file:/C:/Users/HIEU/OneDrive/Desktop/my-project/WebBanHangOnline/src/java/CONTROL/IndexControl.java</file>
-            <file>file:/C:/Users/HIEU/OneDrive/Desktop/my-project/WebBanHangOnline/src/java/CONTEXT/DatabaseConnection.java</file>
-            <file>file:/C:/Users/HIEU/OneDrive/Desktop/my-project/WebBanHangOnline/web/header.jsp</file>
-            <file>file:/C:/Users/HIEU/OneDrive/Desktop/my-project/WebBanHangOnline/src/java/CONTROL/CateloryControl.java</file>
-            <file>file:/C:/Users/HIEU/OneDrive/Desktop/my-project/WebBanHangOnline/src/java/CONTROL/FilterByPriceServletControl.java</file>
             <file>file:/C:/Users/HIEU/OneDrive/Desktop/my-project/WebBanHangOnline/web/index.jsp</file>
+            <file>file:/C:/Users/HIEU/OneDrive/Desktop/my-project/WebBanHangOnline/src/java/CONTROL/cartControl.java</file>
+            <file>file:/C:/Users/HIEU/OneDrive/Desktop/my-project/WebBanHangOnline/src/java/CONTROL/addWishList.java</file>
+            <file>file:/C:/Users/HIEU/OneDrive/Desktop/my-project/WebBanHangOnline/src/java/DAO/Daowishlist.java</file>
+            <file>file:/C:/Users/HIEU/OneDrive/Desktop/my-project/WebBanHangOnline/web/wishlist.jsp</file>
+            <file>file:/C:/Users/HIEU/OneDrive/Desktop/my-project/WebBanHangOnline/src/java/CONTROL/removewishlist.java</file>
+            <file>file:/C:/Users/HIEU/OneDrive/Desktop/my-project/WebBanHangOnline/src/java/DAO/DaoSanPham.java</file>
+            <file>file:/C:/Users/HIEU/OneDrive/Desktop/my-project/WebBanHangOnline/src/java/CONTROL/IndexControl.java</file>
+            <file>file:/C:/Users/HIEU/OneDrive/Desktop/my-project/WebBanHangOnline/src/java/CONTROL/LogoutControl.java</file>
         </group>
     </open-files>
 </project-private>

@@ -81,6 +81,8 @@ public class checkoutControl extends HttpServlet {
              }
              daogh.deleteAllGH(maKH);
              session.removeAttribute("gioHang");
+             session.removeAttribute("minicartsoluong");
+             session.removeAttribute("minicarttongtien");
              request.setAttribute("result", 1);
              request.getRequestDispatcher("checkout.jsp").forward(request, response);
         }

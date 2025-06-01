@@ -4,21 +4,30 @@
  */
 package CONTROL;
 
+import DAO.DaoKhachHang;
+import DAO.DaoSanPham;
+import DAO.Daowishlist;
+import ENTITY.Account;
+import ENTITY.SanPham;
+import ENTITY.wishlist;
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.util.ArrayList;
+import java.util.List;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
+import javax.servlet.RequestDispatcher;
 
 /**
  *
- * @author ThankPad
+ * @author LE KHAC HIEU
  */
-@WebServlet(name = "LogoutControl", urlPatterns = {"/logout"})
-public class LogoutControl extends HttpServlet {
+@WebServlet(name = "removewishlist", urlPatterns = {"/removewishlist"})
+public class removewishlist extends HttpServlet {
 
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
@@ -33,11 +42,28 @@ public class LogoutControl extends HttpServlet {
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
         HttpSession session = request.getSession();
-        session.removeAttribute("acc");
-        session.removeAttribute("gioHang");
-        session.removeAttribute("wishlist");
-        session.invalidate();
-        response.sendRedirect("index");
+        int idrm = Integer.parseInt(request.getParameter("idrm"));
+        Account account = (Account) session.getAttribute("acc");
+        String email = account.getEmail();
+        DaoKhachHang kh = new DaoKhachHang();
+        int maKH = kh.selectmaKH(email);
+        DAO.Daowishlist daowishlist = new Daowishlist();
+        daowishlist.removeWishlist(maKH, idrm);
+        ArrayList<SanPham> wishList = (ArrayList<SanPham>) session.getAttribute("wishlist");
+        if (wishList == null) {
+            wishList = new ArrayList<>();
+        }
+        DAO.DaoSanPham daosp = new DaoSanPham();
+        List<wishlist> list_wilist = daowishlist.getAllWishlist(maKH);
+        wishList = new ArrayList<>();
+        for(wishlist w : list_wilist){
+            SanPham s = daosp.getSpbyId(w.getMaSp());
+            System.out.println(s);
+            wishList.add(s);
+            
+        }
+        session.setAttribute("wishlist", wishList);
+        response.sendRedirect("wishlist.jsp");
     }
 
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">
