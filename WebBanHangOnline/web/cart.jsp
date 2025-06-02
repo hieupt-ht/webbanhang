@@ -99,43 +99,9 @@
                                                             </c:if>
                                                     <input type="hidden" name="maSP" value="${sp.maSP}">
                                                     <!--<input type="hidden" name="idsize" value="${sp.idsize}">-->
-                                                    <td class="product_total">${sp.donGia}</td>
+                                                    <td class="product_total">${sp.donGia * sp.soLuong}</td>
                                                     </tr>
                                                 </c:forEach>
-                                                <script type="text/javascript">
-                                                    function updateTotal(input) {
-                                                        let tr = input.closest('tr');
-                                                        let price = parseFloat(tr.dataset.price);
-                                                        let quantity = parseInt(tr.querySelector('input[name="soluong"]').value);
-                                                        let totalCell = tr.querySelector('.product_total');
-
-                                                        if (!isNaN(price) && !isNaN(quantity)) {
-                                                            totalCell.textContent = (price * quantity).toLocaleString('vi-VN') + ' ₫';
-                                                        }
-                                                        updateCartTotal(); // cập nhật tổng giỏ hàng
-                                                    }
-
-                                                    function updateCartTotal() {
-                                                        let total = 0;
-                                                        document.querySelectorAll('tr[data-price]').forEach(tr => {
-                                                            let price = parseFloat(tr.dataset.price);
-                                                            let input = tr.querySelector('input[name="soluong"]');
-                                                            if (input && !isNaN(price)) {
-                                                                let quantity = parseInt(input.value);
-                                                                if (!isNaN(quantity)) {
-                                                                    total += price * quantity;
-                                                                }
-                                                            }
-                                                        });
-                                                        let totalMoney = document.getElementById('totalMoney');
-                                                        if (totalMoney) {
-                                                            totalMoney.textContent = total.toLocaleString('vi-VN') + ' ₫';
-                                                        }
-                                                    }
-
-                                                    // Tính tổng lần đầu khi trang load
-                                                    window.onload = updateCartTotal;
-                                                </script>
                                                 </tbody>
                                             </table>   
                                         </div>  
@@ -168,13 +134,13 @@
                                                 </div>
                                                 <div class="cart_subtotal ">
                                                     <p>Shipping</p>
-                                                    <p class="cart_amount"><span>Flat Rate:</span> 0</p>
+                                                    <p id="ship" class="cart_amount"><span>Flat Rate:</span> 0</p>
                                                 </div>
                                                 <a href="#">Calculate shipping</a>
 
                                                 <div class="cart_subtotal">
                                                     <p>Total</p>
-                                                    <p class="cart_amount">0</p>
+                                                    <p id="totalMoneyAndShip" class="cart_amount"></p>
                                                 </div>
                                                 <div class="checkout_btn">
                                                     <a href="checkout.jsp">Proceed to Checkout</a>
@@ -207,3 +173,49 @@
     </body>
 </html>
 
+                                                <script type="text/javascript">
+                                                    function updateTotal(input) {
+                                                        let tr = input.closest('tr');
+                                                        let price = parseFloat(tr.dataset.price);
+                                                        let quantity = parseInt(tr.querySelector('input[name="soluong"]').value);
+                                                        let totalCell = tr.querySelector('.product_total');
+
+                                                        if (!isNaN(price) && !isNaN(quantity)) {
+                                                            totalCell.textContent = (price * quantity).toLocaleString('vi-VN') + ' ₫';
+                                                        }
+                                                        updateCartTotal(); // cập nhật tổng giỏ hàng
+                                                    }
+
+                                                    function updateCartTotal() {
+                                                        let total = 0;
+                                                        let valueShip = 0;
+                                                        let totalShip = 0;
+                                                        document.querySelectorAll('tr[data-price]').forEach(tr => {
+                                                            let price = parseFloat(tr.dataset.price);
+                                                            let input = tr.querySelector('input[name="soluong"]');
+                                                            if (input && !isNaN(price)) {
+                                                                let quantity = parseInt(input.value);
+                                                                if (!isNaN(quantity)) {
+                                                                    total += price * quantity;
+                                                                }
+                                                            }
+                                                        });
+                                                        let totalMoney = document.getElementById('totalMoney');
+                                                        if (totalMoney) {
+                                                            totalMoney.textContent = total.toLocaleString('vi-VN') + ' ₫';
+                                                        }
+                                                        valueShip = total * 10/100;
+                                                        let ship = document.getElementById('ship');
+                                                        if (ship) {
+                                                            ship.textContent = valueShip.toLocaleString('vi-VN') + ' ₫';
+                                                        }
+                                                        totalShip = total + valueShip;
+                                                        let totalMoneyAndShip = document.getElementById('totalMoneyAndShip');
+                                                        if (totalMoneyAndShip) {
+                                                            totalMoneyAndShip.textContent = totalShip.toLocaleString('vi-VN') + ' ₫';
+                                                        }
+                                                    }
+                                                    
+                                                    // Tính tổng lần đầu khi trang load
+                                                    window.onload = updateCartTotal;
+                                                </script>

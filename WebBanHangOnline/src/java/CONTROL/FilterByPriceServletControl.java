@@ -38,23 +38,17 @@ public class FilterByPriceServletControl extends HttpServlet {
             int min = Integer.parseInt(request.getParameter("min"));
             int max = Integer.parseInt(request.getParameter("max"));
             DaoSanPham dao = new DaoSanPham();            
-            String number = request.getParameter("number");
-            if(number == null)
-                number = "1";
-            int numberpage = Integer.parseInt(number);
-            List<SanPham> list = dao.getSanPhamTheoGiaVaPhanTrang(min, max, numberpage);
-            int page;
+            
+            List<SanPham> list = dao.filterByPrice(min, max);
+            int page = 1;
             int count = dao.filterByPrice(min, max).size();
-            if (count % 12 == 0) {
-                page = count / 12;
-            } else {
-                page = count / 12 + 1;
-            }
+            
+            request.setAttribute("valStart", 1);
+            request.setAttribute("valEnd", count);
             request.setAttribute("listfullwidth", list);
             request.setAttribute("page", page);
             request.setAttribute("soLuongSP", count);
-            request.setAttribute("tag", numberpage);
-
+            request.setAttribute("tag", 1);
             request.setAttribute("listSP", list);
             request.getRequestDispatcher("shop.jsp").forward(request, response);
     }

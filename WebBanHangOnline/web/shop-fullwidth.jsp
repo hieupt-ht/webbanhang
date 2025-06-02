@@ -72,7 +72,7 @@
                                             </ul>
                                         </div>
                                         <div class="page_amount">
-                                            <p>Showing 1–9 of ${soLuongSP} results</p>
+                                            <p>Showing ${valStart}–${valEnd} of ${soLuongSP} results</p>
                                         </div>
                                         <div class="select_option">
                                             <form action="#">

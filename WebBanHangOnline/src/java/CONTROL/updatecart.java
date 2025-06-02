@@ -92,14 +92,24 @@ public class updatecart extends HttpServlet {
                 int maKH = kh.selectmaKH(email);
                 Daocartproduct dao = new Daocartproduct();
                 daoGioHang daogiohang = new daoGioHang();
+                List<gioHang> listGH = daogiohang.getAllGioHang(maKH);
                 daoSize daosize = new daoSize();
                 for (int i = 0; i <= ids.length - 1; i++) {
                     String idsp = ids[i];
                     String nameSize = nameSizes[i];
                     System.out.println(nameSize);
+                    gioHang ghtmp = null;
+                    for(gioHang gh : listGH){
+                        size sizetmp = daosize.getSizebyname(nameSizes[i]);
+                        if(gh.getMaSp() == Integer.parseInt(ids[i]) && gh.getMaSize() == sizetmp.getIdSize())
+                            ghtmp = gh;
+                        break;
+                    }
                     cartProduct cartproduct = dao.getCartproductByid(Integer.parseInt(idsp), listcart);
                     size sizeobj = daosize.getSizebyName_Dm(nameSize, cartproduct.getIdDm());
-                    daogiohang.updateGioHang(maKH, Integer.parseInt(idsp), Integer.parseInt(soluongs[i]), sizeobj.getIdSize());
+//                    daogiohang.updateGioHang(maKH, Integer.parseInt(idsp), Integer.parseInt(soluongs[i]), sizeobj.getIdSize());
+                    daogiohang.updateGioHang(maKH, Integer.parseInt(idsp), Integer.parseInt(soluongs[i]),
+                            sizeobj.getIdSize(), ghtmp.getSoLuong(), ghtmp.getMaSize());
                 }
                 List<gioHang> listGioHang = daogiohang.getAllGioHang(maKH);
                 for(gioHang g : listGioHang)
