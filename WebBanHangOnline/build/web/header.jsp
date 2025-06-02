@@ -28,9 +28,9 @@
                     <ul>
                         <li><a href="contact.jsp" title="Contact">Contact</a></li>
                             <c:if test="${sessionScope.acc != null}">
-                            <li><a href="wishlist.jsp" title="wishlist">My wishlist</a></li>
+                            <li><a href="loadwishlist" title="wishlist">My wishlist</a></li>
                             <li><a href="MyAccountControl" title="My account">My account</a></li>
-                            <li><a href="cart.jsp" title="My cart">My cart</a></li>
+                            <li><a href="loadCart" title="My cart">My cart</a></li>
                             </c:if>
                             <c:if test="${sessionScope.acc == null}">
                             <li><a href="login.jsp" title="Login">Login</a></li>

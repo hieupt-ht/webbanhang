@@ -73,7 +73,7 @@
                                                             <td class="product_name"><a href="#">${sp.tenSP}</a></td>
                                                             <td class="product-price">${sp.donGia}</td>
                                                             <td class="product_quantity">In Stock</td>
-                                                            <td class="product_total"><a href="cartControl?idAddCart=${sp.maSP}">Add To Cart</a></td>
+                                                            <td class="product_total"><a href="addwishlist?idAddCart=${sp.maSP}">Add To Cart</a></td>
                                                         </tr>                    
                                                     </c:forEach>
                                                 </tbody>
