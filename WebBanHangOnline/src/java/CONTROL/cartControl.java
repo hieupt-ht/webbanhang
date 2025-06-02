@@ -60,12 +60,12 @@ public class cartControl extends HttpServlet {
             if (sanPhamAddCart.getDMno() == 2) {
                 cartproduct = new cartProduct(sanPhamAddCart.getMaSP(), sanPhamAddCart.getTenSP(),
                         sanPhamAddCart.getDonGia(), sanPhamAddCart.getSoLuongHienCon(), sanPhamAddCart.getLinkAnh(),
-                        "38", 4, 2, 1, sanPhamAddCart.getDonGia());
+                        "38", 4, sanPhamAddCart.getDMno(), 1, sanPhamAddCart.getDonGia());
 
             } else {
                 cartproduct = new cartProduct(sanPhamAddCart.getMaSP(), sanPhamAddCart.getTenSP(),
                         sanPhamAddCart.getDonGia(), sanPhamAddCart.getSoLuongHienCon(), sanPhamAddCart.getLinkAnh(),
-                        "M", 2, 1, 1, sanPhamAddCart.getDonGia());
+                        "M", 2, sanPhamAddCart.getDMno(), 1, sanPhamAddCart.getDonGia());
             }
             System.out.println(cartproduct);
             gioHang.add(cartproduct);
