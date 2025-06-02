@@ -4,9 +4,7 @@
  */
 package CONTROL;
 
-import DAO.DaoDanhMuc;
 import DAO.DaoSanPham;
-import ENTITY.DanhMuc;
 import ENTITY.SanPham;
 import java.io.IOException;
 import java.io.PrintWriter;
@@ -21,8 +19,8 @@ import javax.servlet.http.HttpServletResponse;
  *
  * @author ThankPad
  */
-@WebServlet(name = "CateloryControl", urlPatterns = {"/catelory"})
-public class CateloryControl extends HttpServlet {
+@WebServlet(name = "SingleProductControl", urlPatterns = {"/singleproduct"})
+public class SingleProductControl extends HttpServlet {
 
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
@@ -36,17 +34,16 @@ public class CateloryControl extends HttpServlet {
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
-        
-        String maDM = request.getParameter("idDM");
-        DaoSanPham daoSp = new DaoSanPham();
-        List<SanPham> listByidDM = daoSp.getSanPhamByDM(maDM);
-        
-        request.setAttribute("list", listByidDM);
-        request.setAttribute("soLuong", listByidDM.size());
-    
-        request.getRequestDispatcher("shop-fullwidth-list.jsp").forward(request, response);
+        int maSP = Integer.parseInt(request.getParameter("idSP"));
+        DaoSanPham dao = new DaoSanPham();
+        SanPham sp = dao.getSpbyId(maSP);
+        List<SanPham> list = dao.getSanPhamByDM(sp.getDMno()+"");
+        request.setAttribute("sp", sp);
+        request.setAttribute("listDM", list);
+        request.setAttribute("count", list.size());
+        request.getRequestDispatcher("single-product.jsp").forward(request, response);
     }
-    
+
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">
     /**
      * Handles the HTTP <code>GET</code> method.

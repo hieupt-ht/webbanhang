@@ -12,20 +12,20 @@ public class gioHang {
     private int maKH, maSp, maSize, soLuong;
     private double donGia;
     private double tongTien;
+    private int maGH;
 
     public gioHang() {
     }
 
-    public gioHang(int maKH, int maSp, int maSize, int soLuong, double donGia, double tongTien) {
+    public gioHang( int maGH, int maKH, int maSp, int maSize, int soLuong, double donGia, double tongTien) {
         this.maKH = maKH;
         this.maSp = maSp;
         this.maSize = maSize;
         this.soLuong = soLuong;
         this.donGia = donGia;
         this.tongTien = tongTien;
+        this.maGH = maGH;
     }
-
-
 
     public int getMaKH() {
         return maKH;
@@ -41,6 +41,14 @@ public class gioHang {
 
     public void setMaSp(int maSp) {
         this.maSp = maSp;
+    }
+
+    public int getMaSize() {
+        return maSize;
+    }
+
+    public void setMaSize(int maSize) {
+        this.maSize = maSize;
     }
 
     public int getSoLuong() {
@@ -67,18 +75,19 @@ public class gioHang {
         this.tongTien = tongTien;
     }
 
-    public int getMaSize() {
-        return maSize;
+    public int getMaGH() {
+        return maGH;
     }
 
-    public void setMaSize(int maSize) {
-        this.maSize = maSize;
+    public void setMaGH(int maGH) {
+        this.maGH = maGH;
     }
 
     @Override
     public String toString() {
-        return "gioHang{" + "maKH=" + maKH + ", maSp=" + maSp + ", maSize=" + maSize + ", soLuong=" + soLuong + ", donGia=" + donGia + ", tongTien=" + tongTien + '}';
+        return "gioHang{" + "maKH=" + maKH + ", maSp=" + maSp + ", maSize=" + maSize + ", soLuong=" + soLuong + ", donGia=" + donGia + ", tongTien=" + tongTien + ", maGH=" + maGH + '}';
     }
+
 
     
 }

@@ -1,49 +1,71 @@
-<%-- 
-    Document   : thanhtoan
-    Created on : Jun 2, 2025, 4:09:04‚ÄØPM
-    Author     : ThankPad
---%>
-
-<%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
-<html>
-    <head>
-        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-        <title>JSP Page</title>
-    </head>
-    <body>
-        <form id="fake-payment-form">
-            <label>S·ªë th·∫ª t√≠n d·ª•ng:</label>
-            <input type="text" name="cardNumber" required>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Thanh to·n b?ng QR Code</title>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/qrcodejs/1.0.0/qrcode.min.js"></script>
+    <style>
+        body { font-family: Arial, sans-serif; text-align: center; padding: 20px; }
+        #qr-code { margin: 20px auto; }
+        #payment-result { margin-top: 20px; }
+        input, button { margin: 10px; padding: 10px; font-size: 16px; }
+    </style>
+</head>
+<body>
+    <h2>Thanh to·n b?ng QR Code</h2>
+    <form id="payment-form">
+        <label>S? ti?n:</label>
+        <input type="number" id="amount" name="amount" required min="1">
+        <button type="submit">T?o m„ QR</button>
+    </form>
+    <div id="qr-code"></div>
+    <div id="payment-result"></div>
 
-            <label>T√™n ch·ªß th·∫ª:</label>
-            <input type="text" name="cardHolder" required>
-
-            <label>Ng√†y h·∫øt h·∫°n:</label>
-            <input type="text" name="expiryDate" required>
-
-            <label>CVC:</label>
-            <input type="text" name="cvc" required>
-
-            <button type="submit">Thanh to√°n</button>
-        </form>
-        <div id="payment-result"></div>
-
-    </body>
-</html>
-
-<script>
-    document.getElementById("fake-payment-form").addEventListener("submit", function(e) {
-        e.preventDefault();
-        document.getElementById("payment-result").innerHTML = "<p>ƒêang x·ª≠ l√Ω thanh to√°n...</p>";
-
-        setTimeout(function() {
-            var success = Math.random() < 0.8; // X√°c su·∫•t 80% th√†nh c√¥ng
-            if (success) {
-                document.getElementById("payment-result").innerHTML = "<p style='color:green;'>Thanh to√°n th√†nh c√¥ng!</p>";
-            } else {
-                document.getElementById("payment-result").innerHTML = "<p style='color:red;'>Thanh to√°n th·∫•t b·∫°i. Vui l√≤ng th·ª≠ l·∫°i.</p>";
+    <script>
+        document.getElementById("payment-form").addEventListener("submit", function(e) {
+            e.preventDefault();
+            
+            const amount = document.getElementById("amount").value;
+            const paymentResult = document.getElementById("payment-result");
+            const qrCodeDiv = document.getElementById("qr-code");
+            
+            if (amount <= 0) {
+                paymentResult.innerHTML = "<p style='color:red;'>Vui lÚng nh?p s? ti?n h?p l?.</p>";
+                return;
             }
-        }, 2000);
-    });
-</script>
+
+            // T?o d? li?u cho QR code (gi? l?p thÙng tin giao d?ch)
+            const transactionData = {
+                merchantId: "MERCHANT123",
+                amount: amount,
+                transactionId: "TX" + Date.now(),
+                currency: "VND"
+            };
+            const qrData = JSON.stringify(transactionData);
+
+            // XÛa m„ QR c? (n?u cÛ)
+            qrCodeDiv.innerHTML = "";
+            
+            // T?o m„ QR
+            new QRCode(qrCodeDiv, {
+                text: qrData,
+                width: 200,
+                height: 200
+            });
+
+            paymentResult.innerHTML = "<p>QuÈt m„ QR ?? thanh to·n " + amount + " VND</p>";
+
+            // Gi? l?p ki?m tra tr?ng th·i thanh to·n sau khi quÈt
+            setTimeout(function() {
+                const success = Math.random() < 0.8; // X·c su?t th‡nh cÙng 80%
+                if (success) {
+                    paymentResult.innerHTML = "<p style='color:green;'>Thanh to·n th‡nh cÙng!</p>";
+                } else {
+                    paymentResult.innerHTML = "<p style='color:red;'>Thanh to·n th?t b?i. Vui lÚng th? l?i.</p>";
+                }
+            }, 5000); // Gi? l?p th?i gian quÈt QR
+        });
+    </script>
+</body>
+</html>

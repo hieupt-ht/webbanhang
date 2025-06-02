@@ -161,7 +161,7 @@
                                                         <div class="col-lg-3">
                                                             <div class="single_product">
                                                                 <div class="product_thumb">
-                                                                    <a href="single-product.html"><img src="${sp.linkAnh}" alt=""></a> 
+                                                                    <a href="singleproduct?idSP=${sp.maSP}"><img src="${sp.linkAnh}" alt=""></a> 
                                                                     <div class="img_icone">
                                                                         <img src="assets\img\cart\span-new.png" alt="">
                                                                     </div>
