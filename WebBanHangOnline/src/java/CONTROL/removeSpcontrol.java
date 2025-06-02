@@ -43,6 +43,8 @@ public class removeSpcontrol extends HttpServlet {
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
+        String soluongStr = request.getParameter("soLuong");
+        int soLuong = (soluongStr != null && !soluongStr.isEmpty()) ? Integer.parseInt(soluongStr) : 1;
         HttpSession session = request.getSession();
         ArrayList<cartProduct> gioHang = (ArrayList<cartProduct>) session.getAttribute("gioHang");
         if (gioHang == null) {
@@ -67,7 +69,7 @@ public class removeSpcontrol extends HttpServlet {
             String email = account.getEmail();
             DaoKhachHang kh = new DaoKhachHang();
             int maKH = kh.selectmaKH(email);
-            daoGioHang.deleteSP(maKH, idrm);
+            daoGioHang.deleteGHByIdSPandSoLuong(idrm, soLuong, maKH);
             DaoSanPham daoSanPham = new DaoSanPham();
             List<gioHang> listGioHang = daoGioHang.getAllGioHang(maKH);
             gioHang = new ArrayList<cartProduct>();

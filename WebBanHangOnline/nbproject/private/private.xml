@@ -3,9 +3,13 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
-            <file>file:/C:/Users/HIEU/OneDrive/Desktop/my-project/WebBanHangOnline/web/cart.jsp</file>
-            <file>file:/C:/Users/HIEU/OneDrive/Desktop/my-project/WebBanHangOnline/src/java/DAO/DaoKhachHang.java</file>
-            <file>file:/C:/Users/HIEU/OneDrive/Desktop/my-project/WebBanHangOnline/src/java/ENTITY/khachHang.java</file>
+            <file>file:/C:/Users/HIEU/OneDrive/Desktop/my-project/WebBanHangOnline/web/thanhtoan.jsp</file>
+            <file>file:/C:/Users/HIEU/OneDrive/Desktop/my-project/WebBanHangOnline/web/myaccount.jsp</file>
+            <file>file:/C:/Users/HIEU/OneDrive/Desktop/my-project/WebBanHangOnline/src/java/DAO/DaoDonDatHangHoaDon.java</file>
+            <file>file:/C:/Users/HIEU/OneDrive/Desktop/my-project/WebBanHangOnline/src/java/CONTROL/pay.java</file>
+            <file>file:/C:/Users/HIEU/OneDrive/Desktop/my-project/WebBanHangOnline/src/java/CONTROL/thanhtoan.java</file>
+            <file>file:/C:/Users/HIEU/OneDrive/Desktop/my-project/WebBanHangOnline/src/java/CONTROL/cartControl.java</file>
+            <file>file:/C:/Users/HIEU/OneDrive/Desktop/my-project/WebBanHangOnline/web/checkout.jsp</file>
         </group>
     </open-files>
 </project-private>

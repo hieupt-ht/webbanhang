@@ -230,58 +230,56 @@
     </body>
 </html>
 
-<script> 
+<script>
 $(document).ready(function() {
+    // Khi bấm vào nút "View" chi tiết đơn hàng
     $('.view-order-detail').on('click', function(e) {
-        e.preventDefault();
-        var idOrder = $(this).data('id');
-        console.log('ID Đơn Hàng:', idOrder);
+        e.preventDefault(); // Ngăn chuyển trang
+        var idOrder = $(this).data('id'); // Lấy mã đơn hàng từ data-id
 
         $.ajax({
             url: 'OrderDetailServlet',
             type: 'GET',
             data: { idOrder: idOrder },
             dataType: 'json',
-            success: function(data) {
-                console.log('Dữ liệu nhận được:', data);
-
-                if (data.error) {
-                    alert('Lỗi: ' + data.error);
+            success: function(response) {
+                // Kiểm tra có lỗi không
+                if (response.error) {
+                    alert('Lỗi: ' + response.error);
                     return;
                 }
 
-                // Xóa dữ liệu cũ
-                $('#modal_product_table tbody').html('');
+                var tbody = $('#modal_product_table tbody');
+                tbody.empty(); // Xóa dữ liệu cũ
 
-                // Kiểm tra nếu danh sách rỗng
-                if (!data.listCTDH || data.listCTDH.length === 0) {
-                    $('#modal_product_table tbody').html('<tr><td colspan="5">Không có sản phẩm nào trong đơn hàng này.</td></tr>');
+                var listChiTiet = response.listCTDH;
+
+                if (!listChiTiet || listChiTiet.length === 0) {
+                    tbody.append('<tr><td colspan="5">Không có sản phẩm nào trong đơn hàng này.</td></tr>');
                 } else {
-                    var tableRows = '';
-                    data.listCTDH.forEach(function(ct) {
-                        tableRows += '<tr>' +
-                            '<td>' + ct.maDH + '</td>' +
-                            '<td>' + ct.tenSP + '</td>' +
-                            '<td>$' + ct.donGia + '</td>' +
-                            '<td>' + ct.soLuong + '</td>' +
-                            '<td>' + ct.size + '</td>' +
+                    listChiTiet.forEach(function(item) {
+                        var row = '<tr>' +
+                            '<td>' + item.maDH + '</td>' +
+                            '<td>' + item.tenSP + '</td>' +
+                            '<td>$' + item.donGia.toFixed(2) + '</td>' +
+                            '<td>' + item.soLuong + '</td>' +
+                            '<td>' + item.size + '</td>' +
                         '</tr>';
+                        tbody.append(row);
                     });
-
-                    $('#modal_product_table tbody').html(tableRows);
                 }
 
-                // Hiển thị modal
+                // Hiển thị modal popup chi tiết đơn hàng
                 $('#order_detail_modal').modal('show');
 
-                // Gán sự kiện cho nút thanh toán
+                // Gán nút "Thanh toán ngay"
                 $('#pay-now-btn').off('click').on('click', function() {
-                    window.location.href = 'thanhtoan.jsp?idOrder=' + idOrder;
+                    window.location.href = 'thanhtoan?idOrder=' + idOrder;
                 });
             },
             error: function(xhr, status, error) {
-                console.log('Lỗi AJAX:', status, error);
-                alert('Không thể tải thông tin đơn hàng.');
+                console.error('Lỗi AJAX:', status, error);
+                alert('Không thể tải thông tin đơn hàng. Vui lòng thử lại sau.');
             }
         });
     });

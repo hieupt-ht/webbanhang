@@ -42,12 +42,13 @@ public class daoGioHang {
             stmt.setInt(1, maKH);
             ResultSet rs = stmt.executeQuery();
             while (rs.next()) {
+                int  maGH = rs.getInt("maGH");
                 int maKhachHang = rs.getInt("maKH");
                 int maSP = rs.getInt("maSP");
                 int maSize = rs.getInt("Sizeno");
                 int soLuong = rs.getInt("soLuong");
                 double donGia = rs.getDouble("donGia");
-                gioHang gh = new gioHang(maKH, maSP, maSize, soLuong, donGia, donGia * soLuong);
+                gioHang gh = new gioHang(maGH,maKH, maSP, maSize, soLuong, donGia, donGia * soLuong);
                 listGioHang.add(gh);
             }
         } catch (Exception e) {
@@ -55,34 +56,25 @@ public class daoGioHang {
         return listGioHang;
     }
 
-    public void deleteSP(int maKH, int maSP) {
-        String sql = "delete from GIOHANG where maKH = ? and maSP = ?";
+    public void deleteGHByIdSPandSoLuong(int idSP, int soLuong, int maKH) {
+        String sql = "WITH ToDelete AS (\n" +
+                    "    SELECT *, ROW_NUMBER() OVER (ORDER BY maGH ASC) AS rn\n" +
+                    "    FROM GIOHANG\n" +
+                    "    WHERE maSP = ? and soLuong = ? and maKh = ?\n" +
+                    ")\n" +
+                    "DELETE FROM ToDelete WHERE rn = 1;";
         try {
             Connection con = CONTEXT.DatabaseConnection.getConnection();
             PreparedStatement stmt = con.prepareStatement(sql);
-            stmt.setInt(1, maKH);
-            stmt.setInt(2, maSP);
+            stmt.setInt(1, idSP);
+            stmt.setInt(2, soLuong);
+            stmt.setInt(3, maKH);
             stmt.executeUpdate();
         } catch (Exception e) {
         }
     }
 
-    public void updateGioHang(int maKH, int maSP, int soLuong, int size, int soLuongCu, int sizeCu) {
-        String sql = "update GIOHANG set soLuong = ?, Sizeno = ? where maKH = ? and maSP = ? and soLuong = ? and Sizeno = ?";
-        try {
-            Connection con = CONTEXT.DatabaseConnection.getConnection();
-            PreparedStatement stmt = con.prepareStatement(sql);
-            stmt.setInt(1, soLuong);
-            stmt.setInt(2, size);
-            stmt.setInt(3, maKH);
-            stmt.setInt(4, maSP);
-            stmt.setInt(5, soLuongCu);
-            stmt.setInt(6, sizeCu);
-            stmt.executeUpdate();
-        } catch (Exception e) {
-        }
-    }
-//        public void updateGioHang(int maKH, int maSP, int soLuong, int size) {
+//    public void updateGioHang(int maKH, int maSP, int soLuong, int size, int soLuongCu, int sizeCu) {
 //        String sql = "update GIOHANG set soLuong = ?, Sizeno = ? where maKH = ? and maSP = ? and soLuong = ? and Sizeno = ?";
 //        try {
 //            Connection con = CONTEXT.DatabaseConnection.getConnection();
@@ -91,12 +83,27 @@ public class daoGioHang {
 //            stmt.setInt(2, size);
 //            stmt.setInt(3, maKH);
 //            stmt.setInt(4, maSP);
-//            stmt.setInt(5, soLuong);
-//            stmt.setInt(6, size);
+//            stmt.setInt(5, soLuongCu);
+//            stmt.setInt(6, sizeCu);
 //            stmt.executeUpdate();
 //        } catch (Exception e) {
 //        }
 //    }
+        public void updateGioHang(int maKH, int maSP, int soLuong, int size) {
+        String sql = "update GIOHANG set soLuong = ?, Sizeno = ? where maKH = ? and maSP = ? and soLuong = ? and Sizeno = ?";
+        try {
+            Connection con = CONTEXT.DatabaseConnection.getConnection();
+            PreparedStatement stmt = con.prepareStatement(sql);
+            stmt.setInt(1, soLuong);
+            stmt.setInt(2, size);
+            stmt.setInt(3, maKH);
+            stmt.setInt(4, maSP);
+            stmt.setInt(5, soLuong);
+            stmt.setInt(6, size);
+            stmt.executeUpdate();
+        } catch (Exception e) {
+        }
+    }
 
     public void deleteAllGH(int maKH) {
         String sql = "delete from GIOHANG where maKH = " + maKH;

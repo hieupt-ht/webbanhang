@@ -4,25 +4,23 @@
  */
 package CONTROL;
 
-import DAO.DaoDanhMuc;
-import DAO.DaoSanPham;
-import ENTITY.DanhMuc;
-import ENTITY.SanPham;
+import DAO.daoChiTietDH;
 import java.io.IOException;
 import java.io.PrintWriter;
-import java.util.List;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-
+import javax.servlet.http.HttpSession;
+import javax.servlet.RequestDispatcher;
+import javax.servlet.ServletResponse;
 /**
  *
- * @author ThankPad
+ * @author LE KHAC HIEU
  */
-@WebServlet(name = "CateloryControl", urlPatterns = {"/catelory"})
-public class CateloryControl extends HttpServlet {
+@WebServlet(name = "thanhtoan", urlPatterns = {"/thanhtoan"})
+public class thanhtoan extends HttpServlet {
 
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
@@ -36,17 +34,20 @@ public class CateloryControl extends HttpServlet {
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
+        HttpSession session = request.getSession();
+        int madh = Integer.parseInt(request.getParameter("idOrder")) ;
+        System.out.println("ma don hang: " + madh);
         
-        String maDM = request.getParameter("idDM");
-        DaoSanPham daoSp = new DaoSanPham();
-        List<SanPham> listByidDM = daoSp.getSanPhamByDM(maDM);
+        DAO.ChiTietDonHangDao dao = new DAO.ChiTietDonHangDao();
+        double sum = dao.tongTien(madh);
         
-        request.setAttribute("list", listByidDM);
-        request.setAttribute("soLuong", listByidDM.size());
-    
-        request.getRequestDispatcher("shop-fullwidth-list.jsp").forward(request, response);
+        
+        System.out.println("xin chao ban");
+        session.setAttribute("idthanhtoan", madh);
+        session.setAttribute("sum", sum);
+        response.sendRedirect("thanhtoan.jsp");
     }
-    
+
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">
     /**
      * Handles the HTTP <code>GET</code> method.
