@@ -36,12 +36,14 @@ public class ChiTietDonHangDao {
                     "    DH.ngayTaoDH,\n" +
                     "    DH.diaChi,\n" +
                     "    DH.SDT,\n" +
-                    "    DH.nguoiNhan\n" +
+                    "    DH.nguoiNhan, \n" +
+                    "    S.Size\n" +
                     "FROM Account A\n" +
                     "JOIN KhachHang KH ON A.Email = KH.Email\n" +
                     "JOIN DonDatHang_HoaDon DH ON KH.maKH = DH.KHno\n" +
                     "JOIN ChiTietDonHang CT ON DH.maDH = CT.maDH\n" +
                     "JOIN SanPham SP ON CT.maSP = SP.maSP\n" +
+                    "JOIN tbSize S ON CT.Sizeno = S.idSize\n" +
                     "WHERE A.maAcc = ?;";
         try {
             c = CONTEXT.DatabaseConnection.getConnection();
@@ -54,7 +56,42 @@ public class ChiTietDonHangDao {
                         rs.getString("maDH"),
                         rs.getString("tenSP"),
                         rs.getInt("soLuongDat"),
-                        rs.getDouble("donGia")
+                        rs.getDouble("donGia"),
+                        rs.getString("Size")
+                );
+                list.add(ctdh);
+            }
+        } catch (Exception e) {
+        }
+        return list;
+    }
+    public List<ChiTietDonHang> getCTDHByIdDh(int maDH){
+        List<ChiTietDonHang> list = new ArrayList<ChiTietDonHang>();
+        String sql = "select \n" +
+                    "	c.maDH,\n" +
+                    "	sp.tenSP,\n" +
+                    "	c.soLuongDat,\n" +
+                    "	c.donGia,\n" +
+                    "	s.Size\n" +
+                    "from\n" +
+                    "	ChiTietDonHang c\n" +
+                    "join DonDatHang_HoaDon d on c.maDH = d.maDH\n" +
+                    "join tbSize s on s.idSize = c.Sizeno\n" +
+                    "join SanPham sp on sp.maSP = c.maSP\n" +
+                    "where c.maDH = ?";
+        try {
+            c = CONTEXT.DatabaseConnection.getConnection();
+            stmt = c.prepareCall(sql);
+            stmt.setInt(1, maDH);
+            rs = stmt.executeQuery();
+
+            while (rs.next()) {
+                ChiTietDonHang ctdh = new ChiTietDonHang(
+                        rs.getString("maDH"),
+                        rs.getString("tenSP"),
+                        rs.getInt("soLuongDat"),
+                        rs.getDouble("donGia"),
+                        rs.getString("Size")
                 );
                 list.add(ctdh);
             }
@@ -64,7 +101,7 @@ public class ChiTietDonHangDao {
     }
     public static void main(String[] args) {
         ChiTietDonHangDao ct = new ChiTietDonHangDao();
-        List<ChiTietDonHang> list = ct.getAllCTDH(1);
+        List<ChiTietDonHang> list = ct.getCTDHByIdDh(2);
         for(ChiTietDonHang o : list) {
             System.out.println(o);
         }

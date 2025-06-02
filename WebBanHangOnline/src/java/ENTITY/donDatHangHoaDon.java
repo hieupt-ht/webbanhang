@@ -12,29 +12,24 @@ import java.util.Date;
  */
 public class donDatHangHoaDon {
     private int maDH;
-    private int KHno;
+    private String tenKH;
     private Date ngayTaoDH;
+    private double tongTien;
+    private String trangThai;
     private String diaChi;
     private String nguoiNhan;
 
-    public donDatHangHoaDon(int maDH, int KHno, Date ngayTaoDH, String diaChi, String nguoiNhan) {
+    public donDatHangHoaDon() {
+    }
+
+    public donDatHangHoaDon(int maDH, String tenKH, Date ngayTaoDH, double tongTien, String trangThai, String diaChi, String nguoiNhan) {
         this.maDH = maDH;
-        this.KHno = KHno;
+        this.tenKH = tenKH;
         this.ngayTaoDH = ngayTaoDH;
+        this.tongTien = tongTien;
+        this.trangThai = trangThai;
         this.diaChi = diaChi;
         this.nguoiNhan = nguoiNhan;
-    }
-
-    public String getNguoiNhan() {
-        return nguoiNhan;
-    }
-
-    public void setNguoiNhan(String nguoiNhan) {
-        this.nguoiNhan = nguoiNhan;
-    }
-
-
-    public donDatHangHoaDon() {
     }
 
     public int getMaDH() {
@@ -45,12 +40,12 @@ public class donDatHangHoaDon {
         this.maDH = maDH;
     }
 
-    public int getKHno() {
-        return KHno;
+    public String getTenKH() {
+        return tenKH;
     }
 
-    public void setKHno(int KHno) {
-        this.KHno = KHno;
+    public void setTenKH(String tenKH) {
+        this.tenKH = tenKH;
     }
 
     public Date getNgayTaoDH() {
@@ -61,6 +56,22 @@ public class donDatHangHoaDon {
         this.ngayTaoDH = ngayTaoDH;
     }
 
+    public double getTongTien() {
+        return tongTien;
+    }
+
+    public void setTongTien(double tongTien) {
+        this.tongTien = tongTien;
+    }
+
+    public String getTrangThai() {
+        return trangThai;
+    }
+
+    public void setTrangThai(String trangThai) {
+        this.trangThai = trangThai;
+    }
+
     public String getDiaChi() {
         return diaChi;
     }
@@ -68,5 +79,14 @@ public class donDatHangHoaDon {
     public void setDiaChi(String diaChi) {
         this.diaChi = diaChi;
     }
+
+    public String getNguoiNhan() {
+        return nguoiNhan;
+    }
+
+    public void setNguoiNhan(String nguoiNhan) {
+        this.nguoiNhan = nguoiNhan;
+    }
+
     
 }

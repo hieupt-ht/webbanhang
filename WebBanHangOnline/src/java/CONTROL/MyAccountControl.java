@@ -5,12 +5,11 @@
     package CONTROL;
 
     import DAO.AccountDao;
-    import DAO.ChiTietDonHangDao;
+    import DAO.DaoDonDatHangHoaDon;
     import DAO.KhachHangDao;
     import ENTITY.Account;
-    import ENTITY.ChiTietDonHang;
+    import ENTITY.donDatHangHoaDon;
     import java.io.IOException;
-    import java.io.PrintWriter;
     import java.util.List;
     import javax.servlet.ServletException;
     import javax.servlet.annotation.WebServlet;
@@ -29,13 +28,13 @@ public class MyAccountControl extends HttpServlet {
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
-
+        
         HttpSession session = request.getSession();
         Account a = (Account) session.getAttribute("acc");
-
-        ChiTietDonHangDao ctdao = new ChiTietDonHangDao();
-        List<ChiTietDonHang> list = ctdao.getAllCTDH(a.getMaACc());
-        request.setAttribute("listctdh", list);
+        
+        DaoDonDatHangHoaDon dh = new DaoDonDatHangHoaDon();
+        List<donDatHangHoaDon> list = dh.getAllDonDatHangHoaDon_byIdACcc(a.getMaACc());
+        request.setAttribute("listdh", list);
 
         KhachHangDao khdao = new KhachHangDao();
         String diaChiKhachHang = khdao.getDiaChiKH(a.getMaACc());
@@ -81,4 +80,5 @@ public class MyAccountControl extends HttpServlet {
     public String getServletInfo() {
         return "MyAccount servlet for handling profile view and updates";
     }
+    
 }

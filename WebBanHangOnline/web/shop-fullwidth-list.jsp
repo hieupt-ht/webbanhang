@@ -73,7 +73,7 @@
                                         </ul>
                                     </div>
                                     <div class="page_amount">
-                                        <p>Showing 1–9 of 21 results</p>
+                                        <p>Showing ${valStart}–${valEnd} of 21 results</p>
                                     </div>
                                     <div class="select_option">
                                         <form action="#">

@@ -37,23 +37,17 @@ public class SearchControl extends HttpServlet {
         response.setContentType("text/html;charset=UTF-8");
         request.setCharacterEncoding("UTF-8");
         String infor = request.getParameter("infor");
-        String number = request.getParameter("number");
         DAO.DaoSanPham dao = new DaoSanPham();
-        if(number == null)
-            number = "1";
-        int numberpage = Integer.parseInt(number);
-        List<SanPham> list = dao.getSanPhamTheoTenVaPhanTrang(infor, numberpage);
-        int page;
+        
+        List<SanPham> list = dao.serachSP(infor);
         int count = dao.serachSP(infor).size();
-        if (count % 12 == 0) {
-            page = count / 12;
-        } else {
-            page = count / 12 + 1;
-        }
+        
+        request.setAttribute("valStart", 1);
+        request.setAttribute("valEnd", count);
         request.setAttribute("listfullwidth", list);
-        request.setAttribute("page", page);
+        request.setAttribute("page", 1);
         request.setAttribute("soLuongSP", count);
-        request.setAttribute("tag", numberpage);
+        request.setAttribute("tag", 1);
         request.getRequestDispatcher("shop-fullwidth.jsp").forward(request, response);        
     }
 

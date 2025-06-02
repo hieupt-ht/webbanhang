@@ -84,20 +84,26 @@
                                                             <thead>
                                                                 <tr>
                                                                     <th>MÃ ĐƠN HÀNG</th>
-                                                                    <th>TÊN SẢN PHẨM</th>
-                                                                    <th>SỐ LƯỢNG</th>
-                                                                    <th>ĐƠN GIÁ</th>
-                                                                    <th>XEM THÊM</th>	 	 	 	
+                                                                    <th>TÊN KHÁCH HÀNG</th>
+                                                                    <th>NGÀY TẠO ĐƠN HÀNG</th>
+                                                                    <th>THÀNH TIỀN</th>
+                                                                    <th>TRẠNG THÁI</th>
+                                                                    <th>CHI TIẾT</th>
+                                                                    <th>HỦY</th>
                                                                 </tr>
                                                             </thead>
                                                             <tbody>
-                                                            <c:forEach var="ctdh" items="${listctdh}">                                                      
+                                                            <c:forEach var="dh" items="${listdh}">                                                      
                                                                 <tr>
-                                                                    <td>${ctdh.maDH}</td>
-                                                                    <td>${ctdh.tenSP}</td>
-                                                                    <td><span class="success">${ctdh.soLuong}</span></td>
-                                                                    <td>$${ctdh.donGia} for 1 item </td>
-                                                                    <td><a href="cart.html" class="view">view</a></td>
+                                                                    <td>${dh.maDH}</td>
+                                                                    <td>${dh.tenKH}</td>
+                                                                    <td>${dh.ngayTaoDH}</td>
+                                                                    <td>$${dh.tongTien}</td>
+                                                                    <td>${dh.trangThai}</td>
+                                                                    <td><a href="#" class="view-order-detail" data-id="${dh.maDH}">View</a></td>
+                                                                    <c:if test="${dh.trangThai != 'Đã thanh toán'}">
+                                                                        <td><a href="removeDonHang?idDH=${dh.maDH}"><i class="fa fa-trash-o"></i></a></td>
+                                                                    </c:if>
                                                                 </tr>
                                                             </c:forEach>
                                                             </tbody>
@@ -177,7 +183,40 @@
             <!--footer area end-->
             
             
-            
+            <div class="modal fade" id="order_detail_modal" tabindex="-1" role="dialog" aria-hidden="true">
+                <div class="modal-dialog modal-dialog-centered" role="document">
+                    <div class="modal-content">
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                        <div class="modal_body">
+                            <div class="container">
+                                <h2>Chi Tiết Đơn Hàng</h2>
+                                <table class="table table-bordered" id="modal_product_table">
+                                    <thead>
+                                        <tr>
+                                            <th>Mã đơn hàng</th>
+                                            <th>Tên sản phẩm</th>
+                                            <th>Giá</th>
+                                            <th>Số lượng</th>
+                                            <th>Kích thước</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <!-- Dữ liệu sẽ được cập nhật bởi JavaScript -->
+                                    </tbody>
+                                </table>
+                                <div class="text-center mt-3">
+                                    <button id="pay-now-btn" class="btn btn-success">Thanh toán ngay</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+
+
             
       
 		
@@ -190,3 +229,61 @@
         <script src="assets\js\main.js"></script>
     </body>
 </html>
+
+<script> 
+$(document).ready(function() {
+    $('.view-order-detail').on('click', function(e) {
+        e.preventDefault();
+        var idOrder = $(this).data('id');
+        console.log('ID Đơn Hàng:', idOrder);
+
+        $.ajax({
+            url: 'OrderDetailServlet',
+            type: 'GET',
+            data: { idOrder: idOrder },
+            dataType: 'json',
+            success: function(data) {
+                console.log('Dữ liệu nhận được:', data);
+
+                if (data.error) {
+                    alert('Lỗi: ' + data.error);
+                    return;
+                }
+
+                // Xóa dữ liệu cũ
+                $('#modal_product_table tbody').html('');
+
+                // Kiểm tra nếu danh sách rỗng
+                if (!data.listCTDH || data.listCTDH.length === 0) {
+                    $('#modal_product_table tbody').html('<tr><td colspan="5">Không có sản phẩm nào trong đơn hàng này.</td></tr>');
+                } else {
+                    var tableRows = '';
+                    data.listCTDH.forEach(function(ct) {
+                        tableRows += '<tr>' +
+                            '<td>' + ct.maDH + '</td>' +
+                            '<td>' + ct.tenSP + '</td>' +
+                            '<td>$' + ct.donGia + '</td>' +
+                            '<td>' + ct.soLuong + '</td>' +
+                            '<td>' + ct.size + '</td>' +
+                        '</tr>';
+                    });
+
+                    $('#modal_product_table tbody').html(tableRows);
+                }
+
+                // Hiển thị modal
+                $('#order_detail_modal').modal('show');
+
+                // Gán sự kiện cho nút thanh toán
+                $('#pay-now-btn').off('click').on('click', function() {
+                    window.location.href = 'thanhtoan.jsp?idOrder=' + idOrder;
+                });
+            },
+            error: function(xhr, status, error) {
+                console.log('Lỗi AJAX:', status, error);
+                alert('Không thể tải thông tin đơn hàng.');
+            }
+        });
+    });
+});
+</script>
