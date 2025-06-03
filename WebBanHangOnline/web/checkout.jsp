@@ -208,11 +208,11 @@
                                                     </tr>
                                                     <tr>
                                                         <th>Shipping</th>
-                                                        <td><strong>${sessionScope.minicarttongtien * 10/100}đ</strong></td>
+                                                        <td><strong>0đ</strong></td>
                                                     </tr>
                                                     <tr class="order_total">
                                                         <th>Order Total</th>
-                                                        <td><strong>${sessionScope.minicarttongtien * 110/100}</strong></td>
+                                                        <td><strong>${sessionScope.minicarttongtien}</strong></td>
                                                     </tr>
                                                 </tfoot>
                                             </table>     

@@ -92,6 +92,7 @@ public class updatecart extends HttpServlet {
                 int maKH = kh.selectmaKH(email);
                 Daocartproduct dao = new Daocartproduct();
                 daoGioHang daogiohang = new daoGioHang();
+                List<gioHang> listGH = daogiohang.getAllGioHang(maKH);
                 daoSize daosize = new daoSize();
                 for (int i = 0; i <= ids.length - 1; i++) {
                     String idsp = ids[i];
@@ -99,7 +100,8 @@ public class updatecart extends HttpServlet {
                     System.out.println(nameSize);
                     cartProduct cartproduct = dao.getCartproductByid(Integer.parseInt(idsp), listcart);
                     size sizeobj = daosize.getSizebyName_Dm(nameSize, cartproduct.getIdDm());
-                    daogiohang.updateGioHang(maKH, Integer.parseInt(idsp), Integer.parseInt(soluongs[i]), sizeobj.getIdSize());
+                   daogiohang.updateGioHang(maKH, Integer.parseInt(idsp), Integer.parseInt(soluongs[i]), sizeobj.getIdSize());
+
                 }
                 List<gioHang> listGioHang = daogiohang.getAllGioHang(maKH);
                 for(gioHang g : listGioHang)

@@ -4,6 +4,9 @@
  */
 package CONTROL;
 
+import DAO.DaoKhachHang;
+import DAO.Daowishlist;
+import ENTITY.Account;
 import java.io.IOException;
 import java.io.PrintWriter;
 import javax.servlet.ServletException;
@@ -12,13 +15,12 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
-
 /**
  *
- * @author ThankPad
+ * @author LE KHAC HIEU
  */
-@WebServlet(name = "LogoutControl", urlPatterns = {"/logout"})
-public class LogoutControl extends HttpServlet {
+@WebServlet(name = "addwishlist", urlPatterns = {"/addwishlist"})
+public class addwishlist extends HttpServlet {
 
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
@@ -33,11 +35,21 @@ public class LogoutControl extends HttpServlet {
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
         HttpSession session = request.getSession();
-        session.removeAttribute("acc");
-        session.removeAttribute("gioHang");
-        session.removeAttribute("wishlist");
-        session.invalidate();
-        response.sendRedirect("index");
+        int idcart = Integer.parseInt(request.getParameter("idAddCart"));
+        System.out.println("id them wishlist: " + idcart);
+            Account account = (Account) session.getAttribute("acc");
+        String email = account.getEmail();
+        DaoKhachHang kh = new DaoKhachHang();
+        int maKH = kh.selectmaKH(email);
+        System.out.println("ma khach hang: " + maKH);
+        
+        Daowishlist daowishlist = new Daowishlist();
+        
+        
+        daowishlist.removeWishlist(maKH, idcart);
+        
+        
+        response.sendRedirect("cartControl?idAddCart=" + idcart);
     }
 
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">

@@ -4,6 +4,9 @@
  */
 package CONTROL;
 
+import DAO.DaoDonDatHangHoaDon;
+import DAO.DaoKhachHang;
+import ENTITY.Account;
 import java.io.IOException;
 import java.io.PrintWriter;
 import javax.servlet.ServletException;
@@ -15,29 +18,49 @@ import javax.servlet.http.HttpSession;
 
 /**
  *
- * @author ThankPad
+ * @author LE KHAC HIEU
  */
-@WebServlet(name = "LogoutControl", urlPatterns = {"/logout"})
-public class LogoutControl extends HttpServlet {
+@WebServlet(name = "paysanphamonline", urlPatterns = {"/paysanphamonline"})
+public class paysanphamonline extends HttpServlet {
 
-    /**
-     * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
-     * methods.
-     *
-     * @param request servlet request
-     * @param response servlet response
-     * @throws ServletException if a servlet-specific error occurs
-     * @throws IOException if an I/O error occurs
-     */
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
         HttpSession session = request.getSession();
-        session.removeAttribute("acc");
-        session.removeAttribute("gioHang");
-        session.removeAttribute("wishlist");
-        session.invalidate();
-        response.sendRedirect("index");
+
+        // Check if session is valid
+        if (session == null) {
+            System.out.println("Session is null");
+            return;
+        }
+
+        // Check if idthanhtoan is set
+        Integer idthanhtoan = (Integer) session.getAttribute("idthanhtoan");
+        if (idthanhtoan == null) {
+            System.out.println("idthanhtoan is null");
+            return; // Handle the error case
+        }
+
+        System.out.println("thanh toan: " + idthanhtoan);
+
+        // Check if account is set
+        Account account = (Account) session.getAttribute("acc");
+        if (account == null) {
+            System.out.println("Account is null");
+            return; // Handle the error case
+        }
+
+        String email = account.getEmail();
+        DaoKhachHang kh = new DaoKhachHang();
+        int maKH = kh.selectmaKH(email);
+        System.out.println("ma kh: " + maKH);
+
+        DAO.DaoDonDatHangHoaDon dao = new DaoDonDatHangHoaDon();
+        dao.updateTrangThai(maKH, idthanhtoan);
+        session.removeAttribute("idthanhtoan");
+        session.removeAttribute("sum");
+        System.out.println("xin chao ban");
+        request.getRequestDispatcher("MyAccountControl").forward(request, response);
     }
 
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">

@@ -16,11 +16,13 @@ import java.sql.ResultSet;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
+
 /**
  *
  * @author LE KHAC HIEU
  */
 public class DaoDonDatHangHoaDon {
+
     Connection c;
     CallableStatement stmt;
     ResultSet rs;
@@ -30,26 +32,46 @@ public class DaoDonDatHangHoaDon {
         this.stmt = null;
         this.rs = null;
     }
-    
-    public void DeleteDDHHD (int maDH) {
-        String sql = "delete from DonDatHang_HoaDon\n" +
-                        "where maDH = ?";
-        
+
+    public void DeleteDDHHD(int maDH) {
+        String sql = "delete from DonDatHang_HoaDon\n"
+                + "where maDH = ?";
+
         try {
-           c = CONTEXT.DatabaseConnection.getConnection();
-           stmt = c.prepareCall(sql);
-           stmt.setInt(1, maDH);
-           rs = stmt.executeQuery();
+            c = CONTEXT.DatabaseConnection.getConnection();
+            stmt = c.prepareCall(sql);
+            stmt.setInt(1, maDH);
+            rs = stmt.executeQuery();
         } catch (Exception e) {
-            
+
         }
     }
+    
+    public String selectTrangThaiById(int idDH) {
+        String sql = "select dh.TrangThai from DonDatHang_HoaDon dh where maDH = ?";
 
+        try {
+            c = CONTEXT.DatabaseConnection.getConnection();
+            stmt = c.prepareCall(sql);
+            stmt.setInt(1, idDH);
+            rs = stmt.executeQuery();
+            
+            while (rs.next()) {
+                String trangThai = rs.getString("TrangThai");
+                return trangThai;
+            }
+        } catch (Exception e) {
+
+        }
+        
+        return null;
+    }
+    
     public void insertDonDatHangHoaDon(int maKH, String diaChi, String email, String sdt, String nguoiNhan) {
         String sql = "INSERT INTO DonDatHang_HoaDon (KHno, ngayTaoDH, diaChi, email, SDT, nguoiNhan) VALUES (?, ?, ? ,?, ?, ?)";
         LocalDate nowdate = LocalDate.now();
         java.sql.Date sqlDate = java.sql.Date.valueOf(nowdate);
-        
+
         try {
             java.sql.Connection con = CONTEXT.DatabaseConnection.getConnection();
             PreparedStatement stmt = con.prepareStatement(sql);
@@ -61,28 +83,42 @@ public class DaoDonDatHangHoaDon {
             stmt.setString(6, nguoiNhan);
             stmt.executeUpdate();
         } catch (Exception e) {
-        }      
+        }
     }
-    public List<donDatHangHoaDon> getAllDonDatHangHoaDon_byIdACcc(int maAcc){
-        String sql = "SELECT \n" +
-                    "    d.maDH, \n" +
-                    "    k.tenKH, \n" +
-                    "    d.ngayTaoDH, \n" +
-                    "    SUM(c.soLuongDat * c.donGia) AS tongTien, \n" +
-                    "    d.trangThai\n" +
-                    "FROM DonDatHang_HoaDon d\n" +
-                    "JOIN KhachHang k ON d.KHno = k.maKH\n" +
-                    "JOIN ChiTietDonHang c ON d.maDH = c.maDH\n" +
-                    "JOIN Account a ON a.email = k.email\n" +
-                    "WHERE a.maAcc = ?\n" +
-                    "GROUP BY d.maDH, k.tenKH, d.ngayTaoDH, d.trangThai;";
+
+    public void updateTrangThai(int maKH, int maDH) {
+        String sql = "UPDATE DonDatHang_HoaDon SET trangThai = N'Đã thanh toán' WHERE maDH = ? AND KHno = ?";
+
+        try {
+            Connection con = CONTEXT.DatabaseConnection.getConnection();
+            PreparedStatement stmt = con.prepareStatement(sql);
+            stmt.setInt(1, maDH);
+            stmt.setInt(2, maKH);
+            stmt.execute();
+        } catch (Exception e) {
+        }
+    }
+
+    public List<donDatHangHoaDon> getAllDonDatHangHoaDon_byIdACcc(int maAcc) {
+        String sql = "SELECT \n"
+                + "    d.maDH, \n"
+                + "    k.tenKH, \n"
+                + "    d.ngayTaoDH, \n"
+                + "    SUM(c.soLuongDat * c.donGia) AS tongTien, \n"
+                + "    d.trangThai\n"
+                + "FROM DonDatHang_HoaDon d\n"
+                + "JOIN KhachHang k ON d.KHno = k.maKH\n"
+                + "JOIN ChiTietDonHang c ON d.maDH = c.maDH\n"
+                + "JOIN Account a ON a.email = k.email\n"
+                + "WHERE a.maAcc = ?\n"
+                + "GROUP BY d.maDH, k.tenKH, d.ngayTaoDH, d.trangThai;";
         List<donDatHangHoaDon> list = new ArrayList<>();
         try {
             Connection con = CONTEXT.DatabaseConnection.getConnection();
             PreparedStatement stmt = con.prepareStatement(sql);
             stmt.setInt(1, maAcc);
             ResultSet rs = stmt.executeQuery();
-            while(rs.next()){
+            while (rs.next()) {
                 int maDH = rs.getInt("maDH");
                 String tenKH = rs.getString("tenKH");
                 Date ngayTao = rs.getDate("ngayTaoDH");
@@ -95,14 +131,15 @@ public class DaoDonDatHangHoaDon {
         }
         return list;
     }
-    public int getNewMaDH(){
+
+    public int getNewMaDH() {
         String sql = "select top 1 maDH from DonDatHang_HoaDon order by maDH desc";
         int maDH = 0;
         try {
             Connection con = CONTEXT.DatabaseConnection.getConnection();
             PreparedStatement stmt = con.prepareStatement(sql);
             ResultSet rs = stmt.executeQuery();
-            while(rs.next()){
+            while (rs.next()) {
                 maDH = rs.getInt("maDH");
             }
         } catch (Exception e) {
@@ -136,11 +173,10 @@ public class DaoDonDatHangHoaDon {
 //
 //    return maDH;
 //}
+
     public static void main(String[] args) {
-            DaoDonDatHangHoaDon dh = new DaoDonDatHangHoaDon();
-            List<donDatHangHoaDon> list = dh.getAllDonDatHangHoaDon_byIdACcc(1);
-            for(donDatHangHoaDon o : list) {
-                System.out.println(o);
-            }
-        }
+        
+        DAO.DaoDonDatHangHoaDon dao = new DAO.DaoDonDatHangHoaDon();
+        System.out.println(dao.selectTrangThaiById(6));
+    }
 }

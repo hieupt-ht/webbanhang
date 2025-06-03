@@ -39,7 +39,7 @@ public class MyAccountControl extends HttpServlet {
         KhachHangDao khdao = new KhachHangDao();
         String diaChiKhachHang = khdao.getDiaChiKH(a.getMaACc());
         request.setAttribute("diaChiKH", diaChiKhachHang);
-
+        
         request.getRequestDispatcher("myaccount.jsp").forward(request, response);
     }
 

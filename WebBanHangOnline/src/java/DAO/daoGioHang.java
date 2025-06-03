@@ -74,7 +74,22 @@ public class daoGioHang {
         }
     }
 
-    public void updateGioHang(int maKH, int maSP, int soLuong, int size) {
+//    public void updateGioHang(int maKH, int maSP, int soLuong, int size, int soLuongCu, int sizeCu) {
+//        String sql = "update GIOHANG set soLuong = ?, Sizeno = ? where maKH = ? and maSP = ? and soLuong = ? and Sizeno = ?";
+//        try {
+//            Connection con = CONTEXT.DatabaseConnection.getConnection();
+//            PreparedStatement stmt = con.prepareStatement(sql);
+//            stmt.setInt(1, soLuong);
+//            stmt.setInt(2, size);
+//            stmt.setInt(3, maKH);
+//            stmt.setInt(4, maSP);
+//            stmt.setInt(5, soLuongCu);
+//            stmt.setInt(6, sizeCu);
+//            stmt.executeUpdate();
+//        } catch (Exception e) {
+//        }
+//    }
+        public void updateGioHang(int maKH, int maSP, int soLuong, int size) {
         String sql = "update GIOHANG set soLuong = ?, Sizeno = ? where maKH = ? and maSP = ?";
         try {
             Connection con = CONTEXT.DatabaseConnection.getConnection();

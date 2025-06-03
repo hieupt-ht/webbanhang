@@ -5,6 +5,7 @@
 package CONTROL;
 
 import DAO.ChiTietDonHangDao;
+import DAO.DaoDonDatHangHoaDon;
 import ENTITY.ChiTietDonHang;
 import com.google.gson.Gson;
 import java.io.IOException;
@@ -52,7 +53,10 @@ public class ViewCTDHControl extends HttpServlet {
                 out.print("{\"error\": \"Invalid idOrder format\"}");
                 return;
             }
-
+            
+            DaoDonDatHangHoaDon daoDH = new DaoDonDatHangHoaDon();
+            String trangThai = daoDH.selectTrangThaiById(idOrder);
+            
             ChiTietDonHangDao dao = new ChiTietDonHangDao();
             List<ChiTietDonHang> list = dao.getCTDHByIdDh(idOrder);
 
@@ -60,7 +64,7 @@ public class ViewCTDHControl extends HttpServlet {
             if (list.isEmpty()) {
                 out.print("{\"listCTDH\": [], \"message\": \"No items found for this order\"}");
             } else {
-                out.print(gson.toJson(Map.of("listCTDH", list)));
+                out.print(gson.toJson(Map.of("listCTDH", list,"trangThai", trangThai)));
             }
         }
     }

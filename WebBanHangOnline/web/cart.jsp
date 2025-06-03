@@ -204,7 +204,7 @@
                                                         if (totalMoney) {
                                                             totalMoney.textContent = total.toLocaleString('vi-VN') + ' ₫';
                                                         }
-                                                        valueShip = total * 10/100;
+                                                        valueShip = 0;
                                                         let ship = document.getElementById('ship');
                                                         if (ship) {
                                                             ship.textContent = valueShip.toLocaleString('vi-VN') + ' ₫';

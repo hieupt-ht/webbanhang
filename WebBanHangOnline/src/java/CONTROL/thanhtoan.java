@@ -4,6 +4,7 @@
  */
 package CONTROL;
 
+import DAO.daoChiTietDH;
 import java.io.IOException;
 import java.io.PrintWriter;
 import javax.servlet.ServletException;
@@ -12,13 +13,14 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
-
+import javax.servlet.RequestDispatcher;
+import javax.servlet.ServletResponse;
 /**
  *
- * @author ThankPad
+ * @author LE KHAC HIEU
  */
-@WebServlet(name = "LogoutControl", urlPatterns = {"/logout"})
-public class LogoutControl extends HttpServlet {
+@WebServlet(name = "thanhtoan", urlPatterns = {"/thanhtoan"})
+public class thanhtoan extends HttpServlet {
 
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
@@ -33,11 +35,17 @@ public class LogoutControl extends HttpServlet {
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
         HttpSession session = request.getSession();
-        session.removeAttribute("acc");
-        session.removeAttribute("gioHang");
-        session.removeAttribute("wishlist");
-        session.invalidate();
-        response.sendRedirect("index");
+        int madh = Integer.parseInt(request.getParameter("idOrder")) ;
+        System.out.println("ma don hang: " + madh);
+        
+        DAO.ChiTietDonHangDao dao = new DAO.ChiTietDonHangDao();
+        double sum = dao.tongTien(madh);
+        
+        
+        System.out.println("xin chao ban");
+        session.setAttribute("idthanhtoan", madh);
+        session.setAttribute("sum", sum);
+        response.sendRedirect("thanhtoan.jsp");
     }
 
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">

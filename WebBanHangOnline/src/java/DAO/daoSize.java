@@ -52,6 +52,23 @@ public class daoSize {
         }
         return sizeobj;
     }
+      public size getSizebyname(String size){
+        String sql = "select top 1 * from tbSize where Size = " + size;
+        size sizeobj = null;
+        try {
+             Connection con = CONTEXT.DatabaseConnection.getConnection();
+            PreparedStatement stmt = con.prepareStatement(sql);
+            ResultSet rs = stmt.executeQuery();
+            while(rs.next()){
+                int idSize = rs.getInt("idSize");
+                int maDm = rs.getInt("DMno");
+                String stringSize = rs.getString("Size");
+                sizeobj = new size(idSize, maDm, stringSize);
+            }
+        } catch (Exception e) {
+        }
+        return sizeobj;
+    }
     public size getSizebyName_Dm(String name, int dm){
         String sql = "select top 1 * from tbSize where Size = '" + name + "' and DMno = " + dm;
         size sizeobj = null;

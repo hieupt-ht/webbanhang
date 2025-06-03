@@ -10,11 +10,14 @@ import java.sql.ResultSet;
 import java.util.ArrayList;
 import java.util.List;
 import ENTITY.ChiTietDonHang;
+import java.sql.PreparedStatement;
+
 /**
  *
  * @author Windowns 10
  */
 public class ChiTietDonHangDao {
+
     Connection c;
     CallableStatement stmt;
     ResultSet rs;
@@ -25,26 +28,26 @@ public class ChiTietDonHangDao {
         this.rs = null;
     }
 
-    public List<ChiTietDonHang> getAllCTDH(int maAcc){
+    public List<ChiTietDonHang> getAllCTDH(int maAcc) {
         List<ChiTietDonHang> list = new ArrayList<ChiTietDonHang>();
-        String sql = "SELECT \n" +
-                    "    CT.maDH,\n" +
-                    "    CT.maSP,\n" +
-                    "    SP.tenSP,\n" +
-                    "    CT.soLuongDat,\n" +
-                    "    CT.donGia,\n" +
-                    "    DH.ngayTaoDH,\n" +
-                    "    DH.diaChi,\n" +
-                    "    DH.SDT,\n" +
-                    "    DH.nguoiNhan, \n" +
-                    "    S.Size\n" +
-                    "FROM Account A\n" +
-                    "JOIN KhachHang KH ON A.Email = KH.Email\n" +
-                    "JOIN DonDatHang_HoaDon DH ON KH.maKH = DH.KHno\n" +
-                    "JOIN ChiTietDonHang CT ON DH.maDH = CT.maDH\n" +
-                    "JOIN SanPham SP ON CT.maSP = SP.maSP\n" +
-                    "JOIN tbSize S ON CT.Sizeno = S.idSize\n" +
-                    "WHERE A.maAcc = ?;";
+        String sql = "SELECT \n"
+                + "    CT.maDH,\n"
+                + "    CT.maSP,\n"
+                + "    SP.tenSP,\n"
+                + "    CT.soLuongDat,\n"
+                + "    CT.donGia,\n"
+                + "    DH.ngayTaoDH,\n"
+                + "    DH.diaChi,\n"
+                + "    DH.SDT,\n"
+                + "    DH.nguoiNhan, \n"
+                + "    S.Size\n"
+                + "FROM Account A\n"
+                + "JOIN KhachHang KH ON A.Email = KH.Email\n"
+                + "JOIN DonDatHang_HoaDon DH ON KH.maKH = DH.KHno\n"
+                + "JOIN ChiTietDonHang CT ON DH.maDH = CT.maDH\n"
+                + "JOIN SanPham SP ON CT.maSP = SP.maSP\n"
+                + "JOIN tbSize S ON CT.Sizeno = S.idSize\n"
+                + "WHERE A.maAcc = ?;";
         try {
             c = CONTEXT.DatabaseConnection.getConnection();
             stmt = c.prepareCall(sql);
@@ -65,20 +68,21 @@ public class ChiTietDonHangDao {
         }
         return list;
     }
-    public List<ChiTietDonHang> getCTDHByIdDh(int maDH){
+
+    public List<ChiTietDonHang> getCTDHByIdDh(int maDH) {
         List<ChiTietDonHang> list = new ArrayList<ChiTietDonHang>();
-        String sql = "select \n" +
-                    "	c.maDH,\n" +
-                    "	sp.tenSP,\n" +
-                    "	c.soLuongDat,\n" +
-                    "	c.donGia,\n" +
-                    "	s.Size\n" +
-                    "from\n" +
-                    "	ChiTietDonHang c\n" +
-                    "join DonDatHang_HoaDon d on c.maDH = d.maDH\n" +
-                    "join tbSize s on s.idSize = c.Sizeno\n" +
-                    "join SanPham sp on sp.maSP = c.maSP\n" +
-                    "where c.maDH = ?";
+        String sql = "select \n"
+                + "	c.maDH,\n"
+                + "	sp.tenSP,\n"
+                + "	c.soLuongDat,\n"
+                + "	c.donGia,\n"
+                + "	s.Size\n"
+                + "from\n"
+                + "	ChiTietDonHang c\n"
+                + "join DonDatHang_HoaDon d on c.maDH = d.maDH\n"
+                + "join tbSize s on s.idSize = c.Sizeno\n"
+                + "join SanPham sp on sp.maSP = c.maSP\n"
+                + "where c.maDH = ?";
         try {
             c = CONTEXT.DatabaseConnection.getConnection();
             stmt = c.prepareCall(sql);
@@ -99,10 +103,27 @@ public class ChiTietDonHangDao {
         }
         return list;
     }
+
+    public double tongTien(int maDH) {
+        String sql = "select sum(donGia) from ChiTietDonHang where maDH = ?";
+        double sum = 0;
+        try {
+            Connection con = CONTEXT.DatabaseConnection.getConnection();
+            PreparedStatement stmt = con.prepareStatement(sql);
+            stmt.setInt(1, maDH);
+            ResultSet rs = stmt.executeQuery();
+            while(rs.next()){
+                sum = rs.getDouble(1);
+            }
+        } catch (Exception e) {
+        }
+        return sum;
+    }
+
     public static void main(String[] args) {
         ChiTietDonHangDao ct = new ChiTietDonHangDao();
         List<ChiTietDonHang> list = ct.getCTDHByIdDh(2);
-        for(ChiTietDonHang o : list) {
+        for (ChiTietDonHang o : list) {
             System.out.println(o);
         }
     }
