@@ -4,12 +4,14 @@
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
             <file>file:/C:/Users/HIEU/OneDrive/Desktop/my-project/WebBanHangOnline/web/thanhtoan.jsp</file>
-            <file>file:/C:/Users/HIEU/OneDrive/Desktop/my-project/WebBanHangOnline/web/myaccount.jsp</file>
-            <file>file:/C:/Users/HIEU/OneDrive/Desktop/my-project/WebBanHangOnline/src/java/DAO/DaoDonDatHangHoaDon.java</file>
-            <file>file:/C:/Users/HIEU/OneDrive/Desktop/my-project/WebBanHangOnline/src/java/CONTROL/pay.java</file>
             <file>file:/C:/Users/HIEU/OneDrive/Desktop/my-project/WebBanHangOnline/src/java/CONTROL/thanhtoan.java</file>
-            <file>file:/C:/Users/HIEU/OneDrive/Desktop/my-project/WebBanHangOnline/src/java/CONTROL/cartControl.java</file>
-            <file>file:/C:/Users/HIEU/OneDrive/Desktop/my-project/WebBanHangOnline/web/checkout.jsp</file>
+            <file>file:/C:/Users/HIEU/OneDrive/Desktop/my-project/WebBanHangOnline/src/java/CONTROL/paysanphamonline.java</file>
+            <file>file:/C:/Users/HIEU/OneDrive/Desktop/my-project/WebBanHangOnline/web/myaccount.jsp</file>
+            <file>file:/C:/Users/HIEU/OneDrive/Desktop/my-project/WebBanHangOnline/src/java/DAO/ChiTietDonHangDao.java</file>
+            <file>file:/C:/Users/HIEU/OneDrive/Desktop/my-project/WebBanHangOnline/src/java/DAO/daoGioHang.java</file>
+            <file>file:/C:/Users/HIEU/OneDrive/Desktop/my-project/WebBanHangOnline/src/java/CONTROL/LoginControl.java</file>
+            <file>file:/C:/Users/HIEU/OneDrive/Desktop/my-project/WebBanHangOnline/src/java/CONTROL/checkoutControl.java</file>
+            <file>file:/C:/Users/HIEU/OneDrive/Desktop/my-project/WebBanHangOnline/src/java/CONTROL/loginCheckout.java</file>
         </group>
     </open-files>
 </project-private>
