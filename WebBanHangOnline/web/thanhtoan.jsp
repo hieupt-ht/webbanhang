@@ -1,71 +1,93 @@
+<%-- 
+    Document   : thanhtoan
+    Created on : Jun 2, 2025, 4:09:04 PM
+    Author     : ThankPad
+--%>
+<%@page contentType="text/html" pageEncoding="UTF-8"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <!DOCTYPE html>
-<html lang="vi">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Thanh to�n b?ng QR Code</title>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/qrcodejs/1.0.0/qrcode.min.js"></script>
-    <style>
-        body { font-family: Arial, sans-serif; text-align: center; padding: 20px; }
-        #qr-code { margin: 20px auto; }
-        #payment-result { margin-top: 20px; }
-        input, button { margin: 10px; padding: 10px; font-size: 16px; }
-    </style>
-</head>
-<body>
-    <h2>Thanh to�n b?ng QR Code</h2>
-    <form id="payment-form">
-        <label>S? ti?n:</label>
-        <input type="number" id="amount" name="amount" required min="1">
-        <button type="submit">T?o m� QR</button>
-    </form>
-    <div id="qr-code"></div>
-    <div id="payment-result"></div>
-
-    <script>
-        document.getElementById("payment-form").addEventListener("submit", function(e) {
-            e.preventDefault();
-            
-            const amount = document.getElementById("amount").value;
-            const paymentResult = document.getElementById("payment-result");
-            const qrCodeDiv = document.getElementById("qr-code");
-            
-            if (amount <= 0) {
-                paymentResult.innerHTML = "<p style='color:red;'>Vui l�ng nh?p s? ti?n h?p l?.</p>";
-                return;
+<html>
+    <head>
+        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+        <title>Pay Page</title>
+        <style>
+            body {
+                font-family: 'Arial', sans-serif;
+                background-color: #f4f4f9; /* Màu nền nhạt */
+                display: flex;
+                justify-content: center; /* Căn giữa theo chiều ngang */
+                align-items: center; /* Căn giữa theo chiều dọc */
+                min-height: 100vh; /* Chiều cao tối thiểu full màn hình */
+                margin: 0;
+                padding: 20px;
             }
 
-            // T?o d? li?u cho QR code (gi? l?p th�ng tin giao d?ch)
-            const transactionData = {
-                merchantId: "MERCHANT123",
-                amount: amount,
-                transactionId: "TX" + Date.now(),
-                currency: "VND"
-            };
-            const qrData = JSON.stringify(transactionData);
+            #fake-payment-form {
+                background-color: #ffffff; /* Nền trắng cho form */
+                padding: 30px;
+                border-radius: 10px; /* Bo góc */
+                box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1); /* Hiệu ứng bóng nhẹ */
+                width: 100%;
+                max-width: 400px; /* Chiều rộng tối đa */
+            }
 
-            // X�a m� QR c? (n?u c�)
-            qrCodeDiv.innerHTML = "";
-            
-            // T?o m� QR
-            new QRCode(qrCodeDiv, {
-                text: qrData,
-                width: 200,
-                height: 200
-            });
+            label {
+                display: block;
+                font-size: 14px;
+                font-weight: 600; /* Chữ đậm */
+                color: #333; /* Màu chữ tối */
+                margin-bottom: 8px; /* Khoảng cách dưới nhãn */
+            }
 
-            paymentResult.innerHTML = "<p>Qu�t m� QR ?? thanh to�n " + amount + " VND</p>";
+            input[type="text"] {
+                width: 100%;
+                padding: 12px; /* Khoảng cách bên trong */
+                margin-bottom: 20px; /* Khoảng cách giữa các input */
+                border: 1px solid #
+            }
+        </style>
+    </head>
+    <body>
+        <form id="fake-payment-form">
+            <label>Số thẻ tín dụng:</label>
+            <input type="text" name="cardNumber" required>
 
-            // Gi? l?p ki?m tra tr?ng th�i thanh to�n sau khi qu�t
-            setTimeout(function() {
-                const success = Math.random() < 0.8; // X�c su?t th�nh c�ng 80%
-                if (success) {
-                    paymentResult.innerHTML = "<p style='color:green;'>Thanh to�n th�nh c�ng!</p>";
-                } else {
-                    paymentResult.innerHTML = "<p style='color:red;'>Thanh to�n th?t b?i. Vui l�ng th? l?i.</p>";
-                }
-            }, 5000); // Gi? l?p th?i gian qu�t QR
-        });
-    </script>
-</body>
+            <label>Tên chủ thẻ:</label>
+            <input type="text" name="cardHolder" required>
+
+            <label>Ngày hết hạn:</label>
+            <input type="text" name="expiryDate" required>
+
+            <label>CVC:</label>
+            <input type="text" name="cvc" required>
+
+            <button type="submit">Thanh toán</button>
+        </form>
+        <div id="payment-result"></div>
+        
+    
+    </body>
+    
+    
 </html>
+
+<script>
+    document.getElementById("fake-payment-form").addEventListener("submit", function(e) {
+        e.preventDefault();
+
+        const cardNumber = document.querySelector('input[name="cardNumber"]').value;
+        const paymentResult = document.getElementById("payment-result");
+
+        // Check if card number is exactly 12 digits
+        if (!/^\d{12}$/.test(cardNumber)) {
+            paymentResult.innerHTML = "<p style='color:red;'>Số thẻ tín dụng phải gồm đúng 12 chữ số.</p>";
+            return;
+        }
+
+        paymentResult.innerHTML = "<p>Đang xử lý thanh toán...</p>";
+
+        setTimeout(function() {
+                paymentResult.innerHTML = "<p style='color:green;'>Thanh toán thành công!</p>";
+        }, 2000);
+    });
+</script>
